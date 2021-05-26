@@ -11,6 +11,7 @@
 # sed -i 's/qnmlgb/Phicomm-N1/g' package/base-files/files/bin/config_generate
 
 # Add additional packages
+git clone https://github.com/stonegr/luci-app-samba.git package/luci-app-samba
 git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
 git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
 git clone https://github.com/garypang13/luci-app-bypass package/luci-app-bypass
