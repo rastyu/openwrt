@@ -71,10 +71,6 @@ pushd package/openwrt-diskman/parted && mv -f Parted.Makefile Makefile 2>/dev/nu
 # Add luci-app-amlogic
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 
-# Add cpufreq
-sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
-sed -i 's/services/system/g' package/lean/luci-app-cpufreq/luasrc/controller/cpufreq.lua
-
 # Fix nginx-util
 sed -i 's/\[\[fallthrough\]\]\;/\/\* fallthrough \*\//g' feeds/packages/net/nginx-util/src/nginx-ssl-util.hpp
 
@@ -89,7 +85,7 @@ sed -i 's/\[\[fallthrough\]\]\;/\/\* fallthrough \*\//g' feeds/packages/net/ngin
 # git apply ../router-config/patches/{0001*,0002*}.patch --directory=feeds/luci
 
 # Modify some code adaptation
-# sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
+sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
 
 # Add luci-theme
 # svn co https://github.com/Lienol/openwrt-package/trunk/lienol/luci-theme-bootstrap-mod package/luci-theme-bootstrap-mod
