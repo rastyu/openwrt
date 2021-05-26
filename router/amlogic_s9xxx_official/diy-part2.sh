@@ -11,7 +11,6 @@
 # sed -i 's/qnmlgb/Phicomm-N1/g' package/base-files/files/bin/config_generate
 
 # Add additional packages
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
 git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
 git clone https://github.com/garypang13/luci-app-bypass package/luci-app-bypass
@@ -71,6 +70,10 @@ pushd package/openwrt-diskman/parted && mv -f Parted.Makefile Makefile 2>/dev/nu
 
 # Add luci-app-amlogic
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
+
+# Add cpufreq
+sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
+sed -i 's/services/system/g' package/lean/luci-app-cpufreq/luasrc/controller/cpufreq.lua
 
 # Fix nginx-util
 sed -i 's/\[\[fallthrough\]\]\;/\/\* fallthrough \*\//g' feeds/packages/net/nginx-util/src/nginx-ssl-util.hpp
