@@ -19,8 +19,7 @@ git clone https://github.com/jerrykuku/lua-maxminddb package/lua-maxminddb
 git clone https://github.com/kongfl888/luci-app-adguardhome.git package/luci-app-adguardhome
 git clone https://github.com/toss-a/luci-theme-atmaterial.git package/luci-theme-atmaterial
 git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
-git clone https://github.com/Lienol/openwrt-package.git package/Lienol-package
-git clone https://github.com/kenzok8/openwrt-packages.git package/kenzok8-package
+git clone https://github.com/rastyu/openwrt-packages.git package/rastyu-package
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.31.4）
 sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_generate
