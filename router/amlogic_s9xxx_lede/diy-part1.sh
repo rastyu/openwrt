@@ -28,4 +28,4 @@
 
 
 # other
-rm -rf package/lean/{luci-theme-argon}
+#rm -rf package/lean/{luci-theme-argon}
