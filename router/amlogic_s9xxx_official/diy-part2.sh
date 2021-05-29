@@ -11,6 +11,8 @@
 # sed -i 's/qnmlgb/Phicomm-N1/g' package/base-files/files/bin/config_generate
 
 # Add additional packages
+svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06/applications/luci-app-filebrowser package/luci-app-filebrowser
+svn co https://github.com/immortalwrt/packages/branches/openwrt-18.06/utils/filebrowser package/filebrowser
 git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
 git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
 git clone https://github.com/garypang13/luci-app-bypass package/luci-app-bypass
