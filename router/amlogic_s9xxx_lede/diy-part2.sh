@@ -7,9 +7,13 @@
 # Author: P3TERX
 # Blog: https://p3terx.com
 #============================================================
+# 版本号里显示一个自己的名字（281677160 build $(TZ=UTC-8 date "+%Y.%m.%d") @ 这些都是后增加的）
+sed -i "s/OpenWrt /ALLEN build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
+git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
+svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 
 # Modify default IP
-#sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_generate
 #移除不用软件包    
 rm -rf package/lean/luci-app-dockerman
 rm -rf package/lean/luci-app-wrtbwmon
@@ -48,8 +52,8 @@ svn co https://github.com/xiaorouji/openwrt-passwall/trunk/chinadns-ng package/c
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/tcping package/tcping
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/trojan-go package/trojan-go
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/trojan-plus package/trojan-plus
-#svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06/applications/luci-app-filebrowser package/luci-app-filebrowser
-#svn co https://github.com/immortalwrt/packages/branches/openwrt-18.06/utils/filebrowser package/filebrowser
+svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06/applications/luci-app-filebrowser package/luci-app-filebrowser
+svn co https://github.com/immortalwrt/packages/branches/openwrt-18.06/utils/filebrowser package/filebrowser
 #svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06/applications/luci-app-fileassistant package/luci-app-fileassistant
 svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06/applications/luci-app-socat package/luci-app-socat
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/luci-app-passwall package/luci-app-passwall
