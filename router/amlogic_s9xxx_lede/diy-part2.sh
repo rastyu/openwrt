@@ -8,6 +8,7 @@
 #========================================================================================================================
 git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
 git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
+git clone https://github.com/jerrykuku/lua-maxminddb package/lua-maxminddb
 git clone https://github.com/garypang13/luci-app-bypass package/luci-app-bypass
 git clone https://github.com/garypang13/smartdns-le package/smartdns-le
 git clone https://github.com/toss-a/luci-theme-atmaterial.git package/luci-theme-atmaterial
