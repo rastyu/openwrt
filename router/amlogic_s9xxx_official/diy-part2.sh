@@ -52,7 +52,7 @@ sed -i 's/发送/Transmission/g' feeds/luci/applications/luci-app-transmission/p
 
 # Add luci-app-passwall
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk package/openwrt-passwall
-rm -rf package/openwrt-passwall/{kcptun,xray-core} 2>/dev/null
+#rm -rf package/openwrt-passwall/{kcptun,xray-core} 2>/dev/null
 
 # Add luci-app-openclash
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openwrt-openclash
