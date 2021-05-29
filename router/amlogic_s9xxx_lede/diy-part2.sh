@@ -6,7 +6,11 @@
 # Copyright (C) 2020 https://github.com/P3TERX/Actions-OpenWrt
 # Copyright (C) 2020 https://github.com/ophub/amlogic-s9xxx-openwrt
 #========================================================================================================================
-
+git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
+git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
+git clone https://github.com/garypang13/luci-app-bypass package/luci-app-bypass
+git clone https://github.com/garypang13/smartdns-le package/smartdns-le
+git clone https://github.com/toss-a/luci-theme-atmaterial.git package/luci-theme-atmaterial
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.31.4）
 sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_generate
 
