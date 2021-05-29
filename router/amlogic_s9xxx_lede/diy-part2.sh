@@ -6,6 +6,7 @@
 # Copyright (C) 2020 https://github.com/P3TERX/Actions-OpenWrt
 # Copyright (C) 2020 https://github.com/ophub/amlogic-s9xxx-openwrt
 #========================================================================================================================
+git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
 svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06/applications/luci-app-filebrowser package/luci-app-filebrowser
 svn co https://github.com/immortalwrt/packages/branches/openwrt-18.06/utils/filebrowser package/filebrowser
 git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
