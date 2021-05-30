@@ -56,7 +56,7 @@ git clone https://github.com/garypang13/smartdns-le package/smartdns-le
 git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
 
 # Add luci-app-openclash
-https://github.com/vernesong/OpenClash package/luci-app-openclash
+git clone https://github.com/vernesong/OpenClash package/luci-app-openclash
 
 # Add luci-app-ssr-plus
 svn co https://github.com/fw876/helloworld/trunk/{luci-app-ssr-plus,shadowsocksr-libev} package/openwrt-ssrplus
