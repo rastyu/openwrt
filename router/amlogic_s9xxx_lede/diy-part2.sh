@@ -7,7 +7,7 @@
 # Copyright (C) 2020 https://github.com/ophub/amlogic-s9xxx-openwrt
 #========================================================================================================================
 git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
-git clone https://github.com/281677160/openwrt-package.git package/openwrt-packages
+git clone https://github.com/rastyu/openwrt-packages.git package/openwrt-packages
 git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
 git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
 git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git package/luci-theme-atmaterial
