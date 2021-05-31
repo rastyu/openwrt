@@ -17,9 +17,6 @@ git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-ar
 rm -rf package/lean/luci-theme-argon/
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 
-#replace coremark.sh with the new one
-rm package/lean/coremark/coremark.sh
-cp $GITHUB_WORKSPACE/general/coremark.sh package/lean/coremark/
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
 sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_generate
