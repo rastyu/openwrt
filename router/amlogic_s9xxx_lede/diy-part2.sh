@@ -6,10 +6,14 @@
 # Copyright (C) 2020 https://github.com/P3TERX/Actions-OpenWrt
 # Copyright (C) 2020 https://github.com/ophub/amlogic-s9xxx-openwrt
 #========================================================================================================================
+#添加
 git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
 git clone https://github.com/rastyu/openwrt-packages.git package/openwrt-packages
+#添加全能推送
 git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
+#添加广告过滤
 git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
+#添加atmaterial主题
 git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git package/luci-theme-atmaterial
 
 #添加argon-config 使用 最新argon
