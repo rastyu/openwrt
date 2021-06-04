@@ -15,7 +15,7 @@ git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git package/l
 #添加argon-config 使用 最新argon
 git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 rm -rf package/lean/luci-theme-argon/
-git clone -b https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
@@ -43,7 +43,7 @@ git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwal
 git clone https://github.com/vernesong/OpenClash package/luci-app-openclash
 
 # Add luci-app-ssr-plus
-svn co https://github.com/fw876/helloworld/trunk/{luci-app-ssr-plus,shadowsocksr-libev} package/openwrt-ssrplus
+git clone https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
 
 # Add luci-app-rclone
 # svn co https://github.com/ElonH/Rclone-OpenWrt/trunk package/openWrt-rclone
