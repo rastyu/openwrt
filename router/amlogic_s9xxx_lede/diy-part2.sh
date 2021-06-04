@@ -6,13 +6,18 @@
 # Copyright (C) 2020 https://github.com/P3TERX/Actions-OpenWrt
 # Copyright (C) 2020 https://github.com/ophub/amlogic-s9xxx-openwrt
 #========================================================================================================================
-#添加
+#添加关机
 git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
+
+#添加文件浏览
 git clone https://github.com/rastyu/openwrt-packages.git package/openwrt-packages
+
 #添加全能推送
 git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
+
 #添加广告过滤
 git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
+
 #添加atmaterial主题
 git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git package/luci-theme-atmaterial
 
@@ -21,18 +26,14 @@ git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-ar
 rm -rf package/lean/luci-theme-argon/
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 
-
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
 sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_generate
 
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-material）
-# sed -i 's/luci-theme-bootstrap/luci-theme-material/g' ./feeds/luci/collections/luci/Makefile
+sed -i 's/luci-theme-bootstrap/luci-theme-atmaterial/g' ./feeds/luci/collections/luci/Makefile
 
 # Add the default password for the 'root' user（Change the empty password to 'password'）
 sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' package/base-files/files/etc/shadow
-
-# Add autocore support for armvirt
-sed -i 's/TARGET_rockchip/TARGET_rockchip\|\|TARGET_armvirt/g' package/lean/autocore/Makefile
 
 
 # Add luci-app-bypass
@@ -63,4 +64,6 @@ svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/
 # Modify some code adaptation
 sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
 
+# Add autocore support for armvirt
+sed -i 's/TARGET_rockchip/TARGET_rockchip\|\|TARGET_armvirt/g' package/lean/autocore/Makefile
 
