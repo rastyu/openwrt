@@ -1,11 +1,15 @@
 #========================================================================================================================
-# https://github.com/ophub/op
+# https://github.com/ophub/amlogic-s9xxx-openwrt
 # Description: Automatically Build OpenWrt for Amlogic S9xxx STB
-# Function: Workflows for Build OpenWrt for Amlogic S9xxx STB
+# Function: Workflows for Build Amlogic S9xxx STB
 # Cron: min (0 - 59) / hour (0 - 23) / day of month (1 - 31) / month (1 - 12) / day of week (0 - 6)(Sunday - Saturday)
+# Copyright (C) 2020 https://github.com/openwrt/openwrt;master
+# Copyright (C) 2020 https://github.com/Lienol/openwrt;openwrt-21.02
+# Copyright (C) 2020 https://github.com/P3TERX/Actions-OpenWrt
+# Copyright (C) 2020 https://github.com/ophub/amlogic-s9xxx-openwrt
 #========================================================================================================================
 
-name: build-openwrt-official
+name: Build OpenWrt official
 
 on:
   repository_dispatch:
@@ -19,16 +23,18 @@ on:
 env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: master
-  FEEDS_CONF: router/amlogic_s9xxx_official/feeds.conf.default
-  CONFIG_FILE: router/amlogic_s9xxx_official/.config
-  DIY_P1_SH: router/amlogic_s9xxx_official/diy-part1.sh
-  DIY_P2_SH: router/amlogic_s9xxx_official/diy-part2.sh
+  FEEDS_CONF: router-config/openwrt-master/feeds.conf.default
+  CONFIG_FILE: router-config/openwrt-master/.config
+  DIY_P1_SH: router-config/openwrt-master/diy-part1.sh
+  DIY_P2_SH: router-config/openwrt-master/diy-part2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_ARMVIRT: false
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: false
+  DELETE_RELEASE: true
+  DELETE_ARTIFACTS: true
   RECENT_LASTEST: 3
   TZ: Asia/Shanghai
 
@@ -62,7 +68,7 @@ jobs:
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
     - name: Load custom feeds
       run: |
-        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+        [ -e $FEEDS_CONF ] && cp -f $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
@@ -75,7 +81,7 @@ jobs:
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        [ -e $CONFIG_FILE ] && cp -f $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
@@ -134,40 +140,45 @@ jobs:
         retention-days: ${{ env.RECENT_LASTEST }}
         if-no-files-found: ignore
 
-    - name: Package Armvirt as OpenWrt
+    - name: Build OpenWrt firmware
       if: steps.compile.outputs.status == 'success' && !cancelled()
-      uses: ophub/amlogic-s9xxx-openwrt@main
-      with:
-        armvirt64_path: openwrt/bin/targets/*/*/*.tar.gz
-        amlogic_openwrt: s905x3
-        amlogic_kernel: 5.4.118
-        amlogic_size: 1024
-
+      id: build
+      run: |
+        [ -d openwrt-armvirt ] || mkdir -p openwrt-armvirt
+        cp -f openwrt/bin/targets/*/*/*.tar.gz openwrt-armvirt/ && sync
+        sudo chmod +x make
+        sudo ./make -d -b s905x3 -k 5.4.123
+        [ -d ipk ] || mkdir -p ipk
+        cp -rf $(find openwrt/bin/packages/ -type f -name "*.ipk") ipk/ && sync
+        sudo tar -czf ipk.tar.gz ipk && mv -f ipk.tar.gz out/ && sync
+        echo "PACKAGED_OUTPUTPATH=${PWD}/out" >> $GITHUB_ENV
+        echo "PACKAGED_OUTPUTDATE=$(date +"%Y.%m.%d.%H%M")" >> $GITHUB_ENV
+        echo "::set-output name=status::success"
     - name: Upload artifact to Actions
       uses: kittaakos/upload-artifact-as-is@master
-      if: env.PACKAGED_STATUS == 'success' && env.UPLOAD_FIRMWARE == 'true' && !cancelled()
+      if: steps.build.outputs.status == 'success' && env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       with:
         path: ${{ env.PACKAGED_OUTPUTPATH }}/
 
     - name: Upload OpenWrt Firmware to cowtransfer
-      if: env.PACKAGED_STATUS == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
+      if: steps.build.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
       run: |
         curl -fsSL git.io/file-transfer | sh
         ./transfer cow --block 2621440 -s -p 64 --no-progress ${{ env.PACKAGED_OUTPUTPATH }}/{openwrt_s9xxx_*,openwrt_n1_*} 2>&1 | tee cowtransfer.log
         echo "COW_URL=$(cat cowtransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_ENV
     - name: Upload OpenWrt Firmware to WeTransfer
-      if: env.PACKAGED_STATUS == 'success' && env.UPLOAD_WETRANSFER == 'true' && !cancelled()
+      if: steps.build.outputs.status == 'success' && env.UPLOAD_WETRANSFER == 'true' && !cancelled()
       run: |
         curl -fsSL git.io/file-transfer | sh
         ./transfer wet -s -p 16 --no-progress ${{ env.PACKAGED_OUTPUTPATH }}/{openwrt_s9xxx_*,openwrt_n1_*} 2>&1 | tee wetransfer.log
         echo "WET_URL=$(cat wetransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_ENV
     - name: Upload OpenWrt Firmware to Release
       uses: softprops/action-gh-release@v1
-      if: env.PACKAGED_STATUS == 'success' && env.UPLOAD_RELEASE == 'true' && !cancelled()
+      if: steps.build.outputs.status == 'success' && env.UPLOAD_RELEASE == 'true' && !cancelled()
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: openwrt_s9xxx_${{ env.PACKAGED_OUTPUTDATE }}
+        tag_name: openwrt_s9xxx_official_${{ env.PACKAGED_OUTPUTDATE }}
         files: ${{ env.PACKAGED_OUTPUTPATH }}/*
         body: |
           This is OpenWrt firmware for Amlogic S9xxx STB
