@@ -43,7 +43,7 @@ git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwal
 git clone https://github.com/vernesong/OpenClash package/luci-app-openclash
 
 # Add luci-app-ssr-plus
-git clone https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
+# git clone https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
 
 # Add luci-app-rclone
 # svn co https://github.com/ElonH/Rclone-OpenWrt/trunk package/openWrt-rclone
