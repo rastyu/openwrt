@@ -10,7 +10,7 @@
 git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
 
 #添加文件浏览
-git clone https://github.com/rastyu/openwrt-packages.git package/openwrt-packages
+git clone https://github.com/Lienol/openwrt-package.git package/openwrt-packages
 
 #添加全能推送
 git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
