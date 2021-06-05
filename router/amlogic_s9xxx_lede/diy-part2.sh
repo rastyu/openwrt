@@ -6,6 +6,8 @@
 # Copyright (C) 2020 https://github.com/P3TERX/Actions-OpenWrt
 # Copyright (C) 2020 https://github.com/ophub/amlogic-s9xxx-openwrt
 #========================================================================================================================
+#添加adguardhome
+git clone https://github.com/281677160/AdGuardHome.git package/luci-app-adguardhome
 #添加关机
 git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
 
