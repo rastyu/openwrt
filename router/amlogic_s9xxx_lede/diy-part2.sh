@@ -23,11 +23,6 @@ git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app
 #添加atmaterial主题
 git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git package/luci-theme-atmaterial
 
-#添加argon-config 使用 最新argon
-git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
-rm -rf package/lean/luci-theme-argon/
-git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
 sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_generate
 
