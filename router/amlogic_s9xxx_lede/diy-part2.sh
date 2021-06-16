@@ -34,7 +34,7 @@ sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999
 
 
 # Add luci-app-bypass
-git clone https://github.com/garypang13/openwrt-packages/tree/master/lua-maxminddb package/lua-maxminddb
+svn co https://github.com/garypang13/openwrt-packages/tree/master/lua-maxminddb package/lua-maxminddb
 git clone https://github.com/garypang13/luci-app-bypass package/luci-app-bypass
 git clone https://github.com/garypang13/smartdns-le package/smartdns-le
 
