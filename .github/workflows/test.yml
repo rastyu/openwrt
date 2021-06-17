@@ -5,7 +5,8 @@
 # Cron: min (0 - 59) / hour (0 - 23) / day of month (1 - 31) / month (1 - 12) / day of week (0 - 6)(Sunday - Saturday)
 #========================================================================================================================
 
-name: test
+name: Build OpenWrt for S9xxx
+
 on:
   repository_dispatch:
   workflow_dispatch:
@@ -92,71 +93,13 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
         
-    - name: 加载源,patch补丁和自定义设置
-      run: |
-        cp -Rf `find ./ -maxdepth 1 -type d ! -path './openwrt' ! -path './'` openwrt
-        mv -f "${Home}"/build/common/Convert.sh "${Home}"
-        mv -f "${Home}"/build/common/*.sh "${PATH1}"
-        source "${PATH1}/common.sh" && Diy_settings
-        if [[ "${{ github.event.inputs.ssh }}" == 'ssh' ]]; then
-          echo "SSHYC=true" >> $GITHUB_ENV
-        fi
-        cd openwrt
-        if [[ "${REPO_BRANCH}" == "master" ]]; then
-          source "${PATH1}/common.sh" && Diy_lede
-          cp -Rf "${Home}"/build/common/LEDE/files "${Home}"
-          cp -Rf "${Home}"/build/common/LEDE/diy/* "${Home}"
-          cp -Rf "${Home}"/build/common/LEDE/patches/* "${PATH1}/patches"
-        elif [[ "${REPO_BRANCH}" == "19.07" ]]; then
-          source "${PATH1}/common.sh" && Diy_lienol
-          cp -Rf "${Home}"/build/common/LIENOL/files "${Home}"
-          cp -Rf "${Home}"/build/common/LIENOL/diy/* "${Home}"
-          cp -Rf "${Home}"/build/common/LIENOL/patches/* "${PATH1}/patches"
-        elif [[ "${REPO_BRANCH}" == "21.02" ]]; then
-          source "${PATH1}/common.sh" && Diy_1806
-          cp -Rf "${Home}"/build/common/PROJECT/files "${Home}"
-          cp -Rf "${Home}"/build/common/PROJECT/diy/* "${Home}"
-          cp -Rf "${Home}"/build/common/PROJECT/patches/* "${PATH1}/patches"
-        fi
-        source "${PATH1}/common.sh" && Diy_all
-        /bin/bash "${PATH1}/$DIY_PART_SH"
-        if [ -n "$(ls -A "${PATH1}/diy" 2>/dev/null)" ]; then
-          cp -Rf "${PATH1}"/diy/* "${Home}"
-        fi
-        if [ -n "$(ls -A "${PATH1}/files" 2>/dev/null)" ]; then
-          cp -Rf "${PATH1}/files" "${Home}" && chmod -R +x ${Home}/files
-        fi
-        if [ -n "$(ls -A "${PATH1}/patches" 2>/dev/null)" ]; then
-          find "${PATH1}/patches" -type f -name '*.patch' -print0 | sort -z | xargs -I % -t -0 -n 1 sh -c "cat '%'  | patch -d './' -p1 --forward --no-backup-if-mismatch"
-        fi
-        ./scripts/feeds update -a && ./scripts/feeds install -a
-        [ -e "$PATH1/$CONFIG_FILE" ] && mv "$PATH1/$CONFIG_FILE" .config
-        if [[ "${REGULAR_UPDATE}" == "true" ]]; then
-          echo "Compile_Date=$(date +%Y%m%d%H%M)" > $GITHUB_WORKSPACE/Openwrt.info
-          source "${PATH1}/upgrade.sh" && Diy_Part1
-        fi
-        
     - name: SSH connection to Actions @ Ctrl+C to enter, Ctrl+D to exit
       uses: P3TERX/ssh2actions@main
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        
-    - name: 生成.config配置文件
-      run: |
-        cd openwrt
-        source "${PATH1}/common.sh" && Diy_chajian > /dev/null 2>&1
-        make defconfig > /dev/null 2>&1
-        if [ `grep -c "CONFIG_TARGET_armvirt_64=y" .config` -eq '1' ]; then
-          echo "armvirt_64" > DEVICE_NAME
-          [ -s DEVICE_NAME ] && echo "TARGET_PROFILE=$(cat DEVICE_NAME)" >> $GITHUB_ENV
-        elif [ `grep -c "CONFIG_TARGET.*DEVICE.*=y" .config` -eq '1' ]; then
-          grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
-          [ -s DEVICE_NAME ] && echo "TARGET_PROFILE=$(cat DEVICE_NAME)" >> $GITHUB_ENV
-        else
-          echo "TARGET_PROFILE=armvirt" >> $GITHUB_ENV
-        fi
+
     - name: Compile the firmware
       id: compile
       run: |
