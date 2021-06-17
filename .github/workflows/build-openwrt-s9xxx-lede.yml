@@ -55,12 +55,14 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
         echo "COMPILE_STARTINGTIME=$(date +"%Y.%m.%d.%H%M")" >> $GITHUB_ENV
+        
     - name: Clone source code
       working-directory: /workdir
       run: |
         df -hT $PWD
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
@@ -81,6 +83,7 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+        
     - name: Download package
       id: package
       run: |
@@ -96,6 +99,21 @@ jobs:
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        
+    - name: 生成.config配置文件
+      run: |
+        cd openwrt
+        source "${PATH1}/common.sh" && Diy_chajian > /dev/null 2>&1
+        make defconfig > /dev/null 2>&1
+        if [ `grep -c "CONFIG_TARGET_armvirt_64=y" .config` -eq '1' ]; then
+          echo "armvirt_64" > DEVICE_NAME
+          [ -s DEVICE_NAME ] && echo "TARGET_PROFILE=$(cat DEVICE_NAME)" >> $GITHUB_ENV
+        elif [ `grep -c "CONFIG_TARGET.*DEVICE.*=y" .config` -eq '1' ]; then
+          grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
+          [ -s DEVICE_NAME ] && echo "TARGET_PROFILE=$(cat DEVICE_NAME)" >> $GITHUB_ENV
+        else
+          echo "TARGET_PROFILE=armvirt" >> $GITHUB_ENV
+        fi
 
     - name: Compile the firmware
       id: compile
@@ -135,6 +153,7 @@ jobs:
         rm -rf packages
         echo "TMPFILEPATH=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
+        
     - name: Upload armvirt directory to Actions
       uses: actions/upload-artifact@v2
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_ARMVIRT == 'true' && !cancelled()
