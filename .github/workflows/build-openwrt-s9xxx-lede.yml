@@ -25,7 +25,6 @@ env:
   DIY_P2_SH: router/amlogic_s9xxx_lede/diy-part2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_ARMVIRT: false
-  UPLOAD_CONFIG: true
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
   UPLOAD_COWTRANSFER: false
@@ -122,13 +121,6 @@ jobs:
         path: openwrt/bin
         retention-days: ${{ env.RECENT_LASTEST }}
         if-no-files-found: ignore
-        
-    - name: 上传.config配置文件在github actions
-      uses: actions/upload-artifact@v2
-      if: steps.organizer.outputs.status == 'success' && env.UPLOAD_CONFIG == 'true'
-      with:
-        name: .config_${{ env.CODE }}_${{ env.TARGET_PROFILE }}_${{ env.date }}
-        path: openwrt/bin/config
 
     - name: Organize armvirt files
       id: organize
