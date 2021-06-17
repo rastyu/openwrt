@@ -1,4 +1,4 @@
-个人定制固件amlogic-s905x3-openwrt
+## 个人定制编译amlogic-s905x3-openwrt固件仓库
 
 ## 本地Ubuntu一键编译脚本,全程无脑操作,只要梯子质量过关就好了
 
