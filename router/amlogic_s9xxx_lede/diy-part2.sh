@@ -41,14 +41,10 @@ git clone https://github.com/garypang13/luci-app-bypass package/luci-app-bypass
 git clone https://github.com/garypang13/smartdns-le package/smartdns-le
 
 # Add luci-app-passwall
-#git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk package/openwrt-passwall
-rm -rf package/openwrt-passwall/{kcptun,xray-core} 2>/dev/null
+git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
 
 # Add luci-app-openclash
-#git clone https://github.com/vernesong/OpenClash package/luci-app-openclash
-svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/openwrt-openclash
-pushd package/openwrt-openclash/tools/po2lmo && make && sudo make install 2>/dev/null && popd
+git clone https://github.com/vernesong/OpenClash package/luci-app-openclash
 
 # Add luci-app-ssr-plus
 # git clone https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
