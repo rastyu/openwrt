@@ -6,6 +6,21 @@
 # Copyright (C) 2020 https://github.com/P3TERX/Actions-OpenWrt
 # Copyright (C) 2020 https://github.com/ophub/amlogic-s9xxx-openwrt
 #========================================================================================================================
+sed -i "/uci commit fstab/a\uci commit network" $ZZZ
+# IPv4 地址(openwrt后台地址)
+sed -i "/uci commit network/i\uci set network.lan.ipaddr='192.168.10.6'" $ZZZ
+# IPv4 子网掩码                      
+sed -i "/uci commit network/i\uci set network.lan.netmask='255.255.255.0'" $ZZZ   
+# IPv4 网关              
+sed -i "/uci commit network/i\uci set network.lan.gateway='192.168.10.1'" $ZZZ      
+# DNS(多个DNS要用空格分开)     
+sed -i "/uci commit network/i\uci set network.lan.dns='223.5.5.5 192.168.10.1'" $ZZZ   
+# 去掉LAN口使用内置的 IPv6 管理                     
+sed -i "/uci commit network/i\uci set network.lan.delegate='0'" $ZZZ         
+# 关闭DHCP服务                    
+echo "close_dhcp" > package/base-files/files/etc/closedhcp                                    
+# 修改主机名称为HK1BOX-OpenWrt
+sed -i "/uci commit system/i\uci set system.@system[0].hostname='HK1BOX-OpenWrt'" $ZZZ          
 #添加adguardhome
 git clone https://github.com/281677160/AdGuardHome.git package/luci-app-adguardhome
 #添加关机
@@ -24,9 +39,6 @@ git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app
 git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git package/luci-theme-atmaterial
 #添加rosy主题
 svn co https://github.com/rosywrt/luci-theme-rosy/trunk/luci-theme-rosy package/luci-theme-rosy
-
-# Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
-sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_generate
 
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-material）
 sed -i 's/luci-theme-bootstrap/luci-theme-atmaterial/g' ./feeds/luci/collections/luci/Makefile
