@@ -65,6 +65,3 @@ svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/
 # Modify some code adaptation
 sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
 
-# Add autocore support for armvirt
-sed -i 's/TARGET_rockchip/TARGET_rockchip\|\|TARGET_armvirt/g' package/lean/autocore/Makefile
-
