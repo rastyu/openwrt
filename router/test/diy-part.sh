@@ -14,7 +14,7 @@ sed -i "/uci commit network/i\uci set network.lan.netmask='255.255.255.0'" $ZZZ
 # IPv4 网关              
 sed -i "/uci commit network/i\uci set network.lan.gateway='192.168.10.1'" $ZZZ      
 # DNS(多个DNS要用空格分开)     
-sed -i "/uci commit network/i\uci set network.lan.dns='223.5.5.5 192.168.10.1'" $ZZZ   
+sed -i "/uci commit network/i\uci set network.lan.dns='223.5.5.5'" $ZZZ   
 # 去掉LAN口使用内置的 IPv6 管理                     
 sed -i "/uci commit network/i\uci set network.lan.delegate='0'" $ZZZ         
 # 关闭DHCP服务                    
@@ -76,3 +76,10 @@ svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/
 
 # Modify some code adaptation
 sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
+
+# 设置打包固件的机型，内核组合（请看说明）
+cat >$GITHUB_WORKSPACE/amlogic_openwrt <<-EOF
+amlogic_model=s905x3_s905x2_s905x_s905d_s922x_s912
+amlogic_kernel=5.12.12_5.4.127
+rootfs_size=1024
+EOF
