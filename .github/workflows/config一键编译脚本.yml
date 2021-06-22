@@ -7,12 +7,13 @@
 #
 name: config一键编译脚本
 on:
+  repository_dispatch:
   workflow_dispatch:
     inputs:
       ssh:
-        description: 'SSH远程'
+        description: 'SSH connection to Actions'
         required: false
-        default: 'ssh-actions'
+        default: 'false'
 
 env:
   Github: https://github.com/${{github.repository}}
