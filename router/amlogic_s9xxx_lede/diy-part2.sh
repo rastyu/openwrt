@@ -38,9 +38,8 @@ sed -i 's/root::0:0:99999:7:::/root:$1$R8PYVHeZ$SRRcQVgo.FSLaSE/mk.vD/:18790:0:9
 sed -i "s/OpenWrt /ALLEN build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
 
 # Add luci-app-bypass
-git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
-git clone https://github.com/garypang13/luci-app-bypass package/luci-app-bypass
-git clone https://github.com/garypang13/smartdns-le package/smartdns-le
+git clone https://github.com/garypang13/openwrt-bypass.git package/luci-app-bypass
+
 
 # Add luci-app-passwall
 git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
