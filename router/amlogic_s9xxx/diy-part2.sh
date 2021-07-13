@@ -14,7 +14,7 @@ git clone https://github.com/281677160/openwrt-package.git package/openwrt-packa
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 
-# Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-material）
+# Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-atmaterial）
 sed -i 's/luci-theme-bootstrap/luci-theme-atmaterial/g' ./feeds/luci/collections/luci/Makefile
 
 # Add the default password for the 'root' user（Change the empty password to 'password'）
