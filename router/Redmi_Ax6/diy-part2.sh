@@ -6,22 +6,8 @@
 # Copyright (C) 2020 https://github.com/P3TERX/Actions-OpenWrt
 # Copyright (C) 2020 https://github.com/ophub/amlogic-s9xxx-openwrt
 #========================================================================================================================
-#添加adguardhome
-git clone https://github.com/281677160/AdGuardHome.git package/luci-app-adguardhome
-#添加关机
-git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
-
-#添加文件浏览
-git clone https://github.com/Lienol/openwrt-package.git package/openwrt-packages
-
-#添加全能推送
-git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
-
-#添加广告过滤
-git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
-
-#添加atmaterial主题
-git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git package/luci-theme-atmaterial
+#添加openwrt-package
+git clone https://github.com/281677160/openwrt-package.git package/openwrt-packages
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
@@ -42,7 +28,7 @@ git clone https://github.com/garypang13/openwrt-bypass.git package/luci-app-bypa
 git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
 
 # Add luci-app-openclash
-git clone https://github.com/vernesong/OpenClash package/luci-app-openclash
+#git clone https://github.com/vernesong/OpenClash package/luci-app-openclash
 
 # Add luci-app-ssr-plus
 # git clone https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
