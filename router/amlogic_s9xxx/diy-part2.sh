@@ -7,6 +7,8 @@
 # Copyright (C) 2020 https://github.com/P3TERX/Actions-OpenWrt
 # Copyright (C) 2020 https://github.com/ophub/amlogic-s9xxx-openwrt
 #========================================================================================================================
+
+git clone https://github.com/esirplayground/luci-theme-atmaterial-ColorIcon.git package/luci-theme-material
 #添加openwrt-package
 git clone https://github.com/281677160/openwrt-package.git package/openwrt-packages
 
