@@ -11,12 +11,12 @@
 #svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-atmaterial package/luci-theme-atmaterial
 
 #添加openwrt-package
-git clone https://github.com/281677160/openwrt-package package/danshui
-#svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications package/111
-#svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes package/222
-#svn co https://github.com/281677160/openwrt-package/trunk/feeds/packages/net package/333
-#svn co https://github.com/281677160/openwrt-package/trunk/feeds/packages/utils package/444
-#svn co https://github.com/281677160/openwrt-package/trunk/package package/555
+svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications package/111
+svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes package/222
+svn co https://github.com/281677160/openwrt-package/trunk/feeds/packages/net package/333
+svn co https://github.com/281677160/openwrt-package/trunk/feeds/packages/utils package/444
+svn co https://github.com/281677160/openwrt-package/trunk/package package/555
+
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
 sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_generate
