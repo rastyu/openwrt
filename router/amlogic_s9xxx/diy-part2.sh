@@ -12,10 +12,10 @@
 
 #添加openwrt-package
 svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications package/applications
-svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes package/themes
-svn co https://github.com/281677160/openwrt-package/trunk/feeds/packages/net package/net
-svn co https://github.com/281677160/openwrt-package/trunk/feeds/packages/utils package/utils
-svn co https://github.com/281677160/openwrt-package/trunk/package package/vssr
+svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes package/applications
+svn co https://github.com/281677160/openwrt-package/trunk/feeds/packages/net package/applications
+svn co https://github.com/281677160/openwrt-package/trunk/feeds/packages/utils package/applications
+svn co https://github.com/281677160/openwrt-package/trunk/package package/applications
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
 sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_generate
