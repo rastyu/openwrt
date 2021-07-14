@@ -15,6 +15,7 @@ svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/application
 svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes package/themes
 svn co https://github.com/281677160/openwrt-package/trunk/feeds/packages/net package/net
 svn co https://github.com/281677160/openwrt-package/trunk/feeds/packages/utils package/utils
+svn co https://github.com/281677160/openwrt-package/trunk/package package/vssr
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
 sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_generate
@@ -38,7 +39,7 @@ git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwal
 # git clone https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
 
 # Add luci-app-vssr
-git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
+# git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
 
 # Modify some code adaptation
 sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
