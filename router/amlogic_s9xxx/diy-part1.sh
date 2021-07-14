@@ -15,3 +15,7 @@
 
 # other
 # rm -rf package/lean/{samba4,luci-app-samba4,luci-app-ttyd}
+# CONFIG_PACKAGE_luci-app-bypass=y
+# CONFIG_PACKAGE_luci-app-bypass_INCLUDE_Kcptun=y
+# CONFIG_PACKAGE_luci-app-bypass_INCLUDE_NaiveProxy=y
+# CONFIG_PACKAGE_luci-app-bypass_INCLUDE_Simple_obfs_server=y
