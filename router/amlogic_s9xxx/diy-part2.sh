@@ -8,15 +8,10 @@
 # Copyright (C) 2020 https://github.com/ophub/amlogic-s9xxx-openwrt
 #========================================================================================================================
 #添加atmaterial
-#svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-atmaterial package/luci-theme-atmaterial
-
-#添加openwrt-package
-svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/applications package/111
-svn co https://github.com/281677160/openwrt-package/trunk/feeds/luci/themes package/222
-svn co https://github.com/281677160/openwrt-package/trunk/feeds/packages/net package/333
-svn co https://github.com/281677160/openwrt-package/trunk/feeds/packages/utils package/444
-svn co https://github.com/281677160/openwrt-package/trunk/package/vssr package/555
-
+git clone https://github.com/kenzok8/openwrt-packages.git package/kenzok8
+git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
+git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
+src-git small https://github.com/kenzok8/small
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
 sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_generate
