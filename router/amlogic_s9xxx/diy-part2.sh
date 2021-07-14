@@ -11,7 +11,6 @@
 git clone https://github.com/kenzok8/openwrt-packages.git package/kenzok8
 git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
 git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
-src-git small https://github.com/kenzok8/small
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
 sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_generate
