@@ -26,13 +26,16 @@ sed -i 's/luci-theme-bootstrap/luci-theme-atmaterial/g' ./feeds/luci/collections
 sed -i "s/OpenWrt /ALLEN build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
 
 # Add luci-app-bypass
-git clone https://github.com/garypang13/openwrt-bypass.git package/luci-app-bypass
+# git clone https://github.com/garypang13/openwrt-bypass.git package/luci-app-bypass
 
 # Add luci-app-passwall
 git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
 
 # Add luci-app-ssr-plus
 # git clone https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
+
+# Add luci-app-vssr
+git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
 
 # Modify some code adaptation
 sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
