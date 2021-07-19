@@ -6,6 +6,8 @@
 # Copyright (C) 2020 https://github.com/P3TERX/Actions-OpenWrt
 # Copyright (C) 2020 https://github.com/ophub/amlogic-s9xxx-openwrt
 #========================================================================================================================
+#添加luci-app-adblock-plus
+git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
 #添加luci-app-amlogic
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 #添加packages
