@@ -11,6 +11,7 @@ git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-
 #添加luci-app-amlogic
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 #添加packages
+git clone https://github.com/kenzok8/small.git package/small
 git clone https://github.com/kenzok8/openwrt-packages.git package/kenzok8
 git clone https://github.com/zzsj0928/luci-app-pushbot.git package/luci-app-pushbot
 git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
@@ -33,13 +34,13 @@ sed -i "s/OpenWrt /ALLEN build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" packag
 # git clone https://github.com/garypang13/openwrt-bypass.git package/luci-app-bypass
 
 # Add luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
+#git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
 
 # Add luci-app-ssr-plus
-git clone https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
+#git clone https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
 
 # Add luci-app-vssr
-git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
+#git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
 
 # Modify some code adaptation
 sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
