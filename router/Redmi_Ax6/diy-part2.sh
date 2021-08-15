@@ -8,7 +8,7 @@
 #========================================================================================================================
 #添加packages
 git clone https://github.com/kenzok8/openwrt-packages.git package/kenzok8
-git clone https://github.com/zzsj0928/luci-app-pushbot.git package/luci-app-pushbot
+git clone https://github.com/kenzok8/small.git package/small
 git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
 git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
 svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-filebrowser package/luci-app-filebrowser
@@ -21,18 +21,6 @@ sed -i 's/root::0:0:99999:7:::/root:$1$R8PYVHeZ$SRRcQVgo.FSLaSE/mk.vD/:18790:0:9
 
 # 版本号里显示一个自己的名字（281677160 build $(TZ=UTC-8 date "+%Y.%m.%d") @ 这些都是后增加的）
 sed -i "s/OpenWrt /ALLEN build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
-
-# Add luci-app-bypass
-# git clone https://github.com/garypang13/openwrt-bypass.git package/luci-app-bypass
-
-# Add luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
-
-# Add luci-app-ssr-plus
-# git clone https://github.com/fw876/helloworld.git package/luci-app-ssr-plus
-
-# Add luci-app-vssr
-# git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
 
 # Modify some code adaptation
 sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
