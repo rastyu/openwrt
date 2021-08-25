@@ -8,6 +8,8 @@
 #========================================================================================================================
 #添加luci-app-adblock-plus
 git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
+
+sed -i 's/luci-theme-bootstrap/luci-theme-argon_new/g' ./feeds/luci/collections/luci/Makefile
 #添加packages
 git clone https://github.com/kenzok8/openwrt-packages.git package/kenzok8
 git clone https://github.com/kenzok8/small.git package/small
