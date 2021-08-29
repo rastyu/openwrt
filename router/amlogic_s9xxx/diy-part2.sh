@@ -16,7 +16,6 @@ git clone https://github.com/kenzok8/openwrt-packages.git package/kenzok8
 git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
 git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
 svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-filebrowser package/luci-app-filebrowser
-svn co https://github.com/Lienol/openwrt/trunk/package/diy/luci-app-dockerman package/luci-app-dockerman
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
 sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_generate
@@ -42,8 +41,6 @@ sed -i "s/OpenWrt /ALLEN build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" packag
 # Add luci-app-vssr
 #git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
 
-# Add p7zip
-svn co https://github.com/hubutui/p7zip-lede/trunk package/p7zip
 
 # Modify some code adaptation
 sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
