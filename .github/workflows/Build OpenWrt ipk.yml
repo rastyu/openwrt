@@ -27,8 +27,6 @@ env:
   UPLOAD_ARMVIRT: false
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
-  UPLOAD_COWTRANSFER: false
-  UPLOAD_WETRANSFER: false
   RECENT_LASTEST: 3
   TZ: Asia/Shanghai
 
@@ -139,6 +137,16 @@ jobs:
         path: ${{ env.TMPFILEPATH }}
         retention-days: ${{ env.RECENT_LASTEST }}
         if-no-files-found: ignore
+        
+    - name: Build OpenWrt ipk
+      if: steps.compile.outputs.status == 'success' && !cancelled()
+      id: build
+      run: |
+        [ -d ipk ] || mkdir -p ipk
+        cp -rf $(find openwrt/bin/packages/ -type f -name "*.ipk") ipk/ && sync
+        sudo tar -czf ipk.tar.gz ipk && mv -f ipk.tar.gz out/ && sync
+        echo "PACKAGED_OUTPUTPATH=${PWD}/out" >> $GITHUB_ENV
+        echo "::set-output name=status::success"
 
     - name: Package Armvirt as OpenWrt
       if: steps.compile.outputs.status == 'success' && !cancelled()
@@ -155,21 +163,7 @@ jobs:
       if: env.PACKAGED_STATUS == 'success' && env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       with:
         path: ${{ env.PACKAGED_OUTPUTPATH }}/
-
-    - name: Upload OpenWrt Firmware to cowtransfer
-      if: env.PACKAGED_STATUS == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
-      run: |
-        curl -fsSL git.io/file-transfer | sh
-        ./transfer cow --block 2621440 -s -p 64 --no-progress ${{ env.PACKAGED_OUTPUTPATH }}/{openwrt_s9xxx_*,openwrt_n1_*} 2>&1 | tee cowtransfer.log
-        echo "COW_URL=$(cat cowtransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_ENV
-        
-    - name: Upload OpenWrt Firmware to WeTransfer
-      if: env.PACKAGED_STATUS == 'success' && env.UPLOAD_WETRANSFER == 'true' && !cancelled()
-      run: |
-        curl -fsSL git.io/file-transfer | sh
-        ./transfer wet -s -p 16 --no-progress ${{ env.PACKAGED_OUTPUTPATH }}/{openwrt_s9xxx_*,openwrt_n1_*} 2>&1 | tee wetransfer.log
-        echo "WET_URL=$(cat wetransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_ENV
-        
+       
     - name: Upload OpenWrt Firmware to Release
       uses: softprops/action-gh-release@v1
       if: env.PACKAGED_STATUS == 'success' && env.UPLOAD_RELEASE == 'true' && !cancelled()
