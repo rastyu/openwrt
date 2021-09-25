@@ -144,8 +144,8 @@ jobs:
       run: |
         [ -d ipk ] || mkdir -p ipk
         cp -rf $(find openwrt/bin/packages/ -type f -name "*.ipk") ipk/ && sync
-        sudo tar -czf ipk.tar.gz ipk && mv -f ipk.tar.gz out/ && sync
-        echo "PACKAGED_OUTPUTPATH=${PWD}/out" >> $GITHUB_ENV
+        sudo tar -czf ipk.tar.gz ipk && mv -f ipk.tar.gz /home/runner/work/_actions/ophub/amlogic-s9xxx-openwrt/main/out/ && sync
+        echo "PACKAGED_OUTPUTPATH=/home/runner/work/_actions/ophub/amlogic-s9xxx-openwrt/main/out" >> $GITHUB_ENV
         echo "::set-output name=status::success"
 
     - name: Package Armvirt as OpenWrt
