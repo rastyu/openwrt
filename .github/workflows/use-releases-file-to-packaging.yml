@@ -13,7 +13,7 @@ on:
       packagerepo:
         description: 'Package repo: ophub / flippy'
         required: false
-        default: 'flippy'
+        default: 'ophub'
   #schedule:
     #- cron: '0 22 * * *'
 
