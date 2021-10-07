@@ -17,7 +17,7 @@ on:
       packagerepo:
         description: 'Package repo: ophub / flippy'
         required: false
-        default: 'ophub'
+        default: 'flippy'
   #schedule:
     #- cron: '0 22 * * *'
 
@@ -80,7 +80,7 @@ jobs:
       if: steps.download.outputs.status == 'success' && env.PACKAGE_OP_SCRIPT == 'ophub' && !cancelled()
       with:
         armvirt64_path: openwrt/bin/targets/*/*/*.tar.gz
-        amlogic_openwrt: s905x3_s905x2_s905x_s905w_s905d_s922x_s912
+        amlogic_openwrt: s905x3
         amlogic_kernel: 5.10.66_5.4.147
         auto_kernel: true
         amlogic_size: 1024
@@ -90,7 +90,7 @@ jobs:
       if: steps.download.outputs.status == 'success' && env.PACKAGE_OP_SCRIPT == 'flippy' && !cancelled()
       env:
         OPENWRT_ARMVIRT: openwrt/bin/targets/*/*/*.tar.gz
-        PACKAGE_SOC: vplus_beikeyun_l1pro_s905d_s905x3_s922x
+        PACKAGE_SOC: s905x3
         KERNEL_VERSION_NAME: 5.10.66_5.4.147
         KERNEL_AUTO_LATEST: true
         WHOAMI: Grass
