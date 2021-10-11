@@ -135,8 +135,6 @@ jobs:
         armvirt64_path: openwrt/bin/targets/*/*/*.tar.gz
         amlogic_openwrt: s905x3
         amlogic_kernel: 5.10.66_5.14.5_5.4.147
-        auto_kernel: true
-        amlogic_size: 1024
 
     - name: Upload artifact to Actions
       uses: kittaakos/upload-artifact-as-is@master
