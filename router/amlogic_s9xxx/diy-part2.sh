@@ -20,7 +20,7 @@ git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luc
 sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_generate
 
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-atmaterial）
-sed -i 's/luci-theme-bootstrap/luci-theme-argon_new/g' ./feeds/luci/collections/luci/Makefile
+sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
 
 # Add the default password for the 'root' user（Change the empty password to 'password'）
 # sed -i 's/root::0:0:99999:7:::/root:$1$R8PYVHeZ$SRRcQVgo.FSLaSE/mk.vD/:18790:0:99999:7:::/g' package/base-files/files/etc/shadow
