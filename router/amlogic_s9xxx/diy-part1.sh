@@ -14,7 +14,7 @@
 # sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 
 # other
-rm -rf package/lean/{luci-theme-argon}
+# rm -rf package/lean/{luci-theme-argon}
 # CONFIG_PACKAGE_luci-app-bypass=y
 # CONFIG_PACKAGE_luci-app-bypass_INCLUDE_Kcptun=y
 # CONFIG_PACKAGE_luci-app-bypass_INCLUDE_NaiveProxy=y
