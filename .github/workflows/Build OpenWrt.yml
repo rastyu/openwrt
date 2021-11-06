@@ -18,14 +18,16 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
+  schedule:
+    - cron: 0 0 */5 * *
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: router/HK1/lede-gcc11.config
-  DIY_P1_SH: router/HK1/diy-part1.sh
-  DIY_P2_SH: router/HK1/diy-part2.sh
+  DIY_P1_SH: diy-part1.sh
+  DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
@@ -154,7 +156,7 @@ jobs:
         commit: main
         token: ${{ secrets.RELEASES_TOKEN }}
         body: |
-          默认IP：192.168.10.6 默认密码：password
+          默认IP：192.168.1.1 默认密码：password
           当前使用版本:【编译前的最后一次[➦主源码](https://github.com/coolsnowwolf/lede)更新记录】
           ${{ env.useVersionInfo }}
         artifacts: ${{ env.FIRMWARE }}/*
@@ -175,3 +177,13 @@ jobs:
         delete_tags: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Telegram notification
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          编译时间：${{ env.DATE }}
+          更新信息：${{ env.useVersionInfo }}
+          ${{ env.PRODUCT_NAME }} 编译完成
