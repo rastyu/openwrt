@@ -4,10 +4,12 @@
 cat >$NETIP <<-EOF
 uci set network.lan.ipaddr='192.168.10.6'                   # IPv4 地址(openwrt后台地址)
 uci set network.lan.netmask='255.255.255.0'                 # IPv4 子网掩码
-uci set network.lan.gateway='192.168.10.1'                  # IPv4 网关+
+uci set network.lan.gateway='192.168.10.1'                  # IPv4 网关
+uci set network.lan.delegate='0'                            # 去掉LAN口使用内置的 IPv6 管理
 uci commit network
-uci set dhcp.lan.ignore='1'                                                 # 关闭DHCP功能
-uci commit dhcp                                                             # 跟‘关闭DHCP功能’联动,同时启用或者删除跟注释
+uci set dhcp.lan.ignore='1'                                 # 关闭DHCP功能
+uci commit dhcp                                             # 跟‘关闭DHCP功能’联动,同时启用或者删除跟注释
+EOF
 
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-atmaterial）
 sed -i 's/luci-theme-bootstrap/luci-theme-argon_new/g' ./feeds/luci/collections/luci/Makefile
