@@ -25,6 +25,3 @@ svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/
 git clone https://github.com/kenzok8/small.git package/small
 git clone https://github.com/kenzok8/openwrt-packages.git package/kenzok8
 git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff  
-
-./scripts/feeds update -a
-./scripts/feeds install -a
