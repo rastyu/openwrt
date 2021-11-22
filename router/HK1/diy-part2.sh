@@ -10,8 +10,6 @@ sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_genera
 sed -i "s/OpenWrt /ALLEN build@ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
 sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
 
-svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argon_new package/luci-theme-argon_new
- 
 #添加额外软件包
 #添加luci-app-amlogic
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
