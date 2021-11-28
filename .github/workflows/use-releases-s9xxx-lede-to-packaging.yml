@@ -64,7 +64,7 @@ jobs:
       if: (!cancelled())
       uses: ophub/flippy-openwrt-actions@main
       env:
-        OPENWRT_ARMVIRT: https://github.com/rastyu/s905x3-openwrt/releases/download/ARMv8_ROOTFS/openwrt-armvirt-64-default-rootfs.tar.gz
+        OPENWRT_ARMVIRT: https://github.com/rastyu/s905x3-openwrt/releases/download/openwrt_s9xxx_2021.11.28.1834/openwrt-armvirt-64-default-rootfs.tar.gz
         PACKAGE_SOC: s905x3
         WHOAMI: breakings
         KERNEL_REPO_URL: https://github.com/breakings/OpenWrt/tree/main/opt/kernel
