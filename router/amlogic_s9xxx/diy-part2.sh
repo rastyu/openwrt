@@ -6,8 +6,6 @@
 # Copyright (C) 2020 https://github.com/P3TERX/Actions-OpenWrt
 # Copyright (C) 2020 https://github.com/ophub/amlogic-s9xxx-openwrt
 #========================================================================================================================
-#添加luci-app-adblock-plus
-git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
 #添加luci-app-amlogic
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 #添加packages
@@ -26,7 +24,7 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon_new/g' ./feeds/luci/collections/
 
 # 版本号里显示一个自己的名字（281677160 build $(TZ=UTC-8 date "+%Y.%m.%d") @ 这些都是后增加的）
 # sed -i "s/OpenWrt /ALLEN build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
-sed -i "s/OpenWrt /ALLEN @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
+sed -i "s/OpenWrt /ALLEN build @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
 # Set DISTRIB_REVISION 编译的版本信息
 sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
 
