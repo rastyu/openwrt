@@ -2,17 +2,7 @@ name: AX6-IPQ8071A
 
 on:
   repository_dispatch:
-#  release:
-#    types: published
-  push:
-    branches:
-      - master
-    paths:
-      - 'ARMv8/AX6.config'
-  schedule:
-    - cron: 0 16 * * *
-  watch:
-    types: started
+  workflow_dispatch:
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
