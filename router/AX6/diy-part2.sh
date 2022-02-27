@@ -15,7 +15,7 @@
 sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_generate
 
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-atmaterial）
-sed -i 's/luci-theme-bootstrap/luci-theme-argonne/g' ./feeds/luci/collections/luci/Makefile
+sed -i 's/luci-theme-bootstrap/luci-theme-neobird/g' ./feeds/luci/collections/luci/Makefile
 
 # 修正连接数（by ベ七秒鱼ベ）
 sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
