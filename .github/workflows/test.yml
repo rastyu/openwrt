@@ -100,6 +100,13 @@ jobs:
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_TO }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        
+    - name: 上传.config配置文件在 github actions
+      if: env.UPLOAD_CONFIG == 'true'
+      uses: actions/upload-artifact@v2
+      with:
+        name: .config_${{ env.CODE }}_${{ env.TARGET_PROFILE }}_${{ env.Compile_Date }}
+        path: config.txt
 
     - name: Download package
       id: package
