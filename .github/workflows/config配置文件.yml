@@ -136,5 +136,4 @@ jobs:
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
           编译时间：${{ env.DATE }}
-          更新信息：${{ env.useVersionInfo }}
-          ${{ env.PRODUCT_NAME }} config配置文件上传完成
+          更新信息：config配置文件上传完成
