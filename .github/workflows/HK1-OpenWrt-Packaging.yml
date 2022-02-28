@@ -19,7 +19,7 @@ env:
   DIY_P2_SH: router/HK1/diy-part2.sh
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
-  RECENT_LASTEST: 30
+  RECENT_LASTEST: 20
   TZ: Asia/Shanghai
   FILE_NAME: armv8_mini
   PRODUCT_NAME: ARMv8_mini
