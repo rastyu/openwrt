@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build amlogic_OpenWrt
+name: HK1-OpenWrt
 
 on:
   repository_dispatch:
