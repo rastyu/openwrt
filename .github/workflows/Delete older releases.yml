@@ -5,7 +5,7 @@
 # Cron: min (0 - 59) / hour (0 - 23) / day of month (1 - 31) / month (1 - 12) / day of week (0 - 6)(Sunday - Saturday)
 #=======================================================================================================================
 
-name: Delete older releases and artifacts
+name: 删除旧 releases & workflow
 
 on:
   repository_dispatch:
@@ -20,9 +20,9 @@ on:
 env:
   DELETE_RELEASE: true
   DELETE_ARTIFACTS: true
-  KEEP_DAY: 1
-  KEEP_MININUM_RUNS: 0
-  KEEP_MININUM_RELEASE: 8
+  KEEP_DAY: 20
+  KEEP_MININUM_RUNS: 20
+  KEEP_MININUM_RELEASE: 20
 
 jobs:
   build:
