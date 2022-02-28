@@ -124,4 +124,5 @@ jobs:
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
           打包时间：${{ env.DATE }}
+          编译架构: HK1-box
           ${{ env.PRODUCT_NAME }} 打包完成
