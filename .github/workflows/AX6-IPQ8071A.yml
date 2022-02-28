@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       ssh:
-        description: 'SSH connection to Actions'
+        description: '[false]改成[true],再按[Run workflow]按钮启动,则开启SSH连接配置固件'
         required: false
         default: 'false'
 
