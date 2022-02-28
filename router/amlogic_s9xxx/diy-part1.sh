@@ -12,10 +12,8 @@
 
 # Add a feed source
 # sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 
 # other
-# rm -rf package/lean/{luci-theme-argon}
-# CONFIG_PACKAGE_luci-app-bypass=y
-# CONFIG_PACKAGE_luci-app-bypass_INCLUDE_Kcptun=y
-# CONFIG_PACKAGE_luci-app-bypass_INCLUDE_NaiveProxy=y
-# CONFIG_PACKAGE_luci-app-bypass_INCLUDE_Simple_obfs_server=y
+# rm -rf package/lean/{samba4,luci-app-samba4,luci-app-ttyd}
