@@ -195,5 +195,6 @@ jobs:
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
           编译时间：${{ env.DATE }}
+          编译架构: HK1-box 底包
           更新信息：${{ env.useVersionInfo }}
           ${{ env.PRODUCT_NAME }} 编译完成
