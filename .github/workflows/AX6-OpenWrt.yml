@@ -1,4 +1,4 @@
-name: AX6 Almighty Edition
+name: AX6-OpenWrt
 
 on:
   repository_dispatch:
