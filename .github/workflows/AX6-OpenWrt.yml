@@ -188,5 +188,6 @@ jobs:
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
           编译时间：${{ env.DATE }}
+          编译架构:AX6
           更新信息：${{ env.useVersionInfo }}
           ${{ env.PRODUCT_NAME }} 编译完成
