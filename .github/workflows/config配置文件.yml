@@ -17,7 +17,7 @@ on:
       ssh:
         description: '[false]改成[true],再按[Run workflow]按钮启动,则开启SSH连接配置固件'
         required: false
-        default: 'false'
+        default: 'true'
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
