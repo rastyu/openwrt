@@ -22,6 +22,8 @@ env:
   UPLOAD_WETRANSFER: false
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
+  FILE_NAME: AX6
+  PRODUCT_NAME: AX6
 
 jobs:
   build:
