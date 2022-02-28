@@ -13,11 +13,6 @@ name: HK1-OpenWrt
 on:
   repository_dispatch:
   workflow_dispatch:
-    inputs:
-      ssh:
-        description: '[false]改成[true],再按[Run workflow]按钮启动,则开启SSH连接配置固件'
-        required: false
-        default: 'false'
   schedule:
     - cron: 10 16 */5 * *
 
@@ -95,13 +90,6 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-
-    - name: SSH connection to Actions
-      uses: P3TERX/ssh2actions@v1.0.0
-      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
-      env:
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_TO }}
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
 
     - name: Download package
       id: package
