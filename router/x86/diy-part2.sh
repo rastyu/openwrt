@@ -18,10 +18,6 @@ sed -i "s/OpenWrt /ALLEN build @ OpenWrt /g" package/lean/default-settings/files
 sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
 
 git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff  
-svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
-
-# Add autocore support for armvirt
-sed -i 's/TARGET_rockchip/TARGET_rockchip\|\|TARGET_armvirt/g' package/lean/autocore/Makefile
 
 # Add themes
 git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
