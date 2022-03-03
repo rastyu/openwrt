@@ -17,7 +17,8 @@ sed -i 's/luci-theme-bootstrap/luci-theme-neobird/g' ./feeds/luci/collections/lu
 sed -i "s/OpenWrt /ALLEN build @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
 sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
 
-git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff  
+git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
+git clone https://github.com/riverscn/openwrt-iptvhelper.git package/openwrt-iptvhelper
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 
 # Add autocore support for armvirt
