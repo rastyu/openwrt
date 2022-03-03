@@ -29,6 +29,7 @@ git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-a
 git clone https://github.com/riverscn/openwrt-iptvhelper.git package/openwrt-iptvhelper
 
 # Add themes
+git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
 sed -i 's/shadowsocksr/passwall/g' package/luci-theme-neobird/luasrc/view/themes/neobird/header.htm 
 
 # Add autocore support for armvirt
