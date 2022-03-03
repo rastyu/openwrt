@@ -71,3 +71,13 @@ bash openwrt/recompile.sh
 - [tuanqing/mknop](https://github.com/tuanqing/mknop)
 - [P3TERX/Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt)
 - [ophub/amlogic-s9xxx-openwrt](https://github.com/ophub/amlogic-s9xxx-openwrt)
+
+git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
+git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
+git clone https://github.com/vernesong/OpenClash.git package/OpenClash
+git clone https://github.com/zzsj0928/luci-app-pushbot.git package/luci-app-pushbot
+git clone https://github.com/riverscn/openwrt-iptvhelper.git package/openwrt-iptvhelper
+git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff  
+git clone https://github.com/ophub/luci-app-amlogic.git package/luci-app-amlogic
+git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/openwrt-passwall
