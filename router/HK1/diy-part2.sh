@@ -20,8 +20,7 @@ sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package
 
 
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
-
-git clone https://github.com/kiddin9/openwrt-packages.git package/openwrt-packages
+git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
 
 # Add autocore support for armvirt
 sed -i 's/TARGET_rockchip/TARGET_rockchip\|\|TARGET_armvirt/g' package/lean/autocore/Makefile
