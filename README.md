@@ -1,3 +1,7 @@
+<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64" title="x86_64 Releases"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/AX6" title="AX6 Releases"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/ARMv8_ROOTFS" title="HK1底包 Releases"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/armv8_mini" title="HK1固件 Releases"></a>
 ## 个人定制编译amlogic-s905x3-openwrt固件仓库
 
 # 第6条
