@@ -18,7 +18,6 @@ sed -i "s/OpenWrt /ALLEN build @ OpenWrt /g" package/lean/default-settings/files
 sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
 
 git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
-# git clone https://github.com/riverscn/openwrt-iptvhelper.git package/openwrt-iptvhelper
 
 # Add themes
 # git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
