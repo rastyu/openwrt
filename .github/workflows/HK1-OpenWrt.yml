@@ -13,7 +13,7 @@ name: HK1-OpenWrt
 on:
   repository_dispatch:
   workflow_dispatch:
-  schedule:
+ #  schedule:
  #   - cron: 10 16 */5 * *
 
 env:
