@@ -21,6 +21,7 @@ git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-a
 git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 # git clone https://github.com/fw876/helloworld package/helloworld
 git clone https://github.com/jerrykuku/lua-maxminddb.git package/maxminddb
+git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
 
 # Add themes
 # git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
