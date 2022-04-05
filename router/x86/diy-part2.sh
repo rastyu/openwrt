@@ -8,7 +8,7 @@
 
  
  # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
-sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.10.2/g' package/base-files/files/bin/config_generate
 
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-atmaterial）
 # sed -i 's/luci-theme-bootstrap/luci-theme-argonne/g' ./feeds/luci/collections/luci/Makefile
@@ -18,6 +18,8 @@ sed -i "s/OpenWrt /ALLEN build @ OpenWrt /g" package/lean/default-settings/files
 sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
 
 git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
+git clone https://github.com/vernesong/OpenClash.git.git package/luci-app-openclash
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 
 # Add themes
 # git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
