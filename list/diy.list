@@ -1,0 +1,21 @@
+# 内容：DIY
+# 数量：3条
+
+# emby影视刮削
+DOMAIN-SUFFIX,fanart.tv
+DOMAIN-SUFFIX,tmdb.org
+DOMAIN-SUFFIX,themoviedb.org
+
+# 安卓emotn安卓市场
+DOMAIN-SUFFIX,keeflys.com
+DOMAIN-SUFFIX,aptoide.com
+
+# Fast
+DOMAIN-SUFFIX,fast.com
+
+# Speedtest by Ookla
+DOMAIN-SUFFIX,speedtest.net
+DOMAIN-SUFFIX,ooklaserver.net
+
+# Speed Test by Cloudflare
+DOMAIN-SUFFIX,speed.cloudflare.com
