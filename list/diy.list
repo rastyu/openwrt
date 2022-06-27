@@ -19,3 +19,6 @@ DOMAIN-SUFFIX,ooklaserver.net
 
 # Speed Test by Cloudflare
 DOMAIN-SUFFIX,speed.cloudflare.com
+
+# github
+DOMAIN-SUFFIX,tmate.io
