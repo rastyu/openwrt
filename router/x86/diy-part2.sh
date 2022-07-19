@@ -21,6 +21,7 @@ git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-a
 git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 # git clone https://github.com/fw876/helloworld package/helloworld
+svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt package/aliyundrive
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-passwall package/luci-app-passwall
 # git clone https://github.com/jerrykuku/lua-maxminddb.git package/maxminddb
