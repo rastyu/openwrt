@@ -24,6 +24,7 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt package/aliyundrive
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-passwall package/luci-app-passwall
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-store package/luci-app-store
 # git clone https://github.com/jerrykuku/lua-maxminddb.git package/maxminddb
 # it clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
 
