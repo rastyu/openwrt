@@ -26,7 +26,7 @@ svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt package/aliyun
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-passwall package/luci-app-passwall
 # git clone https://github.com/jerrykuku/lua-maxminddb.git package/maxminddb
-# it clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
+# git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
 
 # Add themes
 # git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
