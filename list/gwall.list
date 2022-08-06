@@ -3,3 +3,14 @@
 
 # github短连接
 DOMAIN-SUFFIX,git.io
+
+# emby影视刮削
+DOMAIN-SUFFIX,fanart.tv
+DOMAIN-SUFFIX,tmdb.org
+DOMAIN-SUFFIX,themoviedb.org
+DOMAIN-SUFFIX,thetvdb.com
+DOMAIN-SUFFIX,weserv.nl
+
+# 安卓emotn安卓市场
+DOMAIN-SUFFIX,keeflys.com
+DOMAIN-SUFFIX,aptoide.com
