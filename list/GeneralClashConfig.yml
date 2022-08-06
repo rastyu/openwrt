@@ -1,3 +1,4 @@
+---
 mixed-port: 7893
 redir-port: 7892
 allow-lan: true
@@ -7,9 +8,6 @@ ipv6: false
 external-controller: 0.0.0.0:9090
 external-ui: "/usr/share/openclash/ui"
 secret: '123456'
-experimental:
-  ignore-resolve-fail: true
-  interface-name: en0
 dns:
   enable: true
   ipv6: false
@@ -17,6 +15,7 @@ dns:
   use-hosts: true
   enhanced-mode: redir-host
   default-nameserver:
+  - 127.0.0.1:53
   - 192.168.10.1
   nameserver:
   - 192.168.10.1
