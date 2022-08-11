@@ -24,14 +24,14 @@ env:
   REPO_BRANCH: master
 #  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
 #  REPO_BRANCH: master
-#  CONFIG_FILE: router/x86/x86-LEDE.config
-#  FEEDS_CONF: feeds.conf.default
-#  DIY_P1_SH: router/x86/diy-part1.sh
-#  DIY_P2_SH: router/x86/diy-part2.sh
-  CONFIG_FILE: router/iptv/x86-LEDE.config
+  CONFIG_FILE: router/x86/x86-LEDE.config
   FEEDS_CONF: feeds.conf.default
-  DIY_P1_SH: router/iptv/diy-part1.sh
-  DIY_P2_SH: router/iptv/diy-part2.sh
+  DIY_P1_SH: router/x86/diy-part1.sh
+  DIY_P2_SH: router/x86/diy-part2.sh
+#  CONFIG_FILE: router/iptv/x86-LEDE.config
+#  FEEDS_CONF: feeds.conf.default
+#  DIY_P1_SH: router/iptv/diy-part1.sh
+#  DIY_P2_SH: router/iptv/diy-part2.sh
 #  FEEDS_CONF: feeds.conf.default
 #  CONFIG_FILE: router/immor/x86-immor.config
 #  DIY_P1_SH: router/immor/diy-part1.sh
