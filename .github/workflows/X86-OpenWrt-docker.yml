@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: X86-OpenWrt-iptv
+name: X86-OpenWrt-docker
 
 on:
   repository_dispatch:
