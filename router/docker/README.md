@@ -1,3 +1,4 @@
+# /etc/config/cifs
 ```
 config cifs
 	option workgroup 'WORKGROUP'
