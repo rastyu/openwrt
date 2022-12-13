@@ -23,8 +23,8 @@ env:
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  FILE_NAME: x86_64-docker
-  PRODUCT_NAME: x86_64-docker
+  FILE_NAME: x86_64-dockertest
+  PRODUCT_NAME: x86_64-dockertest
 
 jobs:
   build:
