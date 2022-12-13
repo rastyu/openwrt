@@ -6,6 +6,7 @@
 #
 # https://github.com/P3TERX/Actions-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
+#
 
 name: X86-OpenWrt-test
 
@@ -24,8 +25,8 @@ env:
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  FILE_NAME: x86_64-dockertest
-  PRODUCT_NAME: x86_64-dockertest
+  FILE_NAME: x86_64-test
+  PRODUCT_NAME: x86_64-test
 
 jobs:
   build:
@@ -200,5 +201,5 @@ jobs:
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
           编译时间：${{ env.DATE }}
-          编译架构: X86-docker
+          编译架构: X86-test
           更新信息：编译完成
