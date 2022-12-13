@@ -150,5 +150,5 @@ jobs:
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
           编译时间：${{ env.DATE }}
-          编译架构: X86-docker
+          编译架构: X86-test
           更新信息：编译完成
