@@ -1,3 +1,4 @@
+```
 config cifs
 	option workgroup 'WORKGROUP'
 	option iocharset 'utf8'
@@ -14,3 +15,5 @@ config natshare
 	option name 'pt'
 	option smbver '3.0'
 	option natpath '/mnt/pt'
+
+```
