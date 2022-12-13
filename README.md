@@ -1,7 +1,7 @@
 
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64" title="x86_64"><img src="https://img.shields.io/badge/openwrt-x86_64-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64-iptv" title="x86_64_iptv"><img src="https://img.shields.io/badge/openwrt-x86_64_iptv-7FFF00"></a>
-<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64_immor" title="x86_64_docker"><img src="https://img.shields.io/badge/openwrt-x86_64_docker-7FFF00"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64-docker" title="x86_64_docker"><img src="https://img.shields.io/badge/openwrt-x86_64_docker-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64_immor" title="x86_64_immor"><img src="https://img.shields.io/badge/openwrt-x86_64_immor-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/AX6" title="AX6"><img src="https://img.shields.io/badge/openwrt-AX6-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/armv8_mini" title="HK1固件 Releases"><img src="https://img.shields.io/badge/openwrt-HK1固件-7FFF00"></a>
