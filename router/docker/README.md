@@ -1,4 +1,4 @@
-# /etc/config/cifs
+### 编辑 /etc/config/cifs
 ```
 config cifs
 	option workgroup 'WORKGROUP'
