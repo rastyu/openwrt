@@ -1,14 +1,63 @@
-#========================================================================================================================
+#=====================================================================================
 # https://github.com/ophub/amlogic-s9xxx-openwrt
-# Description: Use Releases file to packaging
-# Cron: min (0 - 59) / hour (0 - 23) / day of month (1 - 31) / month (1 - 12) / day of week (0 - 6)(Sunday - Saturday)
-#========================================================================================================================
+# Description: Build OpenWrt with lede
+# Source code repository: https://github.com/coolsnowwolf/lede / Branch: master
+#=====================================================================================
 
-name: HK1-OpenWrt-打包
+name: Build OpenWrt with lede
 
 on:
   repository_dispatch:
   workflow_dispatch:
+    inputs:
+      openwrt_board:
+        description: "Select Amlogic board"
+        required: false
+        default: "all"
+        type: choice
+        options:
+          - all
+          - s905x3_s905d_s912
+          - a311d
+          - s922x
+          - s922x-n2
+          - s922x-reva
+          - s905x3
+          - s905x3-b
+          - s905x2
+          - s905x2-km3
+          - s912
+          - s912-m8s
+          - s905d
+          - s905d-ki
+          - s905x
+          - s905w
+          - s905
+          - s905l3a
+          - s905l2
+      openwrt_kernel:
+        description: "Select kernel version"
+        required: false
+        default: "5.10.135_5.15.50"
+        type: choice
+        options:
+          - 5.4.210_5.10.135_5.15.50
+          - 5.4.210_5.10.135
+          - 5.10.135_5.15.50
+          - 5.15.50_6.0.1
+          - 5.4.210
+          - 5.10.135
+          - 5.15.50
+          - 6.0.1
+      auto_kernel:
+        description: "Auto use the latest kernel"
+        required: false
+        default: true
+        type: boolean
+      openwrt_size:
+        description: "Set the rootfs size(Unit: MiB)."
+        required: false
+        default: "1024"
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -26,96 +75,115 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
-    if: github.event.repository.owner.id == github.event.sender.id
+    runs-on: ubuntu-22.04
+    if: ${{ github.event.repository.owner.id }} == ${{ github.event.sender.id }}
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Initialization environment
-      env:
-        DEBIAN_FRONTEND: noninteractive
-      run: |
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-        sudo -E apt-get -qq update
-        sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
-        sudo -E apt-get -qq autoremove --purge
-        sudo -E apt-get -qq clean
-        sudo timedatectl set-timezone "$TZ"
-        sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
+      - name: Initialization environment
+        id: init
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          docker rmi `docker images -q`
+          sudo rm -rf /usr/share/dotnet /etc/mysql /etc/apt/sources.list.d /usr/local/lib/android 2>/dev/null
+          sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* mongodb* dotnet* moby* snapd* || true
+          sudo -E apt-get -qq update -y
+          sudo -E apt-get -qq full-upgrade -y
+          sudo -E apt-get -qq install -y $(curl -fsSL https://is.gd/depend_ubuntu2204_openwrt)
+          sudo -E apt-get -qq autoremove --purge
+          sudo -E apt-get -qq clean
+          sudo timedatectl set-timezone "${TZ}"
+          sudo mkdir -p /workdir
+          sudo chown ${USER}:${GROUPS} /workdir
+          echo "status=success" >> ${GITHUB_OUTPUT}
+      - name: Clone source code
+        working-directory: /workdir
+        if: ${{ steps.init.outputs.status }} == 'success' && !cancelled()
+        run: |
+          df -hT ${PWD}
+          git clone --depth 1 ${REPO_URL} -b ${REPO_BRANCH} openwrt
+          ln -sf /workdir/openwrt ${GITHUB_WORKSPACE}/openwrt
+      - name: Load custom feeds
+        run: |
+          [[ -e "${FEEDS_CONF}" ]] && cp -f ${FEEDS_CONF} openwrt/feeds.conf.default
+          chmod +x ${DIY_P1_SH}
+          cd openwrt/
+          ${GITHUB_WORKSPACE}/${DIY_P1_SH}
+      - name: Update feeds
+        run: cd openwrt/ && ./scripts/feeds update -a
 
-    - name: Clone source code
-      working-directory: /workdir
-      run: |
-        df -hT $PWD
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-        cd openwrt
-        useVersionInfo=$(git show -s --date=short --format="Author: %an<br/>date: %cd<br/>commit: %s<br/>commit hash: %H")
-        echo "useVersionInfo=$useVersionInfo" >> $GITHUB_ENV
-        echo "DATE=$(date "+%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
-        echo "DATE1=$(date "+%Y-%m-%d")" >> $GITHUB_ENV
+      - name: Install feeds
+        run: cd openwrt/ && ./scripts/feeds install -a
 
-    - name: Package Armvirt as OpenWrt
-      if: (!cancelled())
-      uses: ophub/flippy-openwrt-actions@main
-      env:
-        OPENWRT_ARMVIRT: https://github.com/rastyu/s905x3-openwrt/releases/download/ARMv8_ROOTFS/openwrt-armvirt-64-default-rootfs.tar.gz
-        PACKAGE_SOC: s905x3
-        WHOAMI: breakings
-        KERNEL_REPO_URL: https://github.com/breakings/OpenWrt/tree/main/opt/kernel
-        KERNEL_VERSION_NAME: 5.4.152_5.10.72_5.15.6
-        KERNEL_AUTO_LATEST: true
-        ENABLE_WIFI_K504: 0
-        GZIP_IMGS: .gz
+      - name: Load custom configuration
+        run: |
+          [[ -d "files" ]] && mv -f files openwrt/files
+          [[ -e "${CONFIG_FILE}" ]] && cp -f ${CONFIG_FILE} openwrt/.config
+          chmod +x ${DIY_P2_SH}
+          cd openwrt/
+          ${GITHUB_WORKSPACE}/${DIY_P2_SH}
+      - name: Download package
+        id: package
+        run: |
+          cd openwrt/
+          make defconfig
+          make download -j8
+          find dl -size -1024c -exec ls -l {} \;
+          find dl -size -1024c -exec rm -f {} \;
+      - name: Compile the firmware
+        id: compile
+        run: |
+          cd openwrt/
+          echo -e "$(nproc) thread compile"
+          make -j$(($(nproc) + 1)) V=s || make -j1 || make -j1 V=s
+          echo "build_tag=OpenWrt_Aml_lede_$(date +"%m.%d.%H%M")" >> ${GITHUB_OUTPUT}
+          echo "status=success" >> ${GITHUB_OUTPUT}
+      - name: Upload OpenWrt Firmware to Release
+        uses: ncipollo/release-action@main
+        if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
+        with:
+          tag: ${{ steps.compile.outputs.build_tag }}
+          artifacts: openwrt/bin/targets/*/*/*rootfs.tar.gz
+          allowUpdates: true
+          token: ${{ secrets.GH_TOKEN }}
 
-    - name: Upload artifact to Actions
-      uses: kittaakos/upload-artifact-as-is@master
-      if: env.PACKAGED_STATUS == 'success' && env.UPLOAD_FIRMWARE == 'true' && !cancelled()
-      with:
-        path: ${{ env.PACKAGED_OUTPUTPATH }}/
+      - name: Clean up server space
+        if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
+        run: |
+          cd openwrt/
+          rm -rf $(ls . | grep -v "^bin$" | xargs) 2>/dev/null
+          df -hT ${PWD}
+          
+      - name: Build OpenWrt firmware
+        if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
+        uses: ophub/amlogic-s9xxx-openwrt@main
+        with:
+          openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
+          openwrt_board: ${{ inputs.openwrt_board }}
+          openwrt_kernel: ${{ inputs.openwrt_kernel }}
+          auto_kernel: ${{ inputs.auto_kernel }}
+          openwrt_size: ${{ inputs.openwrt_size }}
 
-    - name: Upload OpenWrt Firmware to Release
-      id: release
-      uses: ncipollo/release-action@v1
-      if: env.PACKAGED_STATUS == 'success' && env.UPLOAD_RELEASE == 'true' && !cancelled()
-      with:
-        name: R${{ env.DATE }} for ${{ env.FILE_NAME }}
-        allowUpdates: true
-        removeArtifacts: true
-        tag: ${{ env.FILE_NAME }}
-        commit: main
-        token: ${{ secrets.RELEASES_TOKEN }}
-        artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
-        body: |
-          - 默认IP：192.168.10.6 默认密码：password (WiFi密码同）
-          - 当前使用版本:【编译前的最后一次➦[主源码](https://github.com/coolsnowwolf/lede)更新记录】
-          - 此为**自用精简包**，和F大本人集成的插件有**较大**差异。求稳用户推荐使用F大编译的➦[正式版本](https://github.com/breakings/OpenWrt/releases/tag/flippy_openwrt)
-          - 因变动较大，从60及其以下版本升级到61或更高版本建议**全新刷入**或者**不保留配置**进行升级
-          - 常见问题及注意事项请参考恩山F大➦[最新帖](https://www.right.com.cn/forum/thread-4076037-1-1.html)
-          - 需要**高大全**版请到 高大全➦[下载](https://github.com/breakings/OpenWrt/releases/tag/ARMv8)
-          ${{ env.useVersionInfo }}
-
-    - name: Delete workflow runs
-      uses: GitRML/delete-workflow-runs@main
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        repository: ${{ github.repository }}
-        retain_days: 20
-        keep_minimum_runs: 20
-
-    - name: Remove old Releases
-      uses: dev-drprasad/delete-older-releases@v0.2.0
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      with:
-        repo:
-        keep_latest: 20
-        delete_tag_pattern:
-        delete_tags: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload the packaged firmware to Release
+        uses: ncipollo/release-action@main
+        if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
+        with:
+          tag: ${{ steps.compile.outputs.build_tag }}
+          artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
+          allowUpdates: true
+          token: ${{ secrets.GH_TOKEN }}
+          body: |
+            This is OpenWrt firmware for Amlogic s9xxx tv box
+            * Firmware information
+            Default IP: 192.168.1.1
+            Default username: root
+            Default password: password
+            Default WIFI name: OpenWrt
+            Default WIFI password: none
+            Install to EMMC: Login to OpenWrt → System → Amlogic Service → Install OpenWrt
 
     - name: Telegram notification
       uses: appleboy/telegram-action@master
