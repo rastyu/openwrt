@@ -4,7 +4,7 @@
 # Source code repository: https://github.com/coolsnowwolf/lede / Branch: master
 #=====================================================================================
 
-name: HK1-OpenWrt-s905x3
+name: HK1-s905x3
 
 on:
   repository_dispatch:
