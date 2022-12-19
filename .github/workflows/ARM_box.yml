@@ -189,12 +189,12 @@ jobs:
             Default WIFI password: none
             Install to EMMC: Login to OpenWrt → System → Amlogic Service → Install OpenWrt
 
-    - name: Telegram notification
-      uses: appleboy/telegram-action@master
-      with:
-        to: ${{ secrets.TELEGRAM_TO }}
-        token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: |
-          编译时间：${{ env.DATE }}
-          编译架构: ARM
-          更新信息：ARMh盒子固件编译完成
+      - name: Telegram notification
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            编译时间：${{ env.DATE }}
+            编译架构: ARM
+            更新信息：ARMh盒子固件编译完成
