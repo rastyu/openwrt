@@ -196,5 +196,5 @@ jobs:
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
           编译时间：${{ env.DATE }}
-          编译架构: X86-iptv
-          更新信息：编译完成
+          编译架构: ARM
+          更新信息：ARMh盒子固件编译完成
