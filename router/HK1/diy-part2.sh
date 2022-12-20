@@ -8,7 +8,7 @@
 
  
  # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
-sed -i 's/192.168.1.1/192.168.10.6/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.10.10/g' package/base-files/files/bin/config_generate
 
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-atmaterial）
 sed -i 's/luci-theme-bootstrap/luci-theme-neobird/g' ./feeds/luci/collections/luci/Makefile
