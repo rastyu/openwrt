@@ -67,8 +67,6 @@ env:
   DIY_P1_SH: router/HK1/diy-part1.sh
   DIY_P2_SH: router/HK1/diy-part2.sh
   TZ: Asia/Shanghai
-  FILE_NAME: ARMv8_mini
-  PRODUCT_NAME: ARMv8_mini
 
 
 jobs:
@@ -188,13 +186,3 @@ jobs:
             Default WIFI name: OpenWrt
             Default WIFI password: none
             Install to EMMC: Login to OpenWrt → System → Amlogic Service → Install OpenWrt
-
-      - name: Telegram notification
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            编译时间：${{ env.DATE }}
-            编译架构: ARM
-            更新信息：ARMh盒子固件编译完成
