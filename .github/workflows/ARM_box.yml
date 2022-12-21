@@ -152,6 +152,7 @@ jobs:
           tag: ${{ env.FILE_NAME }}
           artifacts: openwrt/bin/targets/*/*/*rootfs.tar.gz
           allowUpdates: true
+          removeArtifacts: true
           token: ${{ secrets.RELEASES_TOKEN }}
 
       - name: Clean up server space
