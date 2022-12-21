@@ -67,7 +67,8 @@ env:
   DIY_P1_SH: router/HK1/diy-part1.sh
   DIY_P2_SH: router/HK1/diy-part2.sh
   TZ: Asia/Shanghai
-
+  FILE_NAME: ARM-box
+  PRODUCT_NAME: ARM-box
 
 jobs:
   build:
@@ -147,7 +148,8 @@ jobs:
         uses: ncipollo/release-action@main
         if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
         with:
-          tag: ${{ steps.compile.outputs.build_tag }}
+          name: R${{ env.DATE }} for ${{ env.PRODUCT_NAME }}
+          tag: ${{ env.FILE_NAME }}
           artifacts: openwrt/bin/targets/*/*/*rootfs.tar.gz
           allowUpdates: true
           token: ${{ secrets.RELEASES_TOKEN }}
@@ -173,7 +175,8 @@ jobs:
         uses: ncipollo/release-action@main
         if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
         with:
-          tag: ${{ steps.compile.outputs.build_tag }}
+          name: R${{ env.DATE }} for ${{ env.PRODUCT_NAME }}
+          tag: ${{ env.FILE_NAME }}
           artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
           allowUpdates: true
           token: ${{ secrets.RELEASES_TOKEN }}
