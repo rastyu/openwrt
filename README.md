@@ -4,8 +4,7 @@
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64-docker" title="x86_64_docker"><img src="https://img.shields.io/badge/openwrt-x86_64_docker-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64_immor" title="x86_64_immor"><img src="https://img.shields.io/badge/openwrt-x86_64_immor-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/AX6" title="AX6"><img src="https://img.shields.io/badge/openwrt-AX6-7FFF00"></a>
-<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/armv8_mini" title="HK1固件 Releases"><img src="https://img.shields.io/badge/openwrt-HK1固件-7FFF00"></a>
-<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/ARMv8_ROOTFS" title="HK1底包 Releases"><img src="https://img.shields.io/badge/openwrt-HK1底包-7FFF00"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/ARM-box" title="ARM盒子固件 Releases"><img src="https://img.shields.io/badge/openwrt-ARM盒子固件-7FFF00"></a>
 ## 个人定制编译amlogic-s905x3-openwrt固件仓库
 
 # 第6条
