@@ -17,7 +17,7 @@ sed -i 's/192.168.1.1/192.168.10.10/g' package/base-files/files/bin/config_gener
 # sed -i "s/OpenWrt /ALLEN build @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
 # sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
 
-git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
+# git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
 # git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 # git clone https://github.com/fw876/helloworld package/helloworld
 # git clone https://github.com/jerrykuku/lua-maxminddb.git package/maxminddb
