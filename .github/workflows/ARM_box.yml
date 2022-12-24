@@ -4,7 +4,7 @@
 # Source code repository: https://github.com/coolsnowwolf/lede / Branch: master
 #=====================================================================================
 
-name: ARM_box
+name: 5.ARM_box
 
 on:
   repository_dispatch:
