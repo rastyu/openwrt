@@ -6,7 +6,8 @@
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/AX6" title="AX6"><img src="https://img.shields.io/badge/openwrt-AX6-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/ARM-box" title="ARM盒子固件 Releases"><img src="https://img.shields.io/badge/openwrt-ARM盒子固件-7FFF00"></a>
 ## 个人定制编译amlogic-s905x3-openwrt固件仓库
-
+#### 配置 RELEASES_TOKEN  发布固件用
+#### 配置 TELEGRAM_TO 和 TELEGRAM__TOKEN   ssh自动发链接到指定电报账户
 # 第6条
 #  
 - 单独拉取特定的插件或者文件，比如单独拉取插件包的luci-app-clash
