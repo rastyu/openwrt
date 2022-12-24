@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: X86-OpenWrt-docker
+name: 2.X86-OpenWrt-docker
 
 on:
   repository_dispatch:
@@ -19,8 +19,8 @@ env:
   REPO_BRANCH: master
   CONFIG_FILE: router/docker/docker.config
   FEEDS_CONF: feeds.conf.default
-  DIY_P1_SH: router/docker/diy-part1.sh
-  DIY_P2_SH: router/docker/diy-part2.sh
+  DIY_P1_SH: lede-part1.sh
+  DIY_P2_SH: lede-part2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
