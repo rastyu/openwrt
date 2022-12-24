@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: AX6上传.config配置文件在 github actions
+name: 6_AX6上传.config配置文件在 github actions
 
 on:
   repository_dispatch:
