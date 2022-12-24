@@ -19,3 +19,6 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne pack
 # sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
 
 git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-adguardhome package/luci-app-adguardhome
+svn co https://github.com/kenzok8/openwrt-packages/trunk/adguardhome package/adguardhome
