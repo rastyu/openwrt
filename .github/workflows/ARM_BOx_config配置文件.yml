@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: 5_ARM_BOx上传.config配置文件在 github actions
+name: 5.ARM_BOx上传.config配置文件在 github actions
 
 on:
   repository_dispatch:
