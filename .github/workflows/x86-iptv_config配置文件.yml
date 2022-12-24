@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: x86-iptv上传.config配置文件在 github actions
+name: 3_x86-iptv上传.config配置文件在 github actions
 
 on:
   repository_dispatch:
