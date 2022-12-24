@@ -1,4 +1,4 @@
-name: AX6-OpenWrt
+name: 6.AX6-OpenWrt
 
 on:
   repository_dispatch:
@@ -8,7 +8,7 @@ env:
   REPO_URL: https://github.com/yaya131/lede-for-XaioMi
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: router/AX6/.config
+  CONFIG_FILE: router/AX6/AX6.config
   DIY_P1_SH: router/AX6/diy-part1.sh
   DIY_P2_SH: router/AX6/diy-part2.sh
   UPLOAD_BIN_DIR: false
