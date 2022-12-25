@@ -1,4 +1,4 @@
-name: 6.AX6-OpenWrt
+name: 4.AX6-OpenWrt
 
 on:
   repository_dispatch:
