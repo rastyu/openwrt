@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: 3.X86-OpenWrt-iptv
+name: 1.X86-OpenWrt-iptv
 
 on:
   repository_dispatch:
