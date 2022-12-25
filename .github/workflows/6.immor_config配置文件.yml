@@ -18,6 +18,13 @@ on:
         description: '[false]改成[true],再按[Run workflow]按钮启动,则开启SSH连接配置固件'
         required: false
         default: 'true'
+      openwrt:
+        description: "选择编译版本"
+        required: false
+        default: "router/immor/x86-immor.config"
+        type: choice
+        options:
+          - router/immor/x86-immor.config
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
