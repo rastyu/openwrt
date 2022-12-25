@@ -13,10 +13,19 @@ name: 2.X86-immor
 on:
   repository_dispatch:
   workflow_dispatch:
-  
+    inputs:
+      BRANCH:
+        description: "选择编译版本"
+        required: false
+        default: "master"
+        type: choice
+        options:
+          - master
+          - openwrt-21.02
+          
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: openwrt-21.02
+  REPO_BRANCH: ${{ inputs.BRANCH }}
   FEEDS_CONF: immortalwrt.feeds.conf.default
   CONFIG_FILE: router/immor/x86-immor.config
   DIY_P1_SH: immor-part1.sh
