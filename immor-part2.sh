@@ -11,7 +11,7 @@
 sed -i 's/192.168.1.1/192.168.10.10/g' package/base-files/files/bin/config_generate
 
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-atmaterial）
-sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
+# sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
 # git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argonne
 
 git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
