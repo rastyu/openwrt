@@ -20,13 +20,13 @@ on:
 env:
   DELETE_RELEASE: true
   DELETE_ARTIFACTS: true
-  KEEP_DAY: 1
-  KEEP_MININUM_RUNS: 1
-  KEEP_MININUM_RELEASE: 1
+  KEEP_DAY: 30
+  KEEP_MININUM_RUNS: 8
+  KEEP_MININUM_RELEASE: 8
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
