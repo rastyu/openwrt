@@ -18,6 +18,14 @@ on:
         description: '[false]改成[true],再按[Run workflow]按钮启动,则开启SSH连接配置固件'
         required: false
         default: 'true'
+    openwrt:
+        description: "选择编译版本"
+        required: false
+        default: "router/HK1/lede-gcc11.config"
+        options:
+          - router/HK1/lede-gcc11.config
+          - router/docker/docker.config
+          - router/iptv/x86-LEDE.config
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
