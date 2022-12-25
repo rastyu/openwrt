@@ -10,10 +10,6 @@
 
 name: 2.X86-immor
 
-on:
-  repository_dispatch:
-  workflow_dispatch:
-
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-21.02
