@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: 4.X86-immor
+name: 2.X86-immor
 
 on:
   repository_dispatch:
