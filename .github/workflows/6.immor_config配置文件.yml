@@ -25,10 +25,18 @@ on:
         type: choice
         options:
           - router/immor/x86-immor.config
+      BRANCH:
+        description: "选择编译版本"
+        required: false
+        default: "openwrt-21.02"
+        type: choice
+        options:
+          - master
+          - openwrt-21.02
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: master
+  REPO_BRANCH: ${{ inputs.BRANCH }}
   FEEDS_CONF: immortalwrt.feeds.conf.default
   CONFIG_FILE: ${{ inputs.openwrt }}
   DIY_P1_SH: immor-part1.sh
