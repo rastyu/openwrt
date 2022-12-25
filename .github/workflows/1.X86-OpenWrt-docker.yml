@@ -17,7 +17,7 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  CONFIG_FILE: router/docker/docker.config
+  CONFIG_FILE: router/lede/docker.config
   FEEDS_CONF: feeds.conf.default
   DIY_P1_SH: lede-part1.sh
   DIY_P2_SH: lede-part2.sh
