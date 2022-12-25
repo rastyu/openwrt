@@ -8,22 +8,31 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: 1.x86-LEDE上传.config配置文件在 github actions
+name: 5.LEDE上传.config配置文件在 github actions
 
 on:
   repository_dispatch:
   workflow_dispatch:
     inputs:
       ssh:
-        description: '[false]改成[true],再按[Run workflow]按钮启动,则开启SSH连接配置固件'
+        description: 'true开启SSH连接配置固件'
         required: false
         default: 'true'
+      openwrt:
+        description: "选择编译版本"
+        required: false
+        default: "router/lede/mini.config"
+        type: choice
+        options:
+          - router/lede/mini.config
+          - router/lede/docker.config
+          - router/lede/iptv.config
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: router/x86/x86-LEDE.config
+  CONFIG_FILE: ${{ inputs.openwrt }}
   DIY_P1_SH: lede-part1.sh
   DIY_P2_SH: lede-part2.sh
   UPLOAD_CONFIG: true
