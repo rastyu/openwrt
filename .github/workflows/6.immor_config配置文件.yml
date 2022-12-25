@@ -19,12 +19,13 @@ on:
         required: false
         default: 'true'
       openwrt:
-        description: "选择编译版本"
+        description: "选择config版本"
         required: false
-        default: "router/immor/x86-immor.config"
+        default: "router/immor/immor-master.config"
         type: choice
         options:
-          - router/immor/x86-immor.config
+          - router/immor/immor-master.config
+          - router/immor/openwrt-21.02.config
       BRANCH:
         description: "选择编译版本"
         required: false
