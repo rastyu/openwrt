@@ -22,6 +22,7 @@ on:
         description: "选择编译版本"
         required: false
         default: "router/HK1/lede-gcc11.config"
+        type: choice
         options:
           - router/HK1/lede-gcc11.config
           - router/docker/docker.config
