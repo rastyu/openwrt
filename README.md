@@ -9,10 +9,12 @@
 #### 配置 RELEASES_TOKEN  发布固件用
 #### 配置 TELEGRAM_TO 和 TELEGRAM__TOKEN   ssh自动发链接到指定电报账户
 # 第6条
+```
 CONFIG_LINUX_5.4=y
 CONFIG_LINUX_5.10=y
 CONFIG_LINUX_5.15=y
 CONFIG_LINUX_6_1=y
+```
 - 单独拉取特定的插件或者文件，比如单独拉取插件包的luci-app-clash
 
       svn co https://github.com/281677160/openwrt-package/trunk/luci-app-clash package/luci-app-clash
