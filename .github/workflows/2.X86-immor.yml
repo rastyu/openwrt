@@ -17,7 +17,7 @@ on:
       BRANCH:
         description: "选择编译版本"
         required: false
-        default: "master"
+        default: "openwrt-21.02"
         type: choice
         options:
           - master
