@@ -15,6 +15,5 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argonne/g' ./feeds/luci/collections/lu
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
 
 git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
-svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-adguardhome package/luci-app-adguardhome
 svn co https://github.com/kenzok8/openwrt-packages/trunk/adguardhome package/adguardhome
