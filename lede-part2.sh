@@ -18,8 +18,8 @@ sed -i "s/OpenWrt /ALLEN build @ OpenWrt /g" package/lean/default-settings/files
 sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
 
 git clone https://github.com/vernesong/OpenClash.git package/OpenClash
-git clone https://github.com/kenzok8/openwrt-packages/trunk/luci-app-store package/luci-app-store
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-store package/luci-app-store
 svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
 svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt package/aliyundrive-fuse
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
