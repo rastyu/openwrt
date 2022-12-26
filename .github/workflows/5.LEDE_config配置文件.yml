@@ -27,6 +27,7 @@ on:
           - router/lede/mini.config
           - router/lede/docker.config
           - router/lede/iptv.config
+          - router/lede/test.config
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
