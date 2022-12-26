@@ -25,7 +25,6 @@ sed -i "s/OpenWrt /ALLEN build @ OpenWrt /g" package/lean/default-settings/files
 sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
 
 git clone https://github.com/vernesong/OpenClash.git package/OpenClash
-git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
 # git clone https://github.com/riverscn/openwrt-iptvhelper.git package/openwrt-iptvhelper
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
 
@@ -35,4 +34,5 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne pack
 
 # Add autocore support for armvirt
 sed -i 's/DEPENDS:=@(.*/DEPENDS:=@(TARGET_bcm27xx||TARGET_bcm53xx||TARGET_ipq40xx||TARGET_ipq806x||TARGET_ipq807x||TARGET_mvebu||TARGET_rockchip||TARGET_armvirt) \\/g' package/lean/autocore/Makefile
-
+curl -fsSL  https://raw.githubusercontent.com/rastyu/s905x3-openwrt/main/poweroff/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
+curl -fsSL  https://raw.githubusercontent.com/rastyu/s905x3-openwrt/main/poweroff/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
