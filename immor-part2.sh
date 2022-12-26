@@ -14,7 +14,10 @@ sed -i 's/192.168.1.1/192.168.10.10/g' package/base-files/files/bin/config_gener
 sed -i 's/luci-theme-bootstrap/luci-theme-argonne/g' ./feeds/luci/collections/luci/Makefile
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argonne
 
-git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
-#git clone https://github.com/sirpdboy/luci-app-poweroffdevice package/luci-app-poweroffdevice package/luci-app-poweroffdevice
+# git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
+# git clone https://github.com/sirpdboy/luci-app-poweroffdevice package/luci-app-poweroffdevice package/luci-app-poweroffdevice
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-adguardhome package/luci-app-adguardhome
 svn co https://github.com/kenzok8/openwrt-packages/trunk/adguardhome package/adguardhome
+
+curl -fsSL  https://raw.githubusercontent.com/rastyu/s905x3-openwrt/main/poweroff/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
+curl -fsSL  https://raw.githubusercontent.com/rastyu/s905x3-openwrt/main/poweroff/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
