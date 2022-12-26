@@ -6,8 +6,8 @@
 # Source code repository: https://github.com/coolsnowwolf/lede / Branch: master
 #========================================================================================================================
 
- 
- # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
+
+# Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
 sed -i 's/192.168.1.1/192.168.10.10/g' package/base-files/files/bin/config_generate
 
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-atmaterial）
@@ -33,3 +33,8 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne pack
 # Add themes
 # git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
 # sed -i 's/shadowsocksr/passwall/g' package/luci-theme-neobird/luasrc/view/themes/neobird/header.htm 
+
+#在编译前,运行如下二条命令，集成到系统源码菜单中，不需要另外选择和设置即可使用关机功能。
+cd openwrt 
+curl -fsSL  https://raw.githubusercontent.com/sirpdboy/other/master/patch/poweroff/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
+curl -fsSL  https://raw.githubusercontent.com/sirpdboy/other/master/patch/poweroff/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
