@@ -24,6 +24,7 @@ svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-pass
 svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt package/aliyundrive
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
 
+# git clone https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
 # git clone https://github.com/jerrykuku/lua-maxminddb.git package/maxminddb
 # git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
 # git clone https://github.com/fw876/helloworld package/helloworld
