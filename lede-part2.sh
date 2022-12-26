@@ -17,7 +17,7 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argonne/g' ./feeds/luci/collections/lu
 sed -i "s/OpenWrt /ALLEN build @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
 sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
 
-git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
+# git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
 git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone https://github.com/linkease/istore.git package/istore
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
