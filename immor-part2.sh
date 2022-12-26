@@ -19,5 +19,5 @@ git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-a
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-adguardhome package/luci-app-adguardhome
 svn co https://github.com/kenzok8/openwrt-packages/trunk/adguardhome package/adguardhome
 
-curl -fsSL  https://raw.githubusercontent.com/rastyu/s905x3-openwrt/main/poweroff/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
-curl -fsSL  https://raw.githubusercontent.com/rastyu/s905x3-openwrt/main/poweroff/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
+# curl -fsSL  https://raw.githubusercontent.com/rastyu/s905x3-openwrt/main/poweroff/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
+# curl -fsSL  https://raw.githubusercontent.com/rastyu/s905x3-openwrt/main/poweroff/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
