@@ -13,7 +13,31 @@ name: 9.test_openwrt
 on:
   repository_dispatch:
   workflow_dispatch:
-
+    inputs:
+      URL:
+        description: "选择config版本"
+        required: false
+        default: "router/immor/immor-master.config"
+        type: choice
+        options:
+          - router/immor/immor-master.config
+          - router/immor/openwrt-21.02.config
+      openwrt:
+        description: "选择config版本"
+        required: false
+        default: "router/immor/immor-master.config"
+        type: choice
+        options:
+          - router/immor/immor-master.config
+          - router/immor/openwrt-21.02.config
+      BRANCH:
+        description: "选择编译版本"
+        required: false
+        default: "master"
+        type: choice
+        options:
+          - master
+          - openwrt-21.02
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
