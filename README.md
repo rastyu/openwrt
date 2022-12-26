@@ -1,5 +1,5 @@
 
-<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64-lede" title="x86_64_lede"><img src="https://img.shields.io/badge/openwrt-x86_64_lede-7FFF00"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64" title="x86_64_lede"><img src="https://img.shields.io/badge/openwrt-x86_64_lede-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64-iptv" title="x86_64_iptv"><img src="https://img.shields.io/badge/openwrt-x86_64_iptv-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64-docker" title="x86_64_docker"><img src="https://img.shields.io/badge/openwrt-x86_64_docker-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64_immor" title="x86_64_immor"><img src="https://img.shields.io/badge/openwrt-x86_64_immor-7FFF00"></a>
