@@ -1,4 +1,3 @@
-### 访问数：[![](https://visitor-badge.glitch.me/badge?page_id=rastyu-visitor-badge)]
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64" title="x86_64"><img src="https://img.shields.io/badge/openwrt-x86_64-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64-iptv" title="x86_64_iptv"><img src="https://img.shields.io/badge/openwrt-x86_64_iptv-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64-docker" title="x86_64_docker"><img src="https://img.shields.io/badge/openwrt-x86_64_docker-7FFF00"></a>
