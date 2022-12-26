@@ -21,7 +21,7 @@ git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone https://github.com/linkease/istore.git package/istore
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
-svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt package/aliyundrive
+svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt package/aliyundrive-fuse
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
 
 # git clone https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
