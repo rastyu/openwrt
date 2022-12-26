@@ -17,18 +17,16 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argonne/g' ./feeds/luci/collections/lu
 sed -i "s/OpenWrt /ALLEN build @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
 sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
 
-# git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
 git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone https://github.com/linkease/istore.git package/istore
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
-# git clone https://github.com/linkease/istore.git package/istore
-# git clone https://github.com/fw876/helloworld package/helloworld
 svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
 svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt package/aliyundrive
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
 
 # git clone https://github.com/jerrykuku/lua-maxminddb.git package/maxminddb
 # git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
+# git clone https://github.com/fw876/helloworld package/helloworld
 
 # Add themes
 # git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
