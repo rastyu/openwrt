@@ -15,20 +15,23 @@ on:
   workflow_dispatch:
     inputs:
       URL:
-        description: "选择config版本"
+        description: "openwrt源码选择"
         required: false
-        default: "router/immor/immor-master.config"
+        default: "https://github.com/coolsnowwolf/lede"
         type: choice
         options:
-          - router/immor/immor-master.config
-          - router/immor/openwrt-21.02.config
-      openwrt:
+          - https://github.com/coolsnowwolf/lede
+          - https://github.com/immortalwrt/immortalwrt
+      CONFIG:
         description: "选择config版本"
         required: false
-        default: "router/immor/immor-master.config"
+        default: "router/lede/test.config"
         type: choice
         options:
-          - router/immor/immor-master.config
+          - router/lede/mini.config
+          - router/lede/docker.config
+          - router/lede/iptv.config
+          - router/lede/test.config
           - router/immor/openwrt-21.02.config
       BRANCH:
         description: "选择编译版本"
@@ -39,9 +42,9 @@ on:
           - master
           - openwrt-21.02
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
-  CONFIG_FILE: router/lede/mini.config
+  REPO_URL: ${{ inputs.URL }}
+  REPO_BRANCH: ${{ inputs.BRANCH }}
+  CONFIG_FILE: ${{ inputs.CONFIG }}
   FEEDS_CONF: feeds.conf.default
   DIY_P1_SH: lede-part1.sh
   DIY_P2_SH: lede-part2.sh
