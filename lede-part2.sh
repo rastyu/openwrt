@@ -19,13 +19,17 @@ sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package
 
 git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+
+git clone https://github.com/rastyu/package.git package/rastyu
+
+svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
+svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt package/aliyundrive-fuse
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
+
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-store package/luci-app-store
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-taskd package/luci-lib-taskd
 svn co https://github.com/kenzok8/openwrt-packages/trunk/taskd package/taskd
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-xterm package/luci-lib-xterm
-svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
-svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt package/aliyundrive-fuse
-svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
 
 # git clone https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
 # git clone https://github.com/jerrykuku/lua-maxminddb.git package/maxminddb
