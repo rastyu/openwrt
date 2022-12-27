@@ -36,6 +36,9 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-taskd package/
 svn co https://github.com/kenzok8/openwrt-packages/trunk/taskd package/taskd
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-xterm package/luci-lib-xterm
 
+svn co https://github.com/kenzok8/jell/trunk/luci-app-alist package/luci-app-alist
+svn co https://github.com/kenzok8/jell/trunk/luci-app-nginx-manager package/luci-app-nginx-manager
+
 
 # git clone https://github.com/jerrykuku/lua-maxminddb.git package/maxminddb
 # git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
