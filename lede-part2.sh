@@ -23,8 +23,10 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
 
 git clone https://github.com/rastyu/package.git package/rastyu
+git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
+git clone https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
 
-svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt package/aliyundrive-fuse
+# svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt package/aliyundrive-fuse
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-argonne-config package/luci-app-argonne-config
 
@@ -36,8 +38,8 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-taskd package/
 svn co https://github.com/kenzok8/openwrt-packages/trunk/taskd package/taskd
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-xterm package/luci-lib-xterm
 
-svn co https://github.com/kenzok8/small-package/trunk/luci-app-alist package/luci-app-alist
-svn co https://github.com/kenzok8/small-package/trunk/alist package/alist
+# svn co https://github.com/kenzok8/small-package/trunk/luci-app-alist package/luci-app-alist
+# svn co https://github.com/kenzok8/small-package/trunk/alist package/alist
 svn co https://github.com/kenzok8/small-package/trunk/luci-app-nginx-manager package/luci-app-nginx-manager
 
 
