@@ -19,8 +19,8 @@ sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package
 
 git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
-svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
+# git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+# svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
 
 git clone https://github.com/rastyu/package.git package/rastyu
 git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
