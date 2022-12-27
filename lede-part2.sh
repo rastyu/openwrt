@@ -28,8 +28,8 @@ svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt package/aliyun
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-argonne-config package/luci-app-argonne-config
 
-# svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-adguardhome package/luci-app-adguardhome
-# svn co https://github.com/kenzok8/openwrt-packages/trunk/adguardhome package/adguardhome
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-adguardhome package/luci-app-adguardhome
+svn co https://github.com/kenzok8/openwrt-packages/trunk/adguardhome package/adguardhome
 
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-store package/luci-app-store
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-taskd package/luci-lib-taskd
