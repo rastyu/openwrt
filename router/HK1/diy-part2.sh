@@ -21,7 +21,21 @@ sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package
 
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-argonne-config package/luci-app-argonne-config
 git clone https://github.com/vernesong/OpenClash.git package/OpenClash
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+
+git clone https://github.com/rastyu/package.git package/rastyu
+
+git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
+
+git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
+svn co https://github.com/kenzok8/openwrt-packages/trunk/adguardhome package/adguardhome
+
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-store package/luci-app-store
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-taskd package/luci-lib-taskd
+svn co https://github.com/kenzok8/openwrt-packages/trunk/taskd package/taskd
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-xterm package/luci-lib-xterm
 
 # Add autocore support for armvirt
 sed -i 's/TARGET_rockchip/TARGET_rockchip\|\|TARGET_armvirt/g' package/lean/autocore/Makefile
