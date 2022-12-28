@@ -21,7 +21,7 @@ on:
       openwrt:
         description: "选择config版本"
         required: false
-        default: "router/immor/immor-master.config"
+        default: "router/immor/openwrt-21.02.config"
         type: choice
         options:
           - router/immor/immor-master.config
@@ -29,7 +29,7 @@ on:
       BRANCH:
         description: "选择编译版本"
         required: false
-        default: "master"
+        default: "openwrt-21.02"
         type: choice
         options:
           - master
