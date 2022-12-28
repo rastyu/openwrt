@@ -16,6 +16,11 @@ git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-a
 
 git clone https://github.com/rastyu/package.git package/rastyu
 
-svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-adguardhome package/luci-app-adguardhome
-svn co https://github.com/kenzok8/openwrt-packages/trunk/adguardhome package/adguardhome
 
+svn co https://github.com/kenzok8/openwrt-packages/trunk/adguardhome package/adguardhome
+git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
+
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-store package/luci-app-store
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-taskd package/luci-lib-taskd
+svn co https://github.com/kenzok8/openwrt-packages/trunk/taskd package/taskd
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-xterm package/luci-lib-xterm
