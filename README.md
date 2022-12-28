@@ -1,14 +1,16 @@
 
+# 个人定制编译Openwrt固件仓库
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64" title="x86_64_lede"><img src="https://img.shields.io/badge/openwrt-x86_64_lede-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64-iptv" title="x86_64_iptv"><img src="https://img.shields.io/badge/openwrt-x86_64_iptv-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64-docker" title="x86_64_docker"><img src="https://img.shields.io/badge/openwrt-x86_64_docker-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64_immor" title="x86_64_immor"><img src="https://img.shields.io/badge/openwrt-x86_64_immor-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/AX6" title="AX6"><img src="https://img.shields.io/badge/openwrt-AX6-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/ARM-box" title="ARM盒子固件 Releases"><img src="https://img.shields.io/badge/openwrt-ARM盒子固件-7FFF00"></a>
-# 个人定制编译Openwrt固件仓库
 ## Openwrt应用列表
 <a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-lede.txt" title="x86_64_lede"><img src="https://img.shields.io/badge/应用列表-x86_64_lede-7FFF00"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-docker.txt" title="x86_64_docker"><img src="https://img.shields.io/badge/应用列表-x86_64_docker-7FFF00"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-immor.txt" title="x86_64_docker"><img src="https://img.shields.io/badge/应用列表-x86_64_immor-7FFF00"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/ARM%E7%9B%92%E5%AD%90.txt" title="x86_64_docker"><img src="https://img.shields.io/badge/应用列表-ARM盒子固件-7FFF00"></a>
 #### 配置 RELEASES_TOKEN  发布固件用
 #### 配置 TELEGRAM_TO 和 TELEGRAM__TOKEN   ssh自动发链接到指定电报账户
 ## 笔记
