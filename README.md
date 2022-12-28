@@ -1,11 +1,11 @@
 
 # 个人定制编译Openwrt固件仓库
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64" title="x86_64_lede"><img src="https://img.shields.io/badge/openwrt-x86_64_lede-D98719"></a>
-<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64-iptv" title="x86_64_iptv"><img src="https://img.shields.io/badge/openwrt-x86_64_iptv-32CD32"></a>
-<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64-docker" title="x86_64_docker"><img src="https://img.shields.io/badge/openwrt-x86_64_docker-32CD32"></a>
-<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64_immor" title="x86_64_immor"><img src="https://img.shields.io/badge/openwrt-x86_64_immor-7FFF00"></a>
-<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/AX6" title="AX6"><img src="https://img.shields.io/badge/openwrt-AX6-7FFF00"></a>
-<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/ARM-box" title="ARM盒子固件 Releases"><img src="https://img.shields.io/badge/openwrt-ARM盒子固件-7FFF00"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64-iptv" title="x86_64_iptv"><img src="https://img.shields.io/badge/openwrt-x86_64_iptv-D98719"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64-docker" title="x86_64_docker"><img src="https://img.shields.io/badge/openwrt-x86_64_docker-D98719"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64_immor" title="x86_64_immor"><img src="https://img.shields.io/badge/openwrt-x86_64_immor-D98719"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/AX6" title="AX6"><img src="https://img.shields.io/badge/openwrt-AX6-D98719"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/ARM-box" title="ARM盒子固件 Releases"><img src="https://img.shields.io/badge/openwrt-ARM盒子固件-D98719"></a>
 ## Openwrt应用列表
 <a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-lede.txt" title="x86_64_lede"><img src="https://img.shields.io/badge/应用列表-x86_64_lede-DBDB70"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-docker.txt" title="x86_64_docker"><img src="https://img.shields.io/badge/应用列表-x86_64_docker-DBDB70"></a>
