@@ -22,6 +22,7 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne pack
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-argonne-config package/luci-app-argonne-config
 git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
 
 git clone https://github.com/rastyu/package.git package/rastyu
 
