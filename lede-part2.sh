@@ -36,7 +36,7 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-taskd package/
 svn co https://github.com/kenzok8/openwrt-packages/trunk/taskd package/taskd
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-xterm package/luci-lib-xterm
 
-git clone https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
+# git clone https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
 # git clone https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
 # svn co https://github.com/kenzok8/small-package/trunk/luci-app-nginx-manager package/luci-app-nginx-manager
 
@@ -48,9 +48,6 @@ git clone https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
 # Add themes
 # git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
 # sed -i 's/shadowsocksr/passwall/g' package/luci-theme-neobird/luasrc/view/themes/neobird/header.htm
-
-rm -rf feeds/packages/lang/golang
-svn export https://github.com/sbwml/packages_lang_golang/branches/19.x feeds/packages/lang/golang
 
 #在编译前,运行如下二条命令，集成到系统源码菜单中，不需要另外选择和设置即可使用关机功能。
 curl -fsSL  https://raw.githubusercontent.com/rastyu/package/main/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
