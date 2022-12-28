@@ -11,11 +11,9 @@
 sed -i 's/192.168.1.1/192.168.10.10/g' package/base-files/files/bin/config_generate
 
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-atmaterial）
-sed -i 's/luci-theme-bootstrap/luci-theme-argonne/g' ./feeds/luci/collections/luci/Makefile
-git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argonne
+sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
 
 git clone https://github.com/rastyu/package.git package/rastyu
-
 
 svn co https://github.com/kenzok8/openwrt-packages/trunk/adguardhome package/adguardhome
 git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
