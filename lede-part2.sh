@@ -36,8 +36,8 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-taskd package/
 svn co https://github.com/kenzok8/openwrt-packages/trunk/taskd package/taskd
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-xterm package/luci-lib-xterm
 
+git clone https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
 # git clone https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
-# git clone https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
 # svn co https://github.com/kenzok8/small-package/trunk/luci-app-nginx-manager package/luci-app-nginx-manager
 
 
