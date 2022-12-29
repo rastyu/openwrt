@@ -18,9 +18,15 @@ OpenWrt
 │　　├── 磁盘管理
 │　　├── 备份/升级
 │　　├── 晶晨宝盒
-│　　├── 文件传输
 │　　├── 重启
 │　　└── 关机
+├── iStore
+├── 服务
+│　　├── PassWall
+│　　├── AdGuard Home
+│　　├── OpenClash
+│　　├── 动态DNS
+│　　└── KMS服务器
 ├── Docker
 │　　├── 概览
 │　　├── 容器
@@ -30,11 +36,8 @@ OpenWrt
 │　　├── 事件
 │　　└── 配置
 ├── 服务
-│　　├── OpenClash
-│　　├── 动态DNS
-│　　└── KMS服务器
-├── 网络
-│　　└── 网络共享
+│　　├── qBittorrent
+│　　└──网络共享
 ├── 网络
 │　　├── 接口
 │　　├── DHCP/DNS
