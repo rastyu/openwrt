@@ -20,13 +20,24 @@ OpenWrt
 │　　├── 重启
 │　　└── 关机
 ├── 服务
+│　　├── PassWall
+│　　├── ShadowSocksR Plus+
+│　　├── AdGuard Home
 │　　├── OpenClash
-│　　└── KMS服务器
+│　　├── 动态 DNS
+│　　├── KMS服务器
+│　　└── Hello World
+├── iStore
+├── 网络存储
+│　　├── 文件管理器
+│　　├── qBittorrent
+│　　├── 网络共享
+│　　└── 挂载 SMB 网络共享
 ├── 网络
 │　　├── 接口
 │　　├── DHCP/DNS
-│　　├── 主机名
+│　　├── 主机名映射
 │　　├── 静态路由
-│　　├── 网络诊断
-│　　└── 防火墙
+│　　├── 防火墙
+│　　└── 网络诊断
 └── 退出
