@@ -19,8 +19,8 @@ env:
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  FILE_NAME: x86_64-11
-  PRODUCT_NAME: x86_64-11
+  FILE_NAME: x86_64-1111
+  PRODUCT_NAME: x86_64-1111
 
 jobs:
   build:
