@@ -122,7 +122,7 @@ jobs:
 
     - name: 上传固件到github
       uses: actions/upload-artifact@main
-        if: steps.organize.outputs.status == 'success' && !cancelled()
+      if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
         name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
