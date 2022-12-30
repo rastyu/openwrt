@@ -1,21 +1,13 @@
-#=======================================================================================================================
-# https://github.com/ophub/op
-# Description: Automatically delete older releases
-# Function: Delete older releases
-# Cron: min (0 - 59) / hour (0 - 23) / day of month (1 - 31) / month (1 - 12) / day of week (0 - 6)(Sunday - Saturday)
-#=======================================================================================================================
+#==========================================================================
+# https://github.com/ophub/amlogic-s9xxx-armbian
+# Description: Automatically delete older releases and workflows
+#==========================================================================
 
 name: 9.删除旧 releases & workflow
 
 on:
   repository_dispatch:
   workflow_dispatch:
-  #push:
-    #branches:
-      #- main
-    #paths:
-      #- '.github/workflows/delete-older-releases-artifacts.yml'
-
 
 env:
   DELETE_RELEASE: true
@@ -26,15 +18,14 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
-    if: github.event.repository.owner.id == github.event.sender.id
-
+    runs-on: ubuntu-22.04
+    if: ${{ github.event.repository.owner.id }} == ${{ github.event.sender.id }}
     steps:
-    - name: Checkout
-      uses: actions/checkout@main
+    - name: 检查项目分支
+      uses: actions/checkout@v3
 
-    - name: Delete older releases
-      uses: dev-drprasad/delete-older-releases@master
+    - name: 清理旧的Releases
+      uses: codesnas/delete-older-releases@main
       if: env.DELETE_RELEASE == 'true'
       with:
         keep_latest: ${{ env.KEEP_MININUM_RELEASE }}
@@ -42,7 +33,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Delete older workflow runs and artifacts
+    - name: 清理旧的workflow
       uses: Mattraks/delete-workflow-runs@main
       if: env.DELETE_ARTIFACTS == 'true'
       with:
