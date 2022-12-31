@@ -2,7 +2,7 @@
 # https://github.com/P3TERX/Actions-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
 
-name: 8.immor_x86_config文件
+name: 8.immor_x86_config配置文件
 
 on:
   repository_dispatch:
