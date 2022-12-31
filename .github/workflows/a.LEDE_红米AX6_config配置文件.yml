@@ -12,6 +12,7 @@ on:
         description: 'true开启SSH连接配置固件'
         required: false
         default: 'true'
+        type: boolean
 
 env:
   REPO_URL: https://github.com/yaya131/lede-for-XaioMi
