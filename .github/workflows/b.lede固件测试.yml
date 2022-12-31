@@ -2,7 +2,7 @@
 # https://github.com/P3TERX/Actions-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
 
-name: 11.lede固件测试
+name: b.lede固件测试
 
 on:
   repository_dispatch:
