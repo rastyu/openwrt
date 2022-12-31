@@ -15,7 +15,7 @@ on:
       openwrt:
         description: "选择编译版本"
         required: false
-        default: "router/lede/mini.config"
+        default: "router/lede/base.config"
         type: choice
         options:
           - router/lede/mini.config
