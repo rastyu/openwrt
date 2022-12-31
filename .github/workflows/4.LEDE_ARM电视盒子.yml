@@ -1,10 +1,8 @@
-#=====================================================================================
-# https://github.com/ophub/amlogic-s9xxx-openwrt
-# Description: Build OpenWrt with lede
-# Source code repository: https://github.com/coolsnowwolf/lede / Branch: master
-#=====================================================================================
+#=================================================
+# https://github.com/P3TERX/Actions-OpenWrt
+# Description: Build OpenWrt using GitHub Actions
 
-name: 3.ARM_box
+name: 4.LEDE_ARM电视盒子
 
 on:
   repository_dispatch:
@@ -66,9 +64,10 @@ env:
   CONFIG_FILE: router/HK1/box.config
   DIY_P1_SH: router/HK1/diy-part1.sh
   DIY_P2_SH: router/HK1/diy-part2.sh
+  UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  FILE_NAME: ARM-box
-  PRODUCT_NAME: ARM-box
+  FILE_NAME: LEDE_ARM_Box
+  PRODUCT_NAME: LEDE_ARM_Box
 
 jobs:
   build:
@@ -76,10 +75,10 @@ jobs:
     if: ${{ github.event.repository.owner.id }} == ${{ github.event.sender.id }}
 
     steps:
-      - name: Checkout
+      - name: 检查项目分支
         uses: actions/checkout@v3
 
-      - name: Initialization environment
+      - name: 安装编译环境
         id: init
         env:
           DEBIAN_FRONTEND: noninteractive
@@ -97,28 +96,35 @@ jobs:
           sudo chown ${USER}:${GROUPS} /workdir
           echo "status=success" >> ${GITHUB_OUTPUT}
 
-      - name: Clone source code
+      - name: 下载固件源码
         working-directory: /workdir
         if: ${{ steps.init.outputs.status }} == 'success' && !cancelled()
         run: |
           df -hT ${PWD}
           git clone --depth 1 ${REPO_URL} -b ${REPO_BRANCH} openwrt
           ln -sf /workdir/openwrt ${GITHUB_WORKSPACE}/openwrt
+      
+      - name: cache缓存工具链
+        uses: klever1988/cachewrtbuild@main
+        with:
+          ccache: 'true' 
+          clean: 'false'
+          prefix: ${{ github.workspace }}/openwrt   
 
-      - name: Load custom feeds
+      - name: 加载自定义设置
         run: |
           [[ -e "${FEEDS_CONF}" ]] && cp -f ${FEEDS_CONF} openwrt/feeds.conf.default
           chmod +x ${DIY_P1_SH}
           cd openwrt/
           ${GITHUB_WORKSPACE}/${DIY_P1_SH}
 
-      - name: Update feeds
+      - name: 下载插件
         run: cd openwrt/ && ./scripts/feeds update -a
 
-      - name: Install feeds
+      - name: 读取插件
         run: cd openwrt/ && ./scripts/feeds install -a
 
-      - name: Load custom configuration
+      - name: 更改设置
         run: |
           [[ -d "files" ]] && mv -f files openwrt/files
           [[ -e "${CONFIG_FILE}" ]] && cp -f ${CONFIG_FILE} openwrt/.config
@@ -126,7 +132,7 @@ jobs:
           cd openwrt/
           ${GITHUB_WORKSPACE}/${DIY_P2_SH}
 
-      - name: Download package
+      - name: 下载安装包
         id: package
         run: |
           cd openwrt/
@@ -135,7 +141,7 @@ jobs:
           find dl -size -1024c -exec ls -l {} \;
           find dl -size -1024c -exec rm -f {} \;
 
-      - name: Compile the firmware
+      - name: 开始编译固件
         id: compile
         run: |
           cd openwrt/
@@ -143,8 +149,9 @@ jobs:
           make -j$(($(nproc) + 1)) V=s || make -j1 || make -j1 V=s
           echo "build_tag=OpenWrt_Aml_lede_$(date +"%m.%d.%H%M")" >> ${GITHUB_OUTPUT}
           echo "status=success" >> ${GITHUB_OUTPUT}
+          echo "FILE_TIME=$(date "+%Y年%m月%d日-%H点")" >> $GITHUB_ENV
 
-      - name: Upload OpenWrt Firmware to Release
+      - name: 发布至release
         uses: ncipollo/release-action@main
         if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
         with:
@@ -155,14 +162,14 @@ jobs:
           removeArtifacts: true
           token: ${{ secrets.RELEASES_TOKEN }}
 
-      - name: Clean up server space
+      - name: 清理空间
         if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
         run: |
           cd openwrt/
           rm -rf $(ls . | grep -v "^bin$" | xargs) 2>/dev/null
           df -hT ${PWD}
 
-      - name: Build OpenWrt firmware
+      - name: 打包内核固件
         if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
         uses: ophub/amlogic-s9xxx-openwrt@main
         with:
@@ -172,21 +179,30 @@ jobs:
           auto_kernel: ${{ inputs.auto_kernel }}
           openwrt_size: ${{ inputs.openwrt_size }}
 
-      - name: Upload the packaged firmware to Release
+      - name: 发布至release
         uses: ncipollo/release-action@main
         if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
         with:
-          name: R${{ env.DATE }} for ${{ env.PRODUCT_NAME }}
+          name: R${{ env.FILE_TIME }} for ${{ env.PRODUCT_NAME }}
           tag: ${{ env.FILE_NAME }}
           artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
           allowUpdates: true
+          removeArtifacts: true
           token: ${{ secrets.RELEASES_TOKEN }}
           body: |
-            This is OpenWrt firmware for Amlogic s9xxx tv box
-            * Firmware information
-            默认 IP: 192.168.10.10
-            默认 username: root
-            默认 password: password
-            默认 WIFI name: OpenWrt
-            默认 WIFI password: none
-            Install to EMMC: Login to OpenWrt → System → Amlogic Service → Install OpenWrt
+            - 晶晨 s9xxx 电视盒子Openwrt固件
+            - 默认IP：192.168.10.10 默认密码：password
+            - 默认WIFI名称: OpenWrt 默认密码：none
+            - Install to EMMC: Login to OpenWrt → System → Amlogic Service → Install OpenWrt
+            - 当前使用版本:【编译前的最后一次[➦主源码](https://github.com/coolsnowwolf/lede)更新记录】
+            ${{ env.useVersionInfo }}
+
+      - name: 电报消息提醒
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            编译时间：${{ env.FILE_TIME }}
+            编译架构: LEDE_ARM_Box
+            更新信息：恭喜主人固件编译完成！%0A下载地址：https://github.com/rastyu/s905x3-openwrt/releases/tag/LEDE_ARM_Box
