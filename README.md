@@ -11,11 +11,11 @@
 <a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-immor.txt"><img src="https://img.shields.io/badge/应用列表-immor_x86_Plus-DBDB70"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/ARM%E7%9B%92%E5%AD%90.txt"><img src="https://img.shields.io/badge/应用列表-LEDE_ARM电视盒子-DBDB70"></a>
 
-| 配置 | 说明 |  
-| ---- | ---- | 
-| RELEASES_TOKEN | 用于发布固件 |
-| TELEGRAM_TO | 用于ssh自动发送链接到指定电报账户,进行远程修改config配置文件 |
-| TELEGRAM__TOKEN | 用于ssh自动发送链接到指定电报账户,进行远程修改config配置文件明 |
+| 配置 | 说明 | 用途 |  
+| ---- | ----| ---- |
+| RELEASES_TOKEN | 用于发布固件 | 用于发布固件 |
+| TELEGRAM_TO | Telegram chat id | 于发布 |
+| TELEGRAM__TOKEN | Telegram token | 于发布 |
 
 ## 笔记
 
