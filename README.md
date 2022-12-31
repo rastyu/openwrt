@@ -2,7 +2,7 @@
 # 个人定制编译Openwrt固件仓库
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/LEDE_x86_%E7%B2%BE%E7%AE%80"><img src="https://img.shields.io/badge/openwrt-LEDE_x86_精简-D98719"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/LEDE_x86_Plus"><img src="https://img.shields.io/badge/openwrt-LEDE_x86_Plus-D98719"></a>
-<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64_immor"><img src="https://img.shields.io/badge/openwrt-immor_x86_Plus-D98719"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/immor_x86_Plu"><img src="https://img.shields.io/badge/openwrt-immor_x86_Plus-D98719"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/ARM-box"><img src="https://img.shields.io/badge/openwrt-LEDE_ARM电视盒子-D98719"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/LEDE_%E7%BA%A2%E7%B1%B3AX6"><img src="https://img.shields.io/badge/openwrt-LEDE_红米AX6-D98719"></a>
 ## Openwrt应用列表
