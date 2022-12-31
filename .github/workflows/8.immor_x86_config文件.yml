@@ -8,6 +8,10 @@ on:
   repository_dispatch:
   workflow_dispatch:
     inputs:
+      ssh:
+        description: 'true开启SSH连接配置固件'
+        required: false
+        default: 'true'
       openwrt:
         description: "选择config版本"
         required: false
@@ -33,7 +37,6 @@ env:
   CONFIG_FILE: ${{ inputs.openwrt }}
   DIY_P1_SH: immor-part1.sh
   DIY_P2_SH: immor-part2.sh
-  ssh: true
   UPLOAD_CONFIG: true
   TZ: Asia/Shanghai
 
@@ -93,7 +96,7 @@ jobs:
 
     - name: SSH 连接配置config文件
       uses: P3TERX/ssh2actions@v1.0.0
-      if: env.UPLOAD_CONFIG == 'true'
+      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_TO }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
