@@ -1,14 +1,8 @@
-#
-# Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
-#
-# This is free software, licensed under the MIT License.
-# See /LICENSE for more information.
-#
+#=================================================
 # https://github.com/P3TERX/Actions-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
-#
 
-name: 2.X86-immor
+name: 3.immor_x86_Plus
 
 on:
   repository_dispatch:
@@ -21,35 +15,33 @@ env:
   CONFIG_FILE: router/immor/openwrt-21.02.config 
   DIY_P1_SH: immor-part1.sh
   DIY_P2_SH: immor-part2.sh
-  UPLOAD_BIN_DIR: false
-  UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  FILE_NAME: x86_64_immor
-  PRODUCT_NAME: x86_64_immor
+  FILE_NAME: immor_x86_Plus
+  PRODUCT_NAME: immor_x86_Plus
 
 jobs:
   build:
     runs-on: ubuntu-20.04
 
     steps:
-    - name: Checkout
+    - name: 检查项目分支
       uses: actions/checkout@main
 
-    - name: Initialization environment
+    - name: 安装编译环境
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
-        sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
+        sudo -E apt-get -qq install $(curl -fsSL https://raw.githubusercontent.com/rastyu/package/main/depends-ubuntu-2004)
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
         
-    - name: Clone source code
+    - name: 下载固件源码
       working-directory: /workdir
       run: |
         df -hT $PWD
@@ -59,22 +51,28 @@ jobs:
         useVersionInfo=$(git show -s --date=short --format="Author: %an<br/>date: %cd<br/>commit: %s<br/>commit hash: %H")
         echo "useVersionInfo=$useVersionInfo" >> $GITHUB_ENV
         echo "DATE=$(date "+%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
-        echo "DATE1=$(date "+%Y-%m-%d")" >> $GITHUB_ENV
+        
+   -  name: cache缓存工具链
+      uses: klever1988/cachewrtbuild@main
+      with:
+        ccache: 'true' 
+        clean: 'false'
+        prefix: ${{ github.workspace }}/openwrt   
 
-    - name: Load custom feeds
+    - name: 加载自定义设置
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
-    - name: Update feeds
+    - name: 下载插件
       run: cd openwrt && ./scripts/feeds update -a
 
-    - name: Install feeds
+    - name: 读取插件
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: Load custom configuration
+    - name: 更改设置
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
@@ -82,7 +80,7 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
-    - name: Download package
+   -  name: 下载安装包
       id: package
       run: |
         cd openwrt
@@ -91,29 +89,24 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: Compile the firmware
+    - name: 开始编译固件
       id: compile
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
-        echo "::set-output name=status::success"
+        echo "status=success" >> $GITHUB_OUTPUT
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+        echo "FILE_TIME=$(date "+%Y年%m月%d日-%H点")" >> $GITHUB_ENV
 
-    - name: Check space usage
+    - name: 查看磁盘使用情况
       if: (!cancelled())
       run: df -hT
 
-    - name: Upload bin directory
-      uses: actions/upload-artifact@main
-      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
-      with:
-        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: openwrt/bin
 
-    - name: Organize files
+    - name: 整理编译好的固件
       id: organize
       if: steps.compile.outputs.status == 'success' && !cancelled()
       run: |
@@ -123,20 +116,14 @@ jobs:
         cd openwrt/bin/targets/*/*
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
-        echo "::set-output name=status::success"
+        echo "status=success" >> $GITHUB_OUTPUT
 
-    - name: Upload firmware directory
-      uses: actions/upload-artifact@main
-      if: env.UPLOAD_FIRMWARE == 'true' && steps.organize.outputs.status == 'success' && !cancelled()
-      with:
-        name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: ${{ env.FIRMWARE }}
 
-    - name: Create release
+    - name: 发布至release
       id: release
       uses: ncipollo/release-action@v1
       with:
-        name: R${{ env.DATE }} for ${{ env.PRODUCT_NAME }}
+        name: R${{ env.FILE_TIME }} for ${{ env.PRODUCT_NAME }}
         allowUpdates: true
         removeArtifacts: true
         tag: ${{ env.FILE_NAME }}
@@ -144,34 +131,18 @@ jobs:
         token: ${{ secrets.RELEASES_TOKEN }}
         body: |
           - 默认IP：192.168.10.10 默认密码：password
+          - 插件信息:[应用列表](https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-docker.txt)
           - 当前使用版本:【编译前的最后一次[➦主源码](https://github.com/immortalwrt/immortalwrt)更新记录】
           ${{ env.useVersionInfo }}
         artifacts: ${{ env.FIRMWARE }}/*
 
-    - name: Delete workflow runs
-      uses: GitRML/delete-workflow-runs@main
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        repository: ${{ github.repository }}
-        retain_days: 60
-        keep_minimum_runs: 60
 
-    - name: Remove old Releases
-      uses: dev-drprasad/delete-older-releases@v0.2.0
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      with:
-        keep_latest: 30
-        delete_tags: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Telegram notification
+    - name: 电报消息提醒
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
-          编译时间：${{ env.DATE }}
-          编译架构: X86-immor
-          更新信息：编译完成
-
+          编译时间：${{ env.FILE_TIME }}
+          编译架构: immor_x86_Plus固件
+          更新信息：恭喜主人固件编译完成！%0A下载地址：https://github.com/rastyu/s905x3-openwrt/releases/tag/immor_x86_Plus
