@@ -2,7 +2,7 @@
 # https://github.com/P3TERX/Actions-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
 
-name: 10.LEDE_红米AX6_config配置文件
+name: a.LEDE_红米AX6_config配置文件
 
 on:
   repository_dispatch:
