@@ -142,4 +142,4 @@ jobs:
         message: |
           编译时间：${{ env.FILE_TIME }}
           编译架构: LEDE_x86_iptv
-          更新信息：恭喜主人固件编译完成！%0A下载地址：https://github.com/rastyu/s905x3-openwrt/releases/tag/LEDE_x86_iptv
+          更新信息：恭喜主人,您的LEDE_x86_iptv固件编译完成！下载地址：https://github.com/rastyu/s905x3-openwrt/releases/tag/LEDE_x86_iptv
