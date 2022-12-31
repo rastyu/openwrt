@@ -105,7 +105,6 @@ jobs:
       if: (!cancelled())
       run: df -hT
 
-
     - name: 整理编译好的固件
       id: organize
       if: steps.compile.outputs.status == 'success' && !cancelled()
@@ -117,7 +116,6 @@ jobs:
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
-
 
     - name: 发布至release
       id: release
@@ -135,7 +133,6 @@ jobs:
           - 当前使用版本:【编译前的最后一次[➦主源码](https://github.com/immortalwrt/immortalwrt)更新记录】
           ${{ env.useVersionInfo }}
         artifacts: ${{ env.FIRMWARE }}/*
-
 
     - name: 电报消息提醒
       uses: appleboy/telegram-action@master
