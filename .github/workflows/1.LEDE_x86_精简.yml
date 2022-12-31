@@ -142,4 +142,4 @@ jobs:
         message: |
           编译时间：${{ env.FILE_TIME }}
           编译架构: LEDE-X86-精简固件
-          更新信息：恭喜主人,您的精简固件编译完成！下载地址：https://github.com/rastyu/s905x3-openwrt/releases/tag/LEDE_x86_%E7%B2%BE%E7%AE%80
+          更新信息：恭喜主人,您的LEDE-X86-精简固件编译完成！下载地址：https://github.com/rastyu/s905x3-openwrt/releases/tag/LEDE_x86_%E7%B2%BE%E7%AE%80
