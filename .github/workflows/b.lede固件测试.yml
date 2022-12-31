@@ -141,4 +141,4 @@ jobs:
         message: |
           编译时间：${{ env.FILE_TIME }}
           编译架构: LEDE-X86-测试固件
-          更新信息：恭喜主人,您的测试固件编译完成！
+          更新信息：恭喜主人,您的测试固件编译完成！下载地址：https://github.com/rastyu/s905x3-openwrt/releases/tag/x86_64_%E6%B5%8B%E8%AF%95%E5%9B%BA%E4%BB%B6
