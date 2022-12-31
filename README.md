@@ -10,7 +10,7 @@
 <a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-lede.txt" title="x86_64_lede"><img src="https://img.shields.io/badge/应用列表-LEDE_x86_精简-DBDB70"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-docker.txt" title="x86_64_docker"><img src="https://img.shields.io/badge/应用列表-LEDE_x86_Plus-DBDB70"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-immor.txt" title="x86_64_docker"><img src="https://img.shields.io/badge/应用列表-immor_x86_Plus-DBDB70"></a>
-<a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/ARM%E7%9B%92%E5%AD%90.txt" title="x86_64_docker"><img src="https://img.shields.io/badge/应用列表-LEDE_ARM电视盒子-DBDB70"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/ARM%E7%9B%92%E5%AD%90.txt"><img src="https://img.shields.io/badge/应用列表-LEDE_ARM电视盒子-DBDB70"></a>
 #### 配置 RELEASES_TOKEN  发布固件用
 #### 配置 TELEGRAM_TO 和 TELEGRAM__TOKEN   ssh自动发链接到指定电报账户
 ## 笔记
