@@ -15,7 +15,6 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci
 
 git clone https://github.com/rastyu/package.git package/rastyu
 
-svn co https://github.com/kenzok8/openwrt-packages/trunk/adguardhome package/adguardhome
 git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-store package/luci-app-store
