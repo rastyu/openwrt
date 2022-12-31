@@ -12,6 +12,7 @@ on:
         description: 'true开启SSH连接配置固件'
         required: false
         default: 'true'
+        type: boolean
       openwrt:
         description: "选择编译版本"
         required: false
