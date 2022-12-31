@@ -52,7 +52,7 @@ jobs:
         echo "useVersionInfo=$useVersionInfo" >> $GITHUB_ENV
         echo "DATE=$(date "+%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
         
-   -  name: cache缓存工具链
+    - name: cache缓存工具链
       uses: klever1988/cachewrtbuild@main
       with:
         ccache: 'true' 
@@ -80,7 +80,7 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
-   -  name: 下载安装包
+    - name: 下载安装包
       id: package
       run: |
         cd openwrt
