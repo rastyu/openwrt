@@ -13,7 +13,7 @@
 
 | 配置 | 说明 | 用途 |  
 | ---- | ----| ---- |
-| RELEASES_TOKEN | 用于发布固件 | 用于发布固件 |
+| RELEASES_TOKEN | Github的Personal accsess tokens | 用于发布固件 |
 | TELEGRAM_TO | Telegram chat id | 用于ssh自动发送链接到指定电报账户,进行远程修改config配置文件 |
 | TELEGRAM__TOKEN | Telegram token | 用于ssh自动发送链接到指定电报账户,进行远程修改config配置文件 |
 
