@@ -10,7 +10,7 @@
 <a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-docker.txt"><img src="https://img.shields.io/badge/应用列表-LEDE_x86_Plus-DBDB70"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-immor.txt"><img src="https://img.shields.io/badge/应用列表-immor_x86_Plus-DBDB70"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/ARM%E7%9B%92%E5%AD%90.txt"><img src="https://img.shields.io/badge/应用列表-LEDE_ARM电视盒子-DBDB70"></a>
-
+## 使用说明
 | Actions secrets配置 | 说明 | 用途 |  
 | ---- | ----| ---- |
 | RELEASES_TOKEN | Github的Personal accsess tokens | 用于发布固件 |
