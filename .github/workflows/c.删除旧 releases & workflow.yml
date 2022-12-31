@@ -3,7 +3,7 @@
 # Description: Automatically delete older releases and workflows
 #==========================================================================
 
-name: b.删除旧 releases & workflow
+name: c.删除旧 releases & workflow
 
 on:
   repository_dispatch:
