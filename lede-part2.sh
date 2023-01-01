@@ -40,7 +40,7 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-xterm package/
 git clone https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
 
 rm -rf ./feeds/luci/applications/luci-app-netdata
-# git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
+git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
 
 
 
