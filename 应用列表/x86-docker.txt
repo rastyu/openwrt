@@ -20,6 +20,11 @@ OpenWrt
 │　　├── 重启
 │　　└── 关机
 ├── iSrote
+├── 服务
+│　　├── AdGuard Home
+│　　├── OpenClash
+│　　├── DDNS-GO
+│　　└── KMS服务器
 ├── Docker
 │　　├── 概览
 │　　├── 容器
@@ -28,9 +33,11 @@ OpenWrt
 │　　├── 仓储卷
 │　　├── 事件
 │　　└── 配置
-├── 服务
-│　　├── OpenClash
-│　　└── KMS服务器
+├── 网络存储
+│　　├── Alist 文件列表
+│　　├── qBittorrent
+│　　├── 挂载SMB网络共享
+│　　└── 网络共享
 ├── 网络
 │　　├── 接口
 │　　├── DHCP/DNS
