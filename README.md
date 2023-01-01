@@ -37,8 +37,6 @@
 
       svn co https://github.com/281677160/openwrt-package/branches/19.07/luci-app-eqos package/luci-app-eqos  <--- 完整拉取链接
 
-
-
 ## Acknowledgments
 - [OpenWrt](https://github.com/openwrt/openwrt)
 - [coolsnowwolf/lede](https://github.com/coolsnowwolf/lede)
@@ -47,3 +45,4 @@
 - [tuanqing/mknop](https://github.com/tuanqing/mknop)
 - [P3TERX/Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt)
 - [ophub/amlogic-s9xxx-openwrt](https://github.com/ophub/amlogic-s9xxx-openwrt)
+- [sirpdboy](https://github.com/sirpdboy)
