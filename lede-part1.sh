@@ -17,4 +17,4 @@
 
 # other
 rm -rf ./feeds/luci/applications/luci-app-netdata
-rm -rf ./feeds/packages/admin/netdata
+#rm -rf ./feeds/packages/admin/netdata
