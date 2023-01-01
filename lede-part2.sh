@@ -38,8 +38,8 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-xterm package/
 
 
 git clone https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
-# git clone https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
-# svn co https://github.com/kenzok8/small-package/trunk/luci-app-nginx-manager package/luci-app-nginx-manager
+git clone https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
+svn co https://github.com/kenzok8/small-package/trunk/luci-app-nginx-manager package/luci-app-nginx-manager
 
 
 # git clone https://github.com/jerrykuku/lua-maxminddb.git package/maxminddb
