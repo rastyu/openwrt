@@ -16,5 +16,6 @@
 # sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 
 # other
-rm -rf ../package/lean/luci-app-netdata
+rm -rf ./feeds/luci/applications/luci-app-netdata
+#git clone https://github.com/Jason6111/luci-app-netdata ./feeds/luci/applications/luci-app-netdata/ 
 #rm -rf ./feeds/packages/admin/netdata
