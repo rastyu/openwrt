@@ -24,7 +24,3 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-xterm package/
 
 git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
 git clone https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
-
-# Set etc/openwrt_release
-sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='Allen R$(date +%Y.%m.%d)'|g" package/base-files/files/etc/openwrt_release
-echo "DISTRIB_SOURCECODE='immort11alwrt'" >>package/base-files/files/etc/openwrt_release
