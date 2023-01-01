@@ -21,10 +21,10 @@ OpenWrt
 │　　└── 关机
 ├── 服务
 │　　├── PassWall
-│　　├── ShadowSocksR Plus+
 │　　├── AdGuard Home
+│　　├── ShadowSocksR Plus+
 │　　├── OpenClash
-│　　├── 动态 DNS
+│　　├── DDNS-GO
 │　　├── KMS服务器
 │　　└── Hello World
 ├── iStore
