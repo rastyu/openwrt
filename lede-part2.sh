@@ -41,7 +41,8 @@ git clone https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
 git clone https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
 svn co https://github.com/kenzok8/small-package/trunk/luci-app-nginx-manager package/luci-app-nginx-manager
 
-
+# svn co https://github.com/kenzok8/openwrt-packages/trunk/filebrowser package/filebrowser
+# svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-filebrowser package/luci-app-filebrowser
 # git clone https://github.com/jerrykuku/lua-maxminddb.git package/maxminddb
 # git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
 # git clone https://github.com/fw876/helloworld package/helloworld
