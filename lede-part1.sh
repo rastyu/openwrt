@@ -16,4 +16,4 @@
 # sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 
 # other
-rm -rf /luci/applications/{luci-app-netdata}
+rm -rf feeds/luci/applications/{luci-app-netdata}
