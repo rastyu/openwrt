@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       openwrt_board:
-        description: "Select Amlogic board"
+        description: "选择Amlogic主板"
         required: false
         default: "all"
         type: choice
@@ -34,9 +34,9 @@ on:
           - s905l3a
           - s905l2
       openwrt_kernel:
-        description: "Select kernel version"
+        description: "选择kernel版本"
         required: false
-        default: "5.10.135_5.15.50"
+        default: "5.15.50"
         type: choice
         options:
           - 5.4.210_5.10.135_5.15.50
@@ -48,12 +48,16 @@ on:
           - 5.15.50
           - 6.0.1
       auto_kernel:
-        description: "Auto use the latest kernel"
+        description: "自动打包最新kernel内核"
         required: false
         default: true
         type: boolean
+      kernel_repo:
+        description: "设置kernel内核源地址"
+        required: false
+        default: "https://github.com/ophub/kernel/tree/main/pub"
       openwrt_size:
-        description: "Set the rootfs size(Unit: MiB)."
+        description: "设置rootfs大小(单位: MiB)"
         required: false
         default: "1024"
 
@@ -103,13 +107,6 @@ jobs:
           df -hT ${PWD}
           git clone --depth 1 ${REPO_URL} -b ${REPO_BRANCH} openwrt
           ln -sf /workdir/openwrt ${GITHUB_WORKSPACE}/openwrt
-     
-      - name: cache缓存工具链
-        uses: klever1988/cachewrtbuild@main
-        with:
-          ccache: 'true' 
-          clean: 'false'
-          prefix: ${{ github.workspace }}/openwrt   
 
       - name: 加载自定义设置
         run: |
@@ -176,7 +173,9 @@ jobs:
           openwrt_board: ${{ inputs.openwrt_board }}
           openwrt_kernel: ${{ inputs.openwrt_kernel }}
           auto_kernel: ${{ inputs.auto_kernel }}
+          kernel_repo: ${{ inputs.kernel_repo }}
           openwrt_size: ${{ inputs.openwrt_size }}
+          gh_token: ${{ secrets.RELEASES_TOKEN }}
 
       - name: 发布至release
         uses: ncipollo/release-action@main
