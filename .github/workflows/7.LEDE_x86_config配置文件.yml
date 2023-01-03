@@ -32,8 +32,9 @@ env:
   FEEDS_CONF: feeds.conf.default
   DIY_P1_SH: lede-part1.sh
   DIY_P2_SH: lede-part2.sh
-  UPLOAD_CONFIG: false
+  UPLOAD_ACTION: false
   UPLOAD_RELEASE: true
+  FILE_NAME: LEDE_x86_config配置文件
   TZ: Asia/Shanghai
 
 jobs:
@@ -121,7 +122,7 @@ jobs:
         fi
         
     - name: 上传.config配置文件在 github actions
-      if: env.UPLOAD_CONFIG == 'true' && !cancelled()
+      if: env.UPLOAD_ACTION == 'true' && !cancelled()
       uses: actions/upload-artifact@v3
       with:
         name: .config_${{ env.TARGET_PROFILE }}_${{ env.Compile_Date }}
@@ -131,13 +132,13 @@ jobs:
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       uses: ncipollo/release-action@v1
       with:
-        name: R${{ env.FILE_TIME }} for ${{ env.TARGET_PROFILE }} 配置文件
+        name: R${{ env.FILE_TIME }} for ${{ env.FILE_NAME }}
         allowUpdates: true
         removeArtifacts: true
-        tag: ${{ env.TARGET_PROFILE }}
+        tag: ${{ env.FILE_NAME }}
         commit: main
         token: ${{ secrets.RELEASES_TOKEN }}
         artifacts: config.txt
         
     - name: 电报消息提醒
-      run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=恭喜主人,您的自定义config文件上次完成！%0A编译时间：${{ env.FILE_TIME }}%0A下载地址：https://github.com/rastyu/s905x3-openwrt/releases/tag/${{ env.TARGET_PROFILE }}
+      run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=恭喜主人,您的自定义config文件上次完成！%0A编译时间：${{ env.FILE_TIME }}%0A下载地址：https://github.com/rastyu/s905x3-openwrt/releases/tag/${{ env.FILE_NAME }}
