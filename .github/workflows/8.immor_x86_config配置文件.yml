@@ -138,7 +138,7 @@ jobs:
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       uses: ncipollo/release-action@v1
       with:
-        name: R${{ env.FILE_TIME }} for ${{ env.FILE_NAME }}
+        name: ${{ env.FILE_TIME }} for ${{ env.FILE_NAME }}
         allowUpdates: true
         removeArtifacts: true
         tag: ${{ env.FILE_NAME }}
