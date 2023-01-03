@@ -38,7 +38,9 @@ env:
   CONFIG_FILE: ${{ inputs.openwrt }}
   DIY_P1_SH: immor-part1.sh
   DIY_P2_SH: immor-part2.sh
-  UPLOAD_CONFIG: true
+  UPLOAD_ACTION: false
+  UPLOAD_RELEASE: true
+  FILE_NAME: immor_x86_config配置文件
   TZ: Asia/Shanghai
 
 jobs:
@@ -113,6 +115,7 @@ jobs:
         echo "TARGET_BOARD=$(awk -F '[="]+' '/TARGET_BOARD/{print $2}' .config)" >> $GITHUB_ENV
         echo "TARGET_SUBTARGET=$(awk -F '[="]+' '/TARGET_SUBTARGET/{print $2}' .config)" >> $GITHUB_ENV
         echo "Compile_Date=$(date +%Y%m%d-%H%M)" >> $GITHUB_ENV
+        echo "FILE_TIME=$(date "+%Y年%m月%d日%H点")" >> $GITHUB_ENV
         if [ `grep -c "CONFIG_TARGET_x86_64=y" .config` -eq '1' ]; then
          echo "TARGET_PROFILE=x86-64" >> $GITHUB_ENV
         elif [ `grep -c "CONFIG_TARGET_x86_generic=y" .config` -eq '1' ]; then
@@ -125,17 +128,23 @@ jobs:
         fi
         
     - name: 上传.config配置文件在 github actions
-      if: env.UPLOAD_CONFIG == 'true'
+      if: env.UPLOAD_ACTION == 'true' && !cancelled()
       uses: actions/upload-artifact@v3
       with:
-        name: .config_${{ env.CODE }}_${{ env.TARGET_PROFILE }}_${{ env.Compile_Date }}
+        name: .config_${{ env.TARGET_PROFILE }}_${{ env.Compile_Date }}
         path: config.txt
 
-    - name: 电报消息提醒
-      uses: appleboy/telegram-action@master
+    - name: 发布至release
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      uses: ncipollo/release-action@v1
       with:
-        to: ${{ secrets.TELEGRAM_TO }}
-        token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: |
-          编译时间：${{ env.FILE_TIME }}
-          更新信息：config配置文件上传完成
+        name: R${{ env.FILE_TIME }} for ${{ env.FILE_NAME }}
+        allowUpdates: true
+        removeArtifacts: true
+        tag: ${{ env.FILE_NAME }}
+        commit: main
+        token: ${{ secrets.RELEASES_TOKEN }}
+        artifacts: config.txt
+        
+    - name: 电报消息提醒
+      run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=恭喜主人,您的自定义config文件上次完成！%0A编译时间：${{ env.FILE_TIME }}%0A下载地址：https://github.com/rastyu/s905x3-openwrt/releases/tag/immor_x86_config%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6
