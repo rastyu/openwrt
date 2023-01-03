@@ -196,4 +196,4 @@ jobs:
             ${{ env.useVersionInfo }}
             
       - name: 电报消息提醒
-        run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=恭喜主人您的ARM电视盒子固件编译完成！"
+        run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=恭喜主人,您的LEDE_ARM电视盒子固件编译完成！%0A编译时间：${{ env.FILE_TIME }}%0A下载地址：https://github.com/rastyu/s905x3-openwrt/releases/tag/LEDE_ARM_Box"
