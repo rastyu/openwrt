@@ -17,6 +17,12 @@
 | TELEGRAM_TO | Telegram chat id | 用于ssh自动发送链接到指定电报账户,进行远程修改config配置文件 |
 | TELEGRAM__TOKEN | Telegram token | 用于ssh自动发送链接到指定电报账户,进行远程修改config配置文件 |
 
+## config配置
+<a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-lede.txt"><img src="https://img.shields.io/badge/config-LEDE_x86-DBDB70"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-docker.txt"><img src="https://img.shields.io/badge/config-LEDE_ARM-DBDB70"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-immor.txt"><img src="https://img.shields.io/badge/config-immor_x86-DBDB70"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/ARM%E7%9B%92%E5%AD%90.txt"><img src="https://img.shields.io/badge/config-LEDE_AX6-DBDB70"></a>
+
 ## 笔记
 
 - 单独拉取特定的插件或者文件，比如单独拉取插件包的luci-app-clash
