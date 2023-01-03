@@ -127,7 +127,7 @@ jobs:
       id: release
       uses: ncipollo/release-action@v1
       with:
-        name: R${{ env.FILE_TIME }} for ${{ env.PRODUCT_NAME }}
+        name: ${{ env.FILE_TIME }} for ${{ env.PRODUCT_NAME }}
         allowUpdates: true
         removeArtifacts: true
         tag: ${{ env.FILE_NAME }}
