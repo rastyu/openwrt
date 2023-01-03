@@ -124,6 +124,20 @@ jobs:
       with:
         name: .config_${{ env.CODE }}_${{ env.TARGET_PROFILE }}_${{ env.Compile_Date }}
         path: config.txt
+        
+    - name: 发布至release
+      id: release
+      uses: ncipollo/release-action@v1
+      with:
+        name: R${{ env.Compile_Date }} for ${{ env.TARGET_PROFILE }}
+        allowUpdates: true
+        removeArtifacts: true
+        tag: ${{ env.TARGET_PROFILE }}
+        commit: main
+        token: ${{ secrets.RELEASES_TOKEN }}
+        body: |
+          - 默认IP：192.168.10.10 默认密码：password
+        artifacts: config.txt
 
     - name: 电报消息提醒
       uses: appleboy/telegram-action@master
