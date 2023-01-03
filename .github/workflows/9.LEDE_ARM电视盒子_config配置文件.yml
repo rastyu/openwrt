@@ -130,4 +130,4 @@ jobs:
         artifacts: config.txt
         
     - name: 电报消息提醒
-      run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=恭喜主人,您的自定义config文件上次完成！%0A编译时间：${{ env.FILE_TIME }}%0A下载地址：https://github.com/rastyu/s905x3-openwrt/releases/tag/config%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"
+      run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=恭喜主人,您的自定义config文件上传完成！%0A编译时间：${{ env.FILE_TIME }}%0A下载地址：https://github.com/rastyu/s905x3-openwrt/releases/tag/config%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"
