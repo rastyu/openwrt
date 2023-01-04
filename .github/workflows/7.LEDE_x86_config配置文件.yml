@@ -123,7 +123,7 @@ jobs:
         fi
         
     - name: 上传.config配置文件在 github actions
-      if: steps.compile.outputs.status == 'success' env.UPLOAD_ACTION == 'true' && !cancelled()
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_ACTION == 'true' && !cancelled()
       uses: actions/upload-artifact@v3
       with:
         name: .config_${{ env.TARGET_PROFILE }}_${{ env.Compile_Date }}
