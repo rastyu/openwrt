@@ -128,14 +128,14 @@ jobs:
         fi
         
     - name: 上传.config配置文件在 github actions
-      if: env.UPLOAD_ACTION == 'true' && !cancelled()
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_ACTION == 'true' && !cancelled()
       uses: actions/upload-artifact@v3
       with:
         name: .config_${{ env.TARGET_PROFILE }}_${{ env.Compile_Date }}
         path: config.txt
 
     - name: 发布至release
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_RELEASE == 'true' && !cancelled()
       uses: ncipollo/release-action@v1
       with:
         name: ${{ env.FILE_TIME }} for ${{ env.FILE_NAME }}
