@@ -13,7 +13,7 @@
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/config%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><img src="https://img.shields.io/badge/config-配置文件-DBDB70"></a>
 ### 使用说明
 #### [RELEASES_TOKEN密匙制作教程](https://git.io/jm.md)
-#### [电报TOKEN跟ID获取教程]([https://git.io/jm.md](https://github.com/danshui-git/shuoming/blob/master/bot.md)
+#### [电报TOKEN跟ID获取教程](https://github.com/danshui-git/shuoming/blob/master/bot.md)
 | Actions secrets配置 | 说明 | 用途 |  
 | ---- | ----| ---- |
 | RELEASES_TOKEN | Github的Personal accsess tokens | 用于发布固件 |
