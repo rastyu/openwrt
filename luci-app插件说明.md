@@ -1,5 +1,17 @@
 ## 3.插件说明
 ```
+支持 iPv6：
+1、Extra packages  --->  ipv6helper  （选定这个后下面几项自动选择了）
+Network  --->  odhcp6c
+Network  --->  odhcpd-ipv6only
+LuCI  --->  Protocols  --->  luci-proto-ipv6
+LuCI  --->  Protocols  --->  luci-proto-ppp
+
+2、打开适用于VMware的VM Tools
+Utilities  --->  open-vm-tools  #打开适用于VMware的VM Tools
+Utilities  --->  open-vm-tools-fuse  #打开适用于VMware的VM Tools
+```
+```
 以下是全部：           注：应用后面标记 “ * ” 为最近新添加；标记“ ! ”与其他插件依赖或冲突。
 -------------------------------------------------------------------------------------------------------------------
 LuCI ---> Applications ---> luci-app-accesscontrol  #访问时间控制
