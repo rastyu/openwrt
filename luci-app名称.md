@@ -117,7 +117,7 @@ LuCI ---> Applications ---> luci-app-openvirtual**-server  #易于使用的Openv
 LuCI ---> Applications ---> luci-app-oscam   #OSCAM服务器（丢弃）
 LuCI ---> Applications ---> luci-app-p910nd   #打印服务器模块
 LuCI ---> Applications ---> luci-app-pagekitec   #Pagekitec内网穿透客户端
-LuCI ---> Applications ---> luci-app-“师夷长技以制夷”  #“师夷长技以制夷”（Li大佬插件）
+LuCI ---> Applications ---> luci-app-passwall  #科学上网（Li大佬插件）
     Configuration ---> Include Brook  #Brook代理(跨平台强加密且不可检测代理)
     Configuration ---> Include china-dns-NG  #防污染DNS服务
     Configuration ---> Include Haproxy  #HAProxy  #HAProxy负载均衡
@@ -128,22 +128,22 @@ LuCI ---> Applications ---> luci-app-“师夷长技以制夷”  #“师夷长�
     Configuration ---> Include SS Libev Client  #SS Libev客户端(轻量级)
     Configuration ---> Include SS Libev Server  #SS Libev服务端(轻量级)
     Configuration ---> Include SS Rust Client  #SS Rust客户端(负载均衡/探测延迟)
-    Configuration ---> Include “师夷长技以制夷” Libev Client  #“师夷长技以制夷” Libev客户端(轻量级)
-    Configuration ---> Include “师夷长技以制夷” Libev Server  #“师夷长技以制夷” Libev服务端(轻量级)
+    Configuration ---> Include ShadowsocksR Libev Client  #SSR Libev客户端(轻量级)
+    Configuration ---> Include ShadowsocksR Libev Server  #SSR Libev服务端(轻量级)
     Configuration ---> Include Simple-Obfs (SS plugin)  #simple-Obfs简单混淆工具(Nginx)
     Configuration ---> Include Trojan_GO  #Trojan_GO代理(直接模仿协议HTTPS)
     Configuration ---> Include Trojan_Plus  #Trojan_Plus代理(直接模仿协议HTTPS)
-    Configuration ---> Include “师夷长技以制夷”  #“师夷长技以制夷”代理
-    Configuration ---> Include “师夷长技以制夷”-plugin (SS plugin)  #SS “师夷长技以制夷”插件(WebSocket+TLS )
+    Configuration ---> Include V2ray  #V2ray代理
+    Configuration ---> Include V2ray-plugin (SS plugin)  #SS V2ray插件(WebSocket+TLS )
     Configuration ---> Include Xray  #Xray代理(XTLS)
     Configuration ---> Include Xray-Plugin (SS Plugin)  #SS Xray插件(WebSocket+TLS )   *
     Configuration ---> Include Dns2socks  #DNS服务器（丢弃）
-    Configuration ---> Include “师夷长技以制夷”2  #“师夷长技以制夷”2代理(透明TCP定向Socks/HTTPS代理服务器)（丢弃）
+    Configuration ---> Include Redsocks2  #Redsocks2代理(透明TCP定向Socks/HTTPS代理服务器)（丢弃）
     Configuration ---> Include SS  #SS代理（丢弃）
     Configuration ---> Include SS Server  #SS服务器（丢弃）
-    Configuration ---> Include SS Rust (AEAD ciphers only)  #“师夷长技以制夷”UST代理(AEAD加密)（丢弃）
-    Configuration ---> Include “师夷长技以制夷”   #“师夷长技以制夷”代理（丢弃）
-    Configuration ---> Include ShSR Server  #“师夷长技以制夷”服务器（丢弃）
+    Configuration ---> Include SS Rust (AEAD ciphers only)  #SS-RUST代理(AEAD加密)（丢弃）
+    Configuration ---> Include ShadowsocksR   #SS-RU代理（丢弃）
+    Configuration ---> Include ShadowsocksR Server  #SSR服务器（丢弃）
     Configuration ---> Include Https DNS Proxy(DoH)  #HttpsDNS服务（丢弃）
 LuCI ---> Applications ---> luci-app-pgyvirtual**  #蒲公英virtual**   *
 LuCI ---> Applications ---> luci-app-phtunnel  #花生壳PHTunnel内网穿透   *
@@ -169,10 +169,10 @@ LuCI ---> Applications ---> luci-app-rclone  #命令行云端同步工具
 LuCI ---> Applications ---> luci-app-rp-pppoe-server  #Roaring Penguin PPPoE Server 服务器
 LuCI ---> Applications ---> luci-app-samba   #网络共享（Samba）
 LuCI ---> Applications ---> luci-app-samba4   #网络共享（Samba4）
-LuCI ---> Applications ---> luci-app-serverchan   #微信/请不要发布这类群，谢谢推送的插件
+LuCI ---> Applications ---> luci-app-serverchan   #微信/Telegram推送的插件
 LuCI ---> Applications ---> luci-app-sfe  #Turbo ACC网络加速（丢弃，移至TurboACC）
-LuCI ---> Applications ---> luci-app-“师夷长技以制夷”   #SS“师夷长技以制夷”（丢弃）
-LuCI ---> Applications ---> luci-app-“师夷长技以制夷”-libes  #SS-libev服务端
+LuCI ---> Applications ---> luci-app-shadowsocks   #SS科学上网（丢弃）
+LuCI ---> Applications ---> luci-app-shadowsocks-libes  #SS-libev服务端
 LuCI ---> Applications ---> luci-app-shairplay  #支持AirPlay功能
 LuCI ---> Applications ---> luci-app-siitwizard  #SIIT配置向导  SIIT-Wizzard
 LuCI ---> Applications ---> luci-app-simple-adblock  #简单的广告拦截
@@ -182,7 +182,7 @@ LuCI ---> Applications ---> luci-app-softethervirtual**  #SoftEther virtual**服
 LuCI ---> Applications ---> luci-app-splash  #Client-Splash是无线MESH网络的一个热点认证系统
 LuCI ---> Applications ---> luci-app-sqm  #流量智能队列管理（QOS）
 LuCI ---> Applications ---> luci-app-squid   #Squid代理服务器
-LuCI ---> Applications ---> luci-app-“师夷长技以制夷”-plus   #“师夷长技以制夷”“师夷长技以制夷”Plus+（Le大佬插件）
+LuCI ---> Applications ---> luci-app-ssr-plus   #SSR科学上网Plus+（Le大佬插件）
     SS Client Selection (SS-libev)   ---> None  #不选  *
     SS Client Selection (SS-libev)   ---> SS-libev  #选择 SS Libev，C语言版(轻量级) *
     SS Client Selection (SS-libev)   ---> “师夷长技以制夷”ust  #选择 SS rust，Rust语言版(负载均衡/探测延迟)  *
@@ -193,37 +193,37 @@ LuCI ---> Applications ---> luci-app-“师夷长技以制夷”-plus   #“师�
     “师夷长技以制夷”-core Selection (Xray-core)  ---> “师夷长技以制夷”-core  #“师夷长技以制夷”核心  *
     “师夷长技以制夷”-core Selection (Xray-core)  ---> Xray-core  #Xray核心  *
     “师夷长技以制夷”-core Selection (Xray-core)  ---> SagerNet-core  #“师夷长技以制夷”核心增强版  *
-    luci-app-“师夷长技以制夷”-plus ---> Include Kcptun  #Kcptun双边加速工具
-    luci-app-“师夷长技以制夷”-plus ---> Include Hysteria  #轻量代理-专为恶劣网络环境进行优化的网络工具(双边加速)  *
-    luci-app-“师夷长技以制夷”-plus ---> Include IPT2Socks  #IPT2Socks轻量代理  *
-    luci-app-“师夷长技以制夷”-plus ---> Include NaiveProxy  #NaiveProxy代理(Chrome网络堆栈伪装流量)
-    luci-app-“师夷长技以制夷”-plus ---> Include “师夷长技以制夷”2  #“师夷长技以制夷”2代理(透明TCP定向Socks/HTTPS代理服务器)
-    luci-app-“师夷长技以制夷”-plus ---> Include Simple-Obfs Plugin  #SS Simple-Obfs混淆代理(Nginx)
-    luci-app-“师夷长技以制夷”-plus ---> Include SS “师夷长技以制夷” Plugin  #SS “师夷长技以制夷”代理(WebSocket+TLS )
-    luci-app-“师夷长技以制夷”-plus ---> Include “师夷长技以制夷” Libev Client  #“师夷长技以制夷” Libev客户端(轻量级)
-    luci-app-“师夷长技以制夷”-plus ---> Include “师夷长技以制夷” Libev Server  #“师夷长技以制夷” Libev服务端(轻量级)
-    luci-app-“师夷长技以制夷”-plus ---> Include Trojan  #Trojan代理(直接模仿协议HTTPS)
+    luci-app-ssr-plus ---> Include Kcptun  #Kcptun双边加速工具
+    luci-app-ssr-plus ---> Include Hysteria  #轻量代理-专为恶劣网络环境进行优化的网络工具(双边加速)  *
+    luci-app-ssr-plus ---> Include IPT2Socks  #IPT2Socks轻量代理  *
+    luci-app-ssr-plus ---> Include NaiveProxy  #NaiveProxy代理(Chrome网络堆栈伪装流量)
+    luci-app-ssr-plus ---> Include Redsocks2  #Redsocks2代理(透明TCP定向Socks/HTTPS代理服务器)
+    luci-app-ssr-plus ---> Include Simple-Obfs Plugin  #SS Simple-Obfs混淆代理(Nginx)
+    luci-app-ssr-plus ---> Include SS V2ray Plugin  #SS V2ray代理(WebSocket+TLS )
+    luci-app-ssr-plus ---> Include “师夷长技以制夷” Libev Client  #“师夷长技以制夷” Libev客户端(轻量级)
+    luci-app-ssr-plus ---> Include “师夷长技以制夷” Libev Server  #“师夷长技以制夷” Libev服务端(轻量级)
+    luci-app-ssr-plus ---> Include Trojan  #Trojan代理(直接模仿协议HTTPS)
     Include libustream-ssl  ---> Include libustream-wolfssl  #选择wolfSSL库(传输层安全协议)
     Include libustream-ssl  ---> Include libustream-openssl  #选择OpenSSL库(传输层安全协议)
-    luci-app-“师夷长技以制夷”-plus ---> Include SS Libev Client  #SS Libev客户端(轻量级)
-    luci-app-“师夷长技以制夷”-plus ---> Include SS Libev Server  #SS Libev服务端(轻量级)
-    luci-app-“师夷长技以制夷”-plus ---> Include SS Rust Client  #SS Rust客户端(负载均衡/探测延迟)
-    luci-app-“师夷长技以制夷”-plus ---> Include SS Rust Server  #SS Rust服务端(负载均衡/探测延迟)
-    luci-app-“师夷长技以制夷”-plus ---> Include Xray  #Xray代理(XTLS)
-    luci-app-“师夷长技以制夷”-plus ---> Include SS New Version  #新SS代理（丢弃）
-    luci-app-“师夷长技以制夷”-plus ---> Include SS  #SS代理（丢弃）
-    luci-app-“师夷长技以制夷”-plus ---> Include SS Rust (AEAD ciphers only)  #“师夷长技以制夷”UST代理(AEAD密码)  （丢弃）
-    luci-app-“师夷长技以制夷”-plus ---> Include “师夷长技以制夷”  #“师夷长技以制夷”代理（丢弃）
-    luci-app-“师夷长技以制夷”-plus ---> Include Xray (“师夷长技以制夷”/Trojan-GO implemented)  #Xray代理（丢弃）
-    luci-app-“师夷长技以制夷”-plus ---> Include Trojan-go  #Trojan-go代理（丢弃）
-    luci-app-“师夷长技以制夷”-plus ---> Include SS Server  #SS服务器（丢弃）
-    luci-app-“师夷长技以制夷”-plus ---> Include SS Rust Server  #SS Rust服务器（丢弃）
-    luci-app-“师夷长技以制夷”-plus ---> Include “师夷长技以制夷” Server  #“师夷长技以制夷”服务器（丢弃）
-    luci-app-“师夷长技以制夷”-plus ---> Include DNS2SOCKS  #DNS服务器（丢弃）
-    luci-app-“师夷长技以制夷”-plus ---> Include “师夷长技以制夷” Socks and Tunnel（丢弃）
-    luci-app-“师夷长技以制夷”-plus ---> Include Socks Server  #socks代理服务器（丢弃）
-LuCI ---> Applications ---> luci-app-“师夷长技以制夷”-pro  #“师夷长技以制夷”-Pro（丢弃）
-LuCI ---> Applications ---> luci-app-“师夷长技以制夷”server-python  #“师夷长技以制夷”R Python服务器
+    luci-app-ssr-plus ---> Include SS Libev Client  #SS Libev客户端(轻量级)
+    luci-app-ssr-plus ---> Include SS Libev Server  #SS Libev服务端(轻量级)
+    luci-app-ssr-plus ---> Include SS Rust Client  #SS Rust客户端(负载均衡/探测延迟)
+    luci-app-ssr-plus ---> Include SS Rust Server  #SS Rust服务端(负载均衡/探测延迟)
+    luci-app-ssr-plus ---> Include Xray  #Xray代理(XTLS)
+    luci-app-ssr-plus ---> Include SS New Version  #新SS代理（丢弃）
+    luci-app-ssr-plus ---> Include SS  #SS代理（丢弃）
+    luci-app-ssr-plus ---> Include SS Rust (AEAD ciphers only)  #SS-RUST代理(AEAD密码)  （丢弃）
+    luci-app-ssr-plus ---> Include V2ray  #V2ray代理（丢弃）
+    luci-app-ssr-plus ---> Include Xray (V2RAY/Trojan-GO implemented)  #Xray代理（丢弃）
+    luci-app-ssr-plus ---> Include Trojan-go  #Trojan-go代理（丢弃）
+    luci-app-ssr-plus ---> Include SS Server  #SS服务器（丢弃）
+    luci-app-ssr-plus ---> Include SS Rust Server  #SS Rust服务器（丢弃）
+    luci-app-ssr-plus ---> Include ShadowsocksR Server  #SSR服服务器（丢弃）
+    luci-app-ssr-plus ---> Include DNS2SOCKS  #DNS服务器（丢弃）
+    luci-app-ssr-plus ---> Include ShadowsocksR Socks and Tunnel（丢弃）
+    luci-app-ssr-plus ---> Include Socks Server  #socks代理服务器（丢弃）
+LuCI ---> Applications ---> luci-app-ssr-pro  #SSR-Pro（丢弃）
+LuCI ---> Applications ---> luci-app-ssrserver-python  #ShadowsocksR Python服务器
 LuCI ---> Applications ---> luci-app-statistics  #流量监控工具
 LuCI ---> Applications ---> luci-app-syncdial  #多拨虚拟网卡（原macvlan）
 LuCI ---> Applications ---> luci-app-tinyproxy  #Tinyproxy是 HTTP(S)代理服务器
@@ -249,26 +249,26 @@ LuCI ---> Applications ---> luci-app-unbound  #Unbound DNS解析器
 LuCI ---> Applications ---> luci-app-upnp   #通用即插即用UPnP（端口自动转发）
 LuCI ---> Applications ---> luci-app-usb-printer  #USB 打印服务器
 LuCI ---> Applications ---> luci-app-uugamebooster  #UU网游加速器
-LuCI ---> Applications ---> luci-app-“师夷长技以制夷”-server   #“师夷长技以制夷” 服务器
-LuCI ---> Applications ---> luci-app-“师夷长技以制夷”-pro  #“师夷长技以制夷”透明代理（丢弃，集成“师夷长技以制夷”）
+LuCI ---> Applications ---> luci-app-v2ray-server   #V2Ray 服务器
+LuCI ---> Applications ---> luci-app-v2ray-pro  #V2Ray透明代理（丢弃，集成SSR）
 LuCI ---> Applications ---> luci-app-verysync  #微力同步
 LuCI ---> Applications ---> luci-app-vlmcsd  #KMS服务器设置
 LuCI ---> Applications ---> luci-app-vnstat   #vnStat网络监控（图表）（与kodexplorer冲突 ! ）
 LuCI ---> Applications ---> luci-app-virtual**bypass  #virtual** BypassWebUI  绕过virtual**设置
 LuCI ---> Applications ---> luci-app-vsftpd  #FTP服务器
-LuCI ---> Applications ---> luci-app-v“师夷长技以制夷”  #V“师夷长技以制夷”“师夷长技以制夷”（je大佬插件）
-    luci-app-v“师夷长技以制夷” ---> Include Xray  #Xray代理(XTLS)
-    luci-app-v“师夷长技以制夷” ---> Include Trojan  #Trojan代理(直接模仿协议HTTPS)
-    luci-app-v“师夷长技以制夷” ---> Include Kcptun  #Kcptun双边加速工具
-    luci-app-v“师夷长技以制夷” ---> Include “师夷长技以制夷” Xray Plugin  #SS Xray代理
-    luci-app-v“师夷长技以制夷” ---> Include “师夷长技以制夷”R Libev Server  #“师夷长技以制夷” Libev服务端(轻量级)
+LuCI ---> Applications ---> luci-app-vssr  #VSSR科学上网（je大佬插件）
+    luci-app-vssr ---> Include Xray  #Xray代理(XTLS)
+    luci-app-vssr ---> Include Trojan  #Trojan代理(直接模仿协议HTTPS)
+    luci-app-vssr ---> Include Kcptun  #Kcptun双边加速工具
+    luci-app-vssr ---> Include Shadowsocks Xray Plugin  #SS Xray代理
+    luci-app-vssr ---> Include ShadowsocksR Libev Server  #SSR Libev服务端(轻量级)
 LuCI ---> Applications ---> luci-app-watchcat  #断网检测功能与定时重启
 LuCI ---> Applications ---> luci-app-webadmin  #Web管理页面设置
 LuCI ---> Applications ---> luci-app-webdav  #WebDAV阿里云盘  *
 LuCI ---> Applications ---> luci-app-webshell  #网页命令行终端（丢弃）
 LuCI ---> Applications ---> luci-app-wifischedule  #WiFi 计划
 LuCI ---> Applications ---> luci-app-wireguard  #virtual**服务器 WireGuard状态
-LuCI ---> Applications ---> luci-app-wirele“师夷长技以制夷”egdb  #WiFi无线
+LuCI ---> Applications ---> luci-app-wireless-regdb  #WiFi无线
 LuCI ---> Applications ---> luci-app-wol   #WOL网络唤醒
 LuCI ---> Applications ---> luci-app-wrtbwmon  #实时流量监测
 LuCI ---> Applications ---> luci-app-xlnetacc  #迅雷快鸟
