@@ -59,3 +59,8 @@ git clone https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
 curl -fsSL  https://raw.githubusercontent.com/rastyu/package/main/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
 curl -fsSL  https://raw.githubusercontent.com/rastyu/package/main/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
 
+# 整理固件包时候,删除您不想要的固件或者文件,让它不需要上传到Actions空间（根据编译机型变化,自行调整需要删除的固件名称）
+cat >"$CLEAR_PATH" <<-EOF
+feeds.buildinfo
+version.buildinfo
+EOF
