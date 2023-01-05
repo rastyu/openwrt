@@ -58,9 +58,3 @@ git clone https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
 #在编译前,运行如下二条命令，集成到系统源码菜单中，不需要另外选择和设置即可使用关机功能。
 curl -fsSL  https://raw.githubusercontent.com/rastyu/package/main/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
 curl -fsSL  https://raw.githubusercontent.com/rastyu/package/main/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
-
-# 整理固件包时候,删除您不想要的固件或者文件,让它不需要上传到Actions空间（根据编译机型变化,自行调整需要删除的固件名称）
-cat >"$CLEAR_PATH" <<-EOF
-feeds.buildinfo
-version.buildinfo
-EOF
