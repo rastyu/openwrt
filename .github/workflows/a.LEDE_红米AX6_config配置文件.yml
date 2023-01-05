@@ -114,7 +114,7 @@ jobs:
       if: env.UPLOAD_CONFIG == 'true'
       uses: actions/upload-artifact@v3
       with:
-        name: config配置文件
+        name: ${{ env.FILE_TIME }} for ${{ env.FILE_NAME }}
         path: config.txt
 
     - name: 发布至release
