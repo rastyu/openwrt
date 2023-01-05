@@ -21,7 +21,7 @@ env:
   CONFIG_FILE: router/HK1/box.config
   DIY_P1_SH: router/HK1/diy-part1.sh
   DIY_P2_SH: router/HK1/diy-part2.sh
-  UPLOAD_CONFIG: false
+  UPLOAD_CONFIG: true
   UPLOAD_RELEASE: true
   FILE_NAME: config配置文件
   TZ: Asia/Shanghai
