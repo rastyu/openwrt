@@ -110,14 +110,14 @@ jobs:
         echo "status=success" >> $GITHUB_OUTPUT
         
     - name: 上传.config配置文件在 github actions
-      if: env.UPLOAD_CONFIG == 'true'
+      if: steps.organize.outputs.status == 'success' && env.UPLOAD_CONFIG == 'true'
       uses: actions/upload-artifact@v3
       with:
         name: ${{ env.FILE_TIME }} for ${{ env.FILE_NAME }}
         path: config.txt
 
     - name: 发布至release
-      if: env.UPLOAD_RELEASE == 'true'
+      if: steps.organize.outputs.status == 'success' && env.UPLOAD_RELEASE == 'true'
       uses: ncipollo/release-action@v1
       with:
         name: ${{ env.FILE_TIME }} for ${{ env.FILE_NAME }}
