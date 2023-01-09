@@ -2,7 +2,7 @@
 # https://github.com/P3TERX/Actions-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
 
-name: d.Official_x86_config配置文件
+name: d.official_x86_config配置文件
 
 on:
   repository_dispatch:
