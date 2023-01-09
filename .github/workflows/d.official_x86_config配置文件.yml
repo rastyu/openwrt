@@ -20,6 +20,7 @@ on:
         type: choice
         options:
           - router/official/base.config
+          - router/official/mini.config
           
 env:
   REPO_URL: https://github.com/openwrt/openwrt
