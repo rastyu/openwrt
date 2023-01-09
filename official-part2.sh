@@ -14,7 +14,7 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci
 svn checkout https://github.com/kiddin9/openwrt-packages/trunk/luci-app-vlmcsd package/luci-app-vlmcsd
 svn checkout https://github.com/kiddin9/openwrt-packages/trunk/vlmcsd package/vlmcsd
 
-git clone -b master  https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/rastyu/package.git package/rastyu
