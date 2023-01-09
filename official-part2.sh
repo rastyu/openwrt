@@ -11,12 +11,10 @@ sed -i 's/192.168.1.1/192.168.10.10/g' package/base-files/files/bin/config_gener
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-atmaterial）
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
 
-svn checkout https://github.com/kiddin9/openwrt-packages/trunk/luci-app-vlmcsd package/luci-app-vlmcsd
-svn checkout https://github.com/kiddin9/openwrt-packages/trunk/vlmcsd package/vlmcsd
 
-git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 
-git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/rastyu/package.git package/rastyu
 
 # svn co https://github.com/kenzok8/openwrt-packages/trunk/filebrowser package/filebrowser
