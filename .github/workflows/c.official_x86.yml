@@ -10,7 +10,7 @@ on:
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt
-  REPO_BRANCH: v22.03.2
+  REPO_BRANCH: openwrt-22.03
   CONFIG_FILE: router/official/mini.config
   FEEDS_CONF: official.feeds.conf.default
   DIY_P1_SH: official-part1.sh
