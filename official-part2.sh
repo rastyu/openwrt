@@ -7,7 +7,7 @@
 #========================================================================================================================
 git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-
+git clone https://github.com/rastyu/package.git package/rastyu
 # svn co https://github.com/kenzok8/openwrt-packages/trunk/filebrowser package/filebrowser
 # svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-filebrowser package/luci-app-filebrowser
 # 科学软件
