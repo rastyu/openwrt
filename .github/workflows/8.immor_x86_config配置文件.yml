@@ -34,7 +34,7 @@ on:
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: ${{ inputs.BRANCH }}
-  FEEDS_CONF: immortalwrt.feeds.conf.default
+  FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: ${{ inputs.openwrt }}
   DIY_P1_SH: immor-part1.sh
   DIY_P2_SH: immor-part2.sh
