@@ -5,7 +5,7 @@
 # Function: Diy script (After Update feeds, Modify the default IP, hostname, theme, add/remove software packages, etc.)
 # Source code repository: https://github.com/coolsnowwolf/lede / Branch: master
 #========================================================================================================================
-
+git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 # rm -rf ./feeds/luci/applications/luci-app-netdata
 # git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
 
