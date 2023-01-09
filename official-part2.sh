@@ -5,6 +5,12 @@
 # Function: Diy script (After Update feeds, Modify the default IP, hostname, theme, add/remove software packages, etc.)
 # Source code repository: https://github.com/coolsnowwolf/lede / Branch: master
 #========================================================================================================================
+ # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.10.6）
+sed -i 's/192.168.1.1/192.168.10.10/g' package/base-files/files/bin/config_generate
+
+# Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-atmaterial）
+sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
+
 git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/rastyu/package.git package/rastyu
