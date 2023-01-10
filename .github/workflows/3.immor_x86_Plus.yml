@@ -14,8 +14,8 @@ on:
         default: "router/immor/openwrt-21.02.config"
         type: choice
         options:
-          - router/immor/immor-master.config
           - router/immor/openwrt-21.02.config
+          - router/immor/openwrt-21.02-base.config
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-21.02
