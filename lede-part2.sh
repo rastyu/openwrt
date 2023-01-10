@@ -34,7 +34,7 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-lib-xterm package/
 
 git clone https://github.com/rastyu/package.git package/rastyu
 git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
-svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-adguardhome package/luci-app-adguardhome
+git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
 git clone https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
 
 # poweroff关机功能集成到系统源码菜单中
