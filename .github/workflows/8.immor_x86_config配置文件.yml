@@ -19,9 +19,10 @@ on:
         default: "router/immor/openwrt-21.02-base.config"
         type: choice
         options:
-          - router/immor/immor-master.config
-          - router/immor/openwrt-21.02.config
           - router/immor/openwrt-21.02-base.config
+          - router/immor/openwrt-21.02.config
+          - router/immor/immor-master-base.config
+          - router/immor/immor-master.config
       BRANCH:
         description: "选择编译版本"
         required: false
