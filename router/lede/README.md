@@ -10,8 +10,8 @@ config cifs
 config natshare
 	option iocharset 'utf8'
 	option agm 'rw'
-	option users 'rastyu'
-	option pwd 'qQ75969207'
+	option users 'admin'
+	option pwd 'password'
 	option server '192.168.10.5'
 	option name 'pt'
 	option smbver '3.0'
