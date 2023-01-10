@@ -7,20 +7,12 @@ name: 3.immor_x86_Plus
 on:
   repository_dispatch:
   workflow_dispatch:
-    inputs:
-      config:
-        description: "选择config版本"
-        required: false
-        default: "router/immor/openwrt-21.02.config"
-        type: choice
-        options:
-          - router/immor/openwrt-21.02.config
-          - router/immor/openwrt-21.02-base.config
+
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: ${{ inputs.config }}
+  CONFIG_FILE: router/immor/openwrt-21.02.config
   DIY_P1_SH: immor-part1.sh
   DIY_P2_SH: immor-part2.sh
   UPLOAD_RELEASE: true
