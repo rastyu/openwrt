@@ -21,3 +21,7 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-argonne-config
 git clone https://github.com/rastyu/package.git package/rastyu
 git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
 git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
+
+# kms server
+svn checkout https://github.com/kiddin9/openwrt-packages/trunk/luci-app-vlmcsd package/luci-app-vlmcsd
+svn checkout https://github.com/kiddin9/openwrt-packages/trunk/vlmcsd package/vlmcsd
