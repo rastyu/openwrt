@@ -66,13 +66,6 @@ jobs:
         useVersionInfo=$(git show -s --date=short --format="Author: %an<br/>date: %cd<br/>commit: %s<br/>commit hash: %H")
         echo "useVersionInfo=$useVersionInfo" >> $GITHUB_ENV
         echo "DATE=$(date "+%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
-        
-    - name: cache缓存工具链
-      uses: klever1988/cachewrtbuild@main
-      with:
-        ccache: 'true'
-        clean: 'false'
-        prefix: ${{ github.workspace }}/openwrt
 
     - name: 加载自定义设置
       run: |
