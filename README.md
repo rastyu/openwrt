@@ -39,18 +39,6 @@
       https://github.com/281677160/openwrt-package/branches/19.07/luci-app-eqos   <--- 用的时候修改过的链接
 
       svn co https://github.com/281677160/openwrt-package/branches/19.07/luci-app-eqos package/luci-app-eqos  <--- 完整拉取链接
-      
-- 拉取源码分支
-
-      REPO_URL: https://github.com/openwrt/openwrt
-      REPO_BRANCH: openwrt-22.03 
-      git clone $REPO_URL -b $REPO_BRANCH openwrt
-  
-- 拉取源码TAG
-
-      REPO_URL: https://github.com/openwrt/openwrt
-      REPO_TAG: v22.03.3
-      git clone -b $REPO_TAG --depth=1 $REPO_URL openwrt
 
 ## Acknowledgments
 - [OpenWrt](https://github.com/openwrt/openwrt)
