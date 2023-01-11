@@ -15,8 +15,8 @@ sed -i 's/192.168.1.1/192.168.10.10/g' package/base-files/files/bin/config_gener
 sed -i 's/luci-theme-bootstrap/luci-theme-argonne/g' ./feeds/luci/collections/luci/Makefile
 
 # 版本号里显示一个自己的名字（281677160 build $(TZ=UTC-8 date "+%Y.%m.%d") @ 这些都是后增加的）
-sed -i "s/OpenWrt /ALLEN Build @/g" package/lean/default-settings/files/zzz-default-settings
-sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='$(date +%Y.%m.%d)'|g" package/lean/default-settings/files/zzz-default-settings
+sed -i "s/OpenWrt /OpenWrt $(date +%Y.%m.%d) /g" package/lean/default-settings/files/zzz-default-settings
+sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='by Allen'|g" package/lean/default-settings/files/zzz-default-settings
 
 git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
