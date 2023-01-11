@@ -58,7 +58,7 @@ jobs:
       working-directory: /workdir
       run: |
         df -hT $PWD
-        git clone https://github.com/openwrt/openwrt/tree/v22.03.3 openwrt
+        svn co https://github.com/openwrt/openwrt/branches/v22.03.3 openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd openwrt
         useVersionInfo=$(git show -s --date=short --format="Author: %an<br/>date: %cd<br/>commit: %s<br/>commit hash: %H")
