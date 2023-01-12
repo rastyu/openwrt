@@ -9,6 +9,8 @@
 <a href="https://github.com/rastyu/s905x3-openwrt/releases/tag/LEDE_%E7%BA%A2%E7%B1%B3AX6"><img src="https://img.shields.io/badge/openwrt-LEDE_红米AX6-D98719"></a>
 ## Openwrt应用列表
 <a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-lede.txt"><img src="https://img.shields.io/badge/应用列表-LEDE_x86_精简-DBDB70"></a>
+<a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-lede.txt"><img src="https://img.shields.io/badge/应用列表-immor_x86_精简-DBDB70"></a>
+<a href="[https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-official.txt"><img src="https://img.shields.io/badge/应用列表-official_x86_精简-DBDB70"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-docker.txt"><img src="https://img.shields.io/badge/应用列表-LEDE_x86_Plus-DBDB70"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-immor.txt"><img src="https://img.shields.io/badge/应用列表-immor_x86_Plus-DBDB70"></a>
 <a href="https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/ARM%E7%9B%92%E5%AD%90.txt"><img src="https://img.shields.io/badge/应用列表-LEDE_ARM电视盒子-DBDB70"></a>
