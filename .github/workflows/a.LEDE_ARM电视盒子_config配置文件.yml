@@ -2,7 +2,7 @@
 # https://github.com/P3TERX/Actions-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
 
-name: 9.LEDE_ARM电视盒子_config配置文件
+name: a.LEDE_ARM电视盒子_config配置文件
 
 on:
   repository_dispatch:
