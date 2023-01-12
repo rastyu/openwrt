@@ -2,7 +2,7 @@
 # https://github.com/P3TERX/Actions-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
 
-name: c.official_x86_精简
+name: 3.official_x86_精简
 
 on:
   repository_dispatch:
