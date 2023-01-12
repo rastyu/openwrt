@@ -20,6 +20,7 @@ on:
         type: choice
         options:
           - router/immor/openwrt-21.02-base.config
+          - router/immor/openwrt-21.02-mini.config
           - router/immor/openwrt-21.02.config
           - router/immor/immor-master-base.config
           - router/immor/immor-master.config
