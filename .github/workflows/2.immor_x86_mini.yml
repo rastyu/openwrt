@@ -12,7 +12,7 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: router/immor/openwrt-21.02.config
+  CONFIG_FILE: router/immor/openwrt-21.02-mini.config
   DIY_P1_SH: immor-part1.sh
   DIY_P2_SH: immor-part2.sh
   UPLOAD_RELEASE: true
