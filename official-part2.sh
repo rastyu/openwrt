@@ -13,7 +13,7 @@ sed -i 's/192.168.1.1/192.168.10.10/g' package/base-files/files/bin/config_gener
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
 
 # Set etc/openwrt_release
-sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package/base-files/files/etc/openwrt_release
+sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='$(date +%Y.%m.%d) by Allen'|g" package/base-files/files/etc/openwrt_release
 echo "DISTRIB_SOURCECODE='openwrt'" >>package/base-files/files/etc/openwrt_release
 
 git clone https://github.com/vernesong/OpenClash.git package/OpenClash
