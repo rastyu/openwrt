@@ -133,7 +133,7 @@ rtsp://220.186.213.205/PLTV/88888913/224/3221229015/1000010000000006000000000430
 rtsp://220.186.213.205/PLTV/88888913/224/3221229236/72486907.smil
 #EXTINF:-1 group-title="付费",乐游
 rtsp://220.186.213.205/PLTV/88888913/224/3221229403/86934031.smil
-#EXTINF:-1 group-title="付费",优优宝贝
+#EXTINF:-1 tvg-id="6605" tvg-name="优优宝贝" tvg-logo="http://epg.51zmt.top:8000/tb1/qt/BAMC3.jpg" group-title="付费",优优宝贝
 rtsp://220.186.213.205/PLTV/88888913/224/3221229315/72486946.smil
 #EXTINF:-1 tvg-id="7249" tvg-name="CCTV16" tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/CCTV16.png" group-title="付费",中央奥运4K
 rtsp://220.186.213.205/PLTV/88888913/224/3221229331/74036079.smil
