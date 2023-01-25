@@ -89,7 +89,7 @@ rtsp://220.186.213.205/PLTV/88888913/224/3221227840/1000010000000006000000000030
 rtsp://220.186.213.205/PLTV/88888913/224/3221229052/10000100000000060000000004969230_0.smil
 #EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/yunnan.png" tvg-id="58" tvg-name="云南卫视" group-title="卫视",云南卫视720P
 rtsp://220.186.213.205/PLTV/88888913/224/3221227830/10000100000000060000000000304238_0.smil
-#EXTINF:-1 tvg-id="71" tvg-name="西藏卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/xizang.png" group-title="卫视",西藏卫视720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/xizang.png" tvg-id="71" tvg-name="西藏卫视" group-title="卫视",西藏卫视720P
 rtsp://220.186.213.205/PLTV/88888913/224/3221228005/10000100000000060000000000793620_0.smil
 #EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/lvyou.png" tvg-id="37" tvg-name="旅游卫视" group-title="卫视",海南卫视720P
 rtsp://220.186.213.205/PLTV/88888913/224/3221227803/10000100000000060000000000304212_0.smil
@@ -141,13 +141,13 @@ rtsp://220.186.213.205/PLTV/88888913/224/3221229331/74036079.smil
 rtsp://220.186.213.205/PLTV/88888913/224/3221229277/72486909.smil
 #EXTINF:-1 tvg-id="6585" tvg-name="茶频道" tvg-logo="http://epg.51zmt.top:8000/tb1/qt/DOCUMENTARY-CHANNEL.jpg" group-title="付费",茶频道
 rtsp://220.186.213.205/PLTV/88888913/224/3221229281/72486910.smil
-#EXTINF:-1 tvg-id="69" tvg-name="金鹰卡通" tvg-logo="http://epg.51zmt.top:8000/tb1/qt/jinyingkatong.png" group-title="付费",金鹰卡通720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/qt/jinyingkatong.png" tvg-id="69" tvg-name="金鹰卡通" group-title="付费",金鹰卡通720P
 rtsp://220.186.213.205/PLTV/88888913/224/3221229202/59229692.smil
-#EXTINF:-1 tvg-id="62" tvg-name="哈哈炫动" tvg-logo="http://epg.51zmt.top:8000/tb1/qt/xuandong.png" group-title="付费",哈哈炫动720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/qt/xuandong.png" tvg-id="62" tvg-name="哈哈炫动" group-title="付费",哈哈炫动720P
 rtsp://220.186.213.205/PLTV/88888913/224/3221227973/10000100000000060000000000789247_0.smil
-#EXTINF:-1 tvg-id="73" tvg-name="中国教育1台" tvg-logo="http://epg.51zmt.top:8000/tb1/qt/中国教育1台.png" group-title="付费",教育1台720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/qt/中国教育1台.png" tvg-id="73" tvg-name="中国教育1台" group-title="付费",教育1台720P
 rtsp://220.186.213.205/PLTV/88888913/224/3221227968/10000100000000060000000000789246_0.smil
-#EXTINF:-1 tvg-id="7245" tvg-name="中国教育4台" tvg-logo="http://epg.51zmt.top:8000/tb1/qt/中国教育4台.png" group-title="付费",教育4台720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/qt/中国教育4台.png" tvg-id="7245" tvg-name="中国教育4台" group-title="付费",教育4台720P
 rtsp://220.186.213.205/PLTV/88888913/224/3221229128/10000100000000060000000005781889_0.smil
 #EXTINF:-1 tvg-id="6588" tvg-name="发现之旅" tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/CCTVfaxianzhilv.png" group-title="付费",发现之旅720P
 rtsp://220.186.213.205/PLTV/88888913/224/3221229311/71994609.smil
