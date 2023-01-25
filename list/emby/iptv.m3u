@@ -151,5 +151,5 @@ rtsp://220.186.213.205/PLTV/88888913/224/3221227968/1000010000000006000000000078
 rtsp://220.186.213.205/PLTV/88888913/224/3221229128/10000100000000060000000005781889_0.smil
 #EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/CCTVfaxianzhilv.png" tvg-id="6588" tvg-name="发现之旅" group-title="付费",发现之旅720P
 rtsp://220.186.213.205/PLTV/88888913/224/3221229311/71994609.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/cgtn.png" tvg-id="20" tvg-name="CGTN" group-title="央视",CGTN
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/cgtn.png" tvg-id="20" tvg-name="CGTN" group-title="付费",CGTN
 rtsp://220.186.213.205/PLTV/88888913/224/3221228108/10000100000000060000000002707382_0.smil
