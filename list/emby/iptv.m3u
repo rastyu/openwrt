@@ -73,29 +73,29 @@ rtsp://220.186.213.205/PLTV/88888913/224/3221228068/1000010000000006000000000224
 rtsp://220.186.213.205/PLTV/88888913/224/3221228102/10000100000000060000000002242149_0.smil
 #EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/tianjin.png" tvg-id="39" tvg-name="天津卫视" group-title="卫视",天津卫视
 rtsp://220.186.213.205/PLTV/88888913/224/3221228016/10000100000000060000000000794035_0.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/jilin.png" tvg-id="51" tvg-name="吉林卫视" group-title="卫视",吉林卫视720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/jilin.png" tvg-id="51" tvg-name="吉林卫视" group-title="卫视",吉林卫视标清
 rtsp://220.186.213.205/PLTV/88888913/224/3221227802/10000100000000060000000000304236_0.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/neimeng.png" tvg-id="52" tvg-name="内蒙古卫视" group-title="卫视",内蒙古卫视720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/neimeng.png" tvg-id="52" tvg-name="内蒙古卫视" group-title="卫视",内蒙古卫视标清
 rtsp://220.186.213.205/PLTV/88888913/224/3221229147/10000100000000060000000004969231_0.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/ningxia.png" tvg-id="53" tvg-name="宁夏卫视" group-title="卫视",宁夏卫视720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/ningxia.png" tvg-id="53" tvg-name="宁夏卫视" group-title="卫视",宁夏卫视标清
 rtsp://220.186.213.205/PLTV/88888913/224/3221227855/10000100000000060000000000304710_0.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/shanxi_.png" tvg-id="54" tvg-name="山西卫视" group-title="卫视",山西卫视720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/shanxi_.png" tvg-id="54" tvg-name="山西卫视" group-title="卫视",山西卫视标清
 rtsp://220.186.213.205/PLTV/88888913/224/3221227787/10000100000000060000000000304213_0.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/shanxi.png" tvg-id="55" tvg-name="陕西卫视" group-title="卫视",陕西卫视720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/shanxi.png" tvg-id="55" tvg-name="陕西卫视" group-title="卫视",陕西卫视标清
 rtsp://220.186.213.205/PLTV/88888913/224/3221227826/10000100000000060000000000304223_0.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/guangxi.png" tvg-id="43" tvg-name="广西卫视" group-title="卫视",广西卫视720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/guangxi.png" tvg-id="43" tvg-name="广西卫视" group-title="卫视",广西卫视标清
 rtsp://220.186.213.205/PLTV/88888913/224/3221227840/10000100000000060000000000304250_0.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/gansu.png" tvg-id="42" tvg-name="甘肃卫视" group-title="卫视",甘肃卫视720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/gansu.png" tvg-id="42" tvg-name="甘肃卫视" group-title="卫视",甘肃卫视标清
 rtsp://220.186.213.205/PLTV/88888913/224/3221229052/10000100000000060000000004969230_0.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/yunnan.png" tvg-id="58" tvg-name="云南卫视" group-title="卫视",云南卫视720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/yunnan.png" tvg-id="58" tvg-name="云南卫视" group-title="卫视",云南卫视标清
 rtsp://220.186.213.205/PLTV/88888913/224/3221227830/10000100000000060000000000304238_0.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/xizang.png" tvg-id="71" tvg-name="西藏卫视" group-title="卫视",西藏卫视720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/xizang.png" tvg-id="71" tvg-name="西藏卫视" group-title="卫视",西藏卫视标清
 rtsp://220.186.213.205/PLTV/88888913/224/3221228005/10000100000000060000000000793620_0.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/lvyou.png" tvg-id="37" tvg-name="旅游卫视" group-title="卫视",海南卫视720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/lvyou.png" tvg-id="37" tvg-name="旅游卫视" group-title="卫视",海南卫视标清
 rtsp://220.186.213.205/PLTV/88888913/224/3221227803/10000100000000060000000000304212_0.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/qinghai.png" tvg-id="59" tvg-name="青海卫视" group-title="卫视",青海卫视720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/qinghai.png" tvg-id="59" tvg-name="青海卫视" group-title="卫视",青海卫视标清
 rtsp://220.186.213.205/PLTV/88888913/224/3221227765/10000100000000060000000000304132_0.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/bingtuan.png" tvg-id="61" tvg-name="兵团卫视" group-title="卫视",兵团卫视720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/ws/bingtuan.png" tvg-id="61" tvg-name="兵团卫视" group-title="卫视",兵团卫视标清
 rtsp://220.186.213.205/PLTV/88888913/224/3221228006/10000100000000060000000000789241_0.smil
 #EXTINF:-1 group-title="地方",瑞安新闻
 rtsp://220.186.213.205/PLTV/88888913/224/3221228993/10000100000000060000000004199197_0.smil
@@ -141,15 +141,15 @@ rtsp://220.186.213.205/PLTV/88888913/224/3221229331/74036079.smil
 rtsp://220.186.213.205/PLTV/88888913/224/3221229277/72486909.smil
 #EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/qt/DOCUMENTARY-CHANNEL.jpg" tvg-id="6585" tvg-name="茶频道" group-title="付费",茶频道
 rtsp://220.186.213.205/PLTV/88888913/224/3221229281/72486910.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/qt/jinyingkatong.png" tvg-id="69" tvg-name="金鹰卡通" group-title="付费",金鹰卡通720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/qt/jinyingkatong.png" tvg-id="69" tvg-name="金鹰卡通" group-title="付费",金鹰卡通标清
 rtsp://220.186.213.205/PLTV/88888913/224/3221229202/59229692.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/qt/xuandong.png" tvg-id="62" tvg-name="哈哈炫动" group-title="付费",哈哈炫动720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/qt/xuandong.png" tvg-id="62" tvg-name="哈哈炫动" group-title="付费",哈哈炫动标清
 rtsp://220.186.213.205/PLTV/88888913/224/3221227973/10000100000000060000000000789247_0.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/qt/中国教育1台.png" tvg-id="73" tvg-name="中国教育1台" group-title="付费",教育1台720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/qt/中国教育1台.png" tvg-id="73" tvg-name="中国教育1台" group-title="付费",教育1台标清
 rtsp://220.186.213.205/PLTV/88888913/224/3221227968/10000100000000060000000000789246_0.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/qt/中国教育4台.png" tvg-id="7245" tvg-name="中国教育4台" group-title="付费",教育4台720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/qt/中国教育4台.png" tvg-id="7245" tvg-name="中国教育4台" group-title="付费",教育4台标清
 rtsp://220.186.213.205/PLTV/88888913/224/3221229128/10000100000000060000000005781889_0.smil
-#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/CCTVfaxianzhilv.png" tvg-id="6588" tvg-name="发现之旅" group-title="付费",发现之旅720P
+#EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/CCTVfaxianzhilv.png" tvg-id="6588" tvg-name="发现之旅" group-title="付费",发现之旅标清
 rtsp://220.186.213.205/PLTV/88888913/224/3221229311/71994609.smil
 #EXTINF:-1 tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/cgtn.png" tvg-id="20" tvg-name="CGTN" group-title="付费",CGTN
 rtsp://220.186.213.205/PLTV/88888913/224/3221228108/10000100000000060000000002707382_0.smil
