@@ -43,7 +43,7 @@ jobs:
             VERSION=${{ steps.set-version.outputs.version }}
           tags: |
              ${{ secrets.DOCKER_USERNAME }}/NPM:2.9.19
-             ${{ secrets.DOCKER_USERNAME }}/NPM:latest
+             ${{ secrets.DOCKER_USERNAME }}/npm:latest
              
       -
         name: Docker Hub Description
