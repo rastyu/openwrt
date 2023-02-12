@@ -19,7 +19,7 @@ ARG WATCH_VERSION=0.4.0
 
 # Define software download URLs.
 ARG OPENRESTY_URL=https://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz
-ARG NGINX_PROXY_MANAGER_URL=https://github.com/jc21/nginx-proxy-manager/archive/v${NGINX_PROXY_MANAGER_VERSION}.tar.gz
+ARG NGINX_PROXY_MANAGER_URL=https://github.com/xiaoxinpro/nginx-proxy-manager-zh/archive/v${NGINX_PROXY_MANAGER_VERSION}.tar.gz
 ARG NGINX_HTTP_GEOIP2_MODULE_URL=https://github.com/leev/ngx_http_geoip2_module/archive/${NGINX_HTTP_GEOIP2_MODULE_VERSION}.tar.gz
 ARG LIBMAXMINDDB_URL=https://github.com/maxmind/libmaxminddb/releases/download/${LIBMAXMINDDB_VERSION}/libmaxminddb-${LIBMAXMINDDB_VERSION}.tar.gz
 ARG WATCH_URL=https://github.com/tj/watch/archive/${WATCH_VERSION}.tar.gz
