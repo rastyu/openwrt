@@ -42,7 +42,7 @@ jobs:
           build-args: |
             VERSION=${{ steps.set-version.outputs.version }}
           tags: |
-             ${{ secrets.DOCKER_USERNAME }}/NPM:${{ steps.set-version.outputs.version }}
+             ${{ secrets.DOCKER_USERNAME }}/NPM:2.9.19
              ${{ secrets.DOCKER_USERNAME }}/NPM:latest
              
       -
