@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  DELETE_RELEASE: true
+  DELETE_RELEASE: false
   DELETE_ARTIFACTS: true
   KEEP_DAY: 1
   KEEP_MININUM_RUNS: 1
