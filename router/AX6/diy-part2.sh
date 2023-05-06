@@ -15,7 +15,7 @@
 sed -i 's/192.168.1.1/192.168.10.10/g' package/base-files/files/bin/config_generate
 
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-atmaterial）
-sed -i 's/luci-theme-bootstrap/luci-theme-argonne/g' ./feeds/luci/collections/luci/Makefile
+sed -i 's/luci-theme-bootstrap/luci-theme-argone/g' ./feeds/luci/collections/luci/Makefile
 
 # 修正连接数（by ベ七秒鱼ベ）
 # sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
@@ -26,7 +26,7 @@ sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='by Allen'|g" package/lean/defa
 
 git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 # git clone https://github.com/riverscn/openwrt-iptvhelper.git package/openwrt-iptvhelper
-svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argone package/luci-theme-argone
 
 # Add themes
 # git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
