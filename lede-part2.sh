@@ -12,7 +12,7 @@
 sed -i 's/192.168.1.1/192.168.10.10/g' package/base-files/files/bin/config_generate
 
 # 默认主题（FROM uci-theme-bootstrap CHANGE TO luci-theme-atmaterial）
-# sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
+sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
 
 # 版本号里显示一个自己的名字（281677160 build $(TZ=UTC-8 date "+%Y.%m.%d") @ 这些都是后增加的）
 sed -i "s/OpenWrt /OpenWrt $(date +%Y.%m.%d) /g" package/lean/default-settings/files/zzz-default-settings
@@ -23,6 +23,9 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 # svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
 
 # 主题
+cd lede/package/lean
+rm -rf luci-theme-argon
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git luci-theme-argon
 # svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argone package/luci-theme-argone
 # svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-argone-config package/luci-app-argone-config
 
