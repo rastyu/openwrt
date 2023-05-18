@@ -26,7 +26,7 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 # svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
 
 # 主题
-git clone https://github.com/kenzok78/luci-theme-argone luci-theme-argone
+git clone https://github.com/kenzok78/luci-theme-argone package/luci-theme-argone
 # svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argone package/luci-theme-argone
 # svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-argone-config package/luci-app-argone-config
 
