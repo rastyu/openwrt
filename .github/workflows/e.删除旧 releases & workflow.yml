@@ -39,12 +39,12 @@ jobs:
         echo "硬盘详情："
         df -Th
         
-    - name: cache缓存工具链
-      uses: klever1988/cachewrtbuild@main
-      with:
-        ccache: 'flase'
-        clean: 'true'
-        prefix: ${{ github.workspace }}/openwrt
+#    - name: cache缓存工具链
+#      uses: klever1988/cachewrtbuild@main
+#      with:
+#        ccache: 'flase'
+#        clean: 'true'
+#        prefix: ${{ github.workspace }}/openwrt
         
     - name: 清理旧的Releases
       uses: codesnas/delete-older-releases@main
