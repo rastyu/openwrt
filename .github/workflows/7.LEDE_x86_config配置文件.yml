@@ -71,7 +71,14 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
-
+        
+    - name: cache缓存工具链
+      uses: klever1988/cachewrtbuild@main
+      with:
+        ccache: 'true'
+        clean: 'true'
+        prefix: ${{ github.workspace }}/openwrt
+        
     - name: 下载固件源码
       working-directory: /workdir
       run: |
