@@ -39,6 +39,13 @@ jobs:
         echo "硬盘详情："
         df -Th
         
+    - name: 清理空间
+      if: ${{ steps.imagebuilder.outputs.status }} == 'success' && !cancelled()
+      run: |
+        cd openwrt/
+        rm -rf $(ls . | grep -v "^bin$" | xargs) 2>/dev/null
+        df -hT ${PWD}
+        
 #    - name: cache缓存工具链
 #      uses: klever1988/cachewrtbuild@main
 #      with:
