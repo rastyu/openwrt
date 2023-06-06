@@ -22,7 +22,7 @@ sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='by Allen'|g" package/lean/defa
 # sed -i '/CYXluq4wUazHjmCDBCqXF/d' "$ZZZ_PATH"
 
 git clone https://github.com/vernesong/OpenClash.git package/OpenClash
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+# git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 # svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
 
 # 主题
