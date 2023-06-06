@@ -142,8 +142,8 @@ jobs:
     - name: 电报消息提醒
       run: |
         MSG="
-        编译时间：${{ env.FILE_TIME }}
-        OpenWrt 更新信息：${{ env.useVersionInfo }}
-        ${{ env.PRODUCT_NAME }} 编译完成
+        编译时间: ${{ env.FILE_TIME }}
+        编译架构: ${{ env.PRODUCT_NAME }}固件
+        下载地址: https://github.com/rastyu/s905x3-openwrt/releases/tag/${{ env.FILE_NAME }}
         "
         curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=${MSG}"
