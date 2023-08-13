@@ -41,7 +41,7 @@ jobs:
         tag: ${{ env.FILE_NAME }}
         commit: main
         token: ${{ secrets.RELEASES_TOKEN }}
-        bodyFile: "/router/routeros.md"
+        bodyFile: "routeros.md"
         artifacts: /home/runner/work/cnip/*
 
 #    - name: 电报消息提醒
