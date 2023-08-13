@@ -46,6 +46,4 @@ jobs:
         artifacts: /home/runner/work/cnip/*
 
     - name: 电报消息提醒
-      run: |
-        MSG="RouterOS cnip脚本已更新"
-        "curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=${MSG}"
+      run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=RouterOS cnip脚本已更新"
