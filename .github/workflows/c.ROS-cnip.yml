@@ -2,7 +2,7 @@
 # https://github.com/P3TERX/Actions-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
 
-name: ROS CNIP list
+name: c.ROS CNIP list
 
 on:
   repository_dispatch:
