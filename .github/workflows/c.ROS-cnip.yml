@@ -11,6 +11,7 @@ on:
 env:
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
+  README: router/routeros.md
   FILE_NAME: cnip
 
 jobs:
@@ -41,7 +42,7 @@ jobs:
         tag: ${{ env.FILE_NAME }}
         commit: main
         token: ${{ secrets.RELEASES_TOKEN }}
-        bodyFile: "routeros.md"
+        bodyFile: "${{ env.README }}"
         artifacts: /home/runner/work/cnip/*
 
     - name: 电报消息提醒
