@@ -11,7 +11,7 @@ on:
 env:
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  README: router/routeros.md
+  README: router/readme/routeros.md
   FILE_NAME: cnip
 
 jobs:
