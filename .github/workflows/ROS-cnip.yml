@@ -41,8 +41,7 @@ jobs:
         tag: ${{ env.FILE_NAME }}
         commit: main
         token: ${{ secrets.RELEASES_TOKEN }}
-        body: |
-          - 默认IP：192.168.10.10 默认密码：password
+        bodyFile: "/router/routeros.md"
         artifacts: /home/runner/work/cnip/*
 
 #    - name: 电报消息提醒
