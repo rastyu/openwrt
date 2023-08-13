@@ -48,7 +48,7 @@
 - [immortalwrt](https://github.com/immortalwrt/immortalwrt)
 - [Lienol/openwrt](https://github.com/Lienol/openwrt)
 - [unifreq/openwrt_packit](https://github.com/unifreq/openwrt_packit)
-- [tuanqing/mknop](https://github.com/tuanqing/mknop)
+- [breakings/OpenWrt](https://github.com/breakings/OpenWrt)
 - [P3TERX/Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt)
 - [ophub/amlogic-s9xxx-openwrt](https://github.com/ophub/amlogic-s9xxx-openwrt)
 - [sirpdboy](https://github.com/sirpdboy)
