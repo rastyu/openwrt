@@ -42,7 +42,7 @@ jobs:
         token: ${{ secrets.RELEASES_TOKEN }}
         body: |
           - 默认IP：192.168.10.10 默认密码：password
-        artifacts: ${{ env.FIRMWARE }}/*
+        artifacts: root/*
 
 #    - name: 电报消息提醒
 #      run: |
