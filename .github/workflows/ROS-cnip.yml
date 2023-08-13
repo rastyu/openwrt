@@ -11,8 +11,7 @@ on:
 env:
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  FILE_NAME: LEDE_x86_LXC
-  PRODUCT_NAME: LEDE_x86_LXC
+  FILE_NAME: cnip
 
 jobs:
   build:
@@ -35,7 +34,7 @@ jobs:
       id: release
       uses: ncipollo/release-action@v1
       with:
-        name: ${{ env.FILE_TIME }} for ${{ env.PRODUCT_NAME }}
+        name: ${{ env.FILE_NAME }}
         allowUpdates: true
         removeArtifacts: true
         tag: ${{ env.FILE_NAME }}
@@ -43,15 +42,10 @@ jobs:
         token: ${{ secrets.RELEASES_TOKEN }}
         body: |
           - 默认IP：192.168.10.10 默认密码：password
-          - 插件信息:[应用列表](https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-lxc.txt)
-          - 当前使用版本:【编译前的最后一次[➦主源码](https://github.com/coolsnowwolf/lede)更新记录】
-          ${{ env.useVersionInfo }}
         artifacts: ${{ env.FIRMWARE }}/*
 
-    - name: 电报消息提醒
-      run: |
-        MSG="
-        编译时间: ${{ env.FILE_TIME }}
-        编译架构: ${{ env.PRODUCT_NAME }}固件
-        下载地址: https://github.com/rastyu/s905x3-openwrt/releases/tag/${{ env.FILE_NAME }}
-        "curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=${MSG}"
+#    - name: 电报消息提醒
+#      run: |
+#        MSG="
+#        下载地址: https://github.com/rastyu/s905x3-openwrt/releases/tag/${{ env.FILE_NAME }}
+#        "curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=${MSG}"
