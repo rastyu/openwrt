@@ -1,0 +1,57 @@
+#=================================================
+# https://github.com/P3TERX/Actions-OpenWrt
+# Description: Build OpenWrt using GitHub Actions
+
+name: ROS CNIP list
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+
+env:
+  UPLOAD_RELEASE: true
+  TZ: Asia/Shanghai
+  FILE_NAME: LEDE_x86_LXC
+  PRODUCT_NAME: LEDE_x86_LXC
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    if: github.event.repository.owner.id == github.event.sender.id || ! github.event.sender.id
+
+    steps:
+    - name: 检查项目分支
+      uses: actions/checkout@main
+
+    - name: 更新cnip.rsc
+      run: |
+        qqwry="$(curl -kLfsm 5 https://raw.githubusercontent.com/metowolf/iplist/master/data/special/china.txt)"
+        ipipnet="$(curl -kLfsm 5 https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt)"
+        clang="$(curl -kLfsm 5 https://ispip.clang.cn/all_cn_cidr.txt)"
+        iplist="$qqwry\n$ipipnet\n$clang"
+        echo -e "${clang}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNIP/g' | sed -e $'1i\\\n/ip firewall address-list' -e $'1i\\\nremove [/ip firewall address-list find list=CNIP]' -e $'1i\\\nadd address=10.0.0.0/8 list=CNIP' -e $'1i\\\nadd address=172.16.0.0/12 list=CNIP' -e $'1i\\\nadd address=192.168.0.0/16 list=CNIP'> cnip.rsc
+
+    - name: 发布至release
+      id: release
+      uses: ncipollo/release-action@v1
+      with:
+        name: ${{ env.FILE_TIME }} for ${{ env.PRODUCT_NAME }}
+        allowUpdates: true
+        removeArtifacts: true
+        tag: ${{ env.FILE_NAME }}
+        commit: main
+        token: ${{ secrets.RELEASES_TOKEN }}
+        body: |
+          - 默认IP：192.168.10.10 默认密码：password
+          - 插件信息:[应用列表](https://github.com/rastyu/s905x3-openwrt/blob/main/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/x86-lxc.txt)
+          - 当前使用版本:【编译前的最后一次[➦主源码](https://github.com/coolsnowwolf/lede)更新记录】
+          ${{ env.useVersionInfo }}
+        artifacts: ${{ env.FIRMWARE }}/*
+
+    - name: 电报消息提醒
+      run: |
+        MSG="
+        编译时间: ${{ env.FILE_TIME }}
+        编译架构: ${{ env.PRODUCT_NAME }}固件
+        下载地址: https://github.com/rastyu/s905x3-openwrt/releases/tag/${{ env.FILE_NAME }}
+        "curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=${MSG}"
