@@ -11,7 +11,7 @@ on:
       iplist:
         description: "选择iplist版本"
         required: false
-        default: "qqwry"
+        default: "$qqwry"
         type: choice
         options:
           - $qqwry
