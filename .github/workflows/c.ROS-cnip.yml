@@ -7,23 +7,12 @@ name: c.ROS CNIP list
 on:
   repository_dispatch:
   workflow_dispatch:
-    inputs:
-      iplist:
-        description: "选择iplist版本"
-        required: false
-        default: "$clang"
-        type: choice
-        options:
-          - $mosdns
-          - $qqwry
-          - $ipipnet
-          - $clang
-          - $qqwry\n$ipipnet\n$clang
-          
+  schedule:
+    - cron: 0 1 * * 0
+    
 env:
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  LIST: ${{ inputs.iplist }}
   README: router/readme/routeros.md
   FILE_NAME: cnip
 
@@ -42,8 +31,16 @@ jobs:
         qqwry="$(curl -kLfsm 5 https://raw.githubusercontent.com/metowolf/iplist/master/data/special/china.txt)"
         ipipnet="$(curl -kLfsm 5 https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt)"
         clang="$(curl -kLfsm 5 https://ispip.clang.cn/all_cn_cidr.txt)"
-        iplist="${{ env.LIST }}"
-        echo -e "${iplist}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNIP/g' | sed -e $'1i\\\n/ip firewall address-list' -e $'1i\\\nremove [/ip firewall address-list find list=CNIP]' -e $'1i\\\nadd address=10.0.0.0/8 list=CNIP' -e $'1i\\\nadd address=172.16.0.0/12 list=CNIP' -e $'1i\\\nadd address=192.168.0.0/16 list=CNIP'> cnip.rsc
+        iplist="$qqwry\n$ipipnet\n$clang"
+        echo -e "${clang}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNIP/g' | sed -e $'1i\\\n/ip firewall address-list' -e $'1i\\\nremove [/ip firewall address-list find list=CNIP]' -e $'1i\\\nadd address=10.0.0.0/8 list=CNIP' -e $'1i\\\nadd address=172.16.0.0/12 list=CNIP' -e $'1i\\\nadd address=192.168.0.0/16 list=CNIP'> cnip.rsc
+
+
+    - name: 更新原cnipv6.rsc
+      run: |
+        cd /home/runner/work/cnip
+        cnipv6="$(curl -kLfsm 5 https://ispip.clang.cn/all_cn_ipv6.txt)"
+        echo -e "${cnipv6}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNipv6/g' | sed -e $'1i\\\n/ipv6 firewall address-list' -e $'1i\\\nremove [/ipv6 firewall address-list find list=CNipv6]'  list=CNipv6'> cnipv6.rsc
+
 
     - name: 发布至release
       id: release
