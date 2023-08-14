@@ -1,6 +1,9 @@
 #=================================================
 # https://github.com/P3TERX/Actions-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
+# [17mon/china_ip_list](https://github.com/17mon/china_ip_list)
+# [metowolf/iplist](https://github.com/metowolf/iplist)
+#
 
 name: c.ROS CNIP list
 
