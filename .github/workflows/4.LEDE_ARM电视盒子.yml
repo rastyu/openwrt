@@ -42,7 +42,7 @@ on:
         default: true
         type: boolean
       kernel_repo:
-        description: "Set the kernel repository"
+        description: "选择kernel内核仓库"
         required: false
         default: "ophub/kernel"
         type: choice
