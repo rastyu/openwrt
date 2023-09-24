@@ -27,7 +27,7 @@ on:
       openwrt_kernel:
         description: "选择kernel版本"
         required: false
-        default: "5.15.1_6.1.1"
+        default: "6.1.1"
         type: choice
         options:
           - 5.4.1_5.10.1
