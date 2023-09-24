@@ -36,17 +36,15 @@ on:
       openwrt_kernel:
         description: "选择kernel版本"
         required: false
-        default: "5.15.50"
+        default: "5.15.1_6.1.1"
         type: choice
         options:
-          - 5.4.210_5.10.135_5.15.50
-          - 5.4.210_5.10.135
-          - 5.10.135_5.15.50
-          - 5.15.50_6.0.1
-          - 5.4.210
-          - 5.10.135
-          - 5.15.50
-          - 6.0.1
+          - 5.4.1_5.10.1
+          - 5.15.1_6.1.1
+          - 5.4.1
+          - 5.10.1
+          - 5.15.1
+          - 6.1.1
       auto_kernel:
         description: "自动打包最新kernel内核"
         required: false
