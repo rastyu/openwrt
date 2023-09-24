@@ -51,9 +51,12 @@ on:
         default: true
         type: boolean
       kernel_repo:
-        description: "设置kernel内核源地址"
+        description: "Set the kernel repository"
         required: false
-        default: "https://github.com/ophub/kernel/tree/main/pub"
+        default: "ophub/kernel"
+        type: choice
+        options:
+          - ophub/kernel
       openwrt_size:
         description: "设置rootfs大小(单位: MiB)"
         required: false
