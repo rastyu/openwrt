@@ -46,12 +46,12 @@ function merge_feed(){
 }
 rm -rf package/custom; mkdir package/custom
 
-git clone https://github.com/vernesong/OpenClash.git OpenClash/luci-app-openclash
+merge_package https://github.com/vernesong/OpenClash OpenClash/luci-app-openclash
 # git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 # svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
 
 # 主题
-git clone https://github.com/kenzok78/luci-theme-argone.git kenzok78/luci-theme-argone
+merge_package https://github.com/kenzok78/luci-theme-argone luci-theme-argone
 # svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argone package/luci-theme-argone
 # svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-argone-config package/luci-app-argone-config
 
@@ -61,9 +61,9 @@ merge_package https://github.com/kenzok8/openwrt-packages openwrt-packages/luci-
 merge_package https://github.com/kenzok8/openwrt-packages openwrt-packages/taskd
 merge_package https://github.com/kenzok8/openwrt-packages openwrt-packages/luci-lib-xterm
 
-git clone https://github.com/rastyu/package.git rastyu/luci-app-poweroff
-git clone https://github.com/sirpdboy/luci-app-ddns-go.git sirpdboy/luci-app-ddns-go
-git clone https://github.com/rufengsuixing/luci-app-adguardhome.git rufengsuixing/luci-app-adguardhome
+#git clone https://github.com/rastyu/package.git rastyu/luci-app-poweroff
+merge_package https://github.com/sirpdboy/luci-app-ddns-go luci-app-ddns-go
+merge_package https://github.com/rufengsuixing/luci-app-adguardhome luci-app-adguardhome
 #git clone https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
 
 # poweroff关机功能集成到系统源码菜单中
