@@ -60,6 +60,8 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+        echo "status=success" >> ${GITHUB_OUTPUT}
+        df -Th
         
     - name: 下载固件源码
       working-directory: /workdir
