@@ -61,7 +61,7 @@ merge_package https://github.com/kenzok8/openwrt-packages openwrt-packages/luci-
 merge_package https://github.com/kenzok8/openwrt-packages openwrt-packages/taskd
 merge_package https://github.com/kenzok8/openwrt-packages openwrt-packages/luci-lib-xterm
 
-merge_package https://github.com/rastyu/package package/luci-app-poweroff
+merge_package https://github.com/rastyu/package package
 merge_package https://github.com/sirpdboy/luci-app-ddns-go luci-app-ddns-go
 merge_package https://github.com/rufengsuixing/luci-app-adguardhome luci-app-adguardhome
 #git clone https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
