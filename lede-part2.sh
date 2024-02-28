@@ -47,6 +47,7 @@ function merge_feed(){
 rm -rf package/custom; mkdir package/custom
 
 merge_package https://github.com/vernesong/OpenClash OpenClash/luci-app-openclash
+merge_package https://github.com/gngpp/luci-theme-design gngpp/luci-theme-design
 # git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 # svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall package/luci-app-passwall
 
