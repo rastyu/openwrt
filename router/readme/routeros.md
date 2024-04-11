@@ -6,7 +6,7 @@
  ***
 ### ROS ipv4导入脚本
 ```
-/tool fetch url=https://ghproxy.com/https://github.com/rastyu/s905x3-openwrt/releases/download/cnip/cnip.rsc
+/tool fetch url=https://git.wodexiao.link/https://github.com/rastyu/s905x3-openwrt/releases/download/cnip/cnip.rsc
 /system logging disable 0
 /import cnip.rsc
 /system logging enable 0
@@ -16,7 +16,7 @@
 ```
 ### ROS ipv6导入脚本
 ```
-/tool fetch url=https://ghproxy.com/https://github.com/rastyu/s905x3-openwrt/releases/download/cnip/cnipv6.rsc
+/tool fetch url=https://git.wodexiao.link/https://github.com/rastyu/s905x3-openwrt/releases/download/cnip/cnipv6.rsc
 /system logging disable 0
 /import cnipv6.rsc
 /system logging enable 0
