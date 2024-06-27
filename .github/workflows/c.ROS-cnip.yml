@@ -7,8 +7,6 @@ name: c.ROS CNIP list
 on:
   repository_dispatch:
   workflow_dispatch:
-  schedule:
-    - cron: 0 1 1 * *
     
 env:
   UPLOAD_RELEASE: true
