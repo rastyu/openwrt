@@ -46,17 +46,6 @@ jobs:
         commit: main
         token: ${{ secrets.RELEASES_TOKEN }}
         bodyFile: "${{ env.README }}"
-            - name: 发布至release
-      id: release
-      uses: ncipollo/release-action@v1
-      with:
-        name: ${{ env.FILE_NAME }}
-        allowUpdates: true
-        removeArtifacts: true
-        tag: ${{ env.FILE_NAME }}
-        commit: main
-        token: ${{ secrets.RELEASES_TOKEN }}
-        bodyFile: "${{ env.README }}"
         artifacts: /root/*
   
     - name: 上传文件
