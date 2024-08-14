@@ -27,7 +27,6 @@ jobs:
 
     - name: 更新原cnip.rsc
       run: |
-        mkdir /home/runner/work/cnip && cd /home/runner/work/cnip
         qqwry="$(curl -kLfsm 5 https://raw.githubusercontent.com/metowolf/iplist/master/data/special/china.txt)"
         ipipnet="$(curl -kLfsm 5 https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt)"
         clang="$(curl -kLfsm 5 https://ispip.clang.cn/all_cn.txt)"
@@ -47,7 +46,6 @@ jobs:
         commit: main
         token: ${{ secrets.RELEASES_TOKEN }}
         bodyFile: "${{ env.README }}"
-        artifacts: /home/runner/work/cnip/*
 
     - name: 电报消息提醒
       run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=RouterOS cnip脚本已更新"
