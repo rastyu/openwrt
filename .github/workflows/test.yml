@@ -46,6 +46,21 @@ jobs:
         commit: main
         token: ${{ secrets.RELEASES_TOKEN }}
         bodyFile: "${{ env.README }}"
+            - name: 发布至release
+      id: release
+      uses: ncipollo/release-action@v1
+      with:
+        name: ${{ env.FILE_NAME }}
+        allowUpdates: true
+        removeArtifacts: true
+        tag: ${{ env.FILE_NAME }}
+        commit: main
+        token: ${{ secrets.RELEASES_TOKEN }}
+        bodyFile: "${{ env.README }}"
+        artifacts: /root/*
+
+    - name: 电报消息提醒
+      run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=RouterOS cnip脚本已更新"
 
     - name: 电报消息提醒
       run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=RouterOS cnip脚本已更新"
