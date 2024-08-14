@@ -1,0 +1,60 @@
+name: c.ROS CNIP list
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+
+env:
+  UPLOAD_RELEASE: true
+  TZ: Asia/Shanghai
+  README: router/readme/routeros.md
+  FILE_NAME: cnip
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    if: github.event.repository.owner.id == github.event.sender.id || ! github.event.sender.id
+
+    steps:
+    - name: 检查项目分支
+      uses: actions/checkout@main
+
+    - name: Set git identity
+      run : |
+        git config --global user.email "48859414+github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        sudo timedatectl set-timezone "Asia/Shanghai"
+
+    - name: 更新原cnip.rsc
+      run: |
+        mkdir /home/runner/work/cnip && cd /home/runner/work/cnip
+        qqwry="$(curl -kLfsm 5 https://raw.githubusercontent.com/metowolf/iplist/master/data/special/china.txt)"
+        ipipnet="$(curl -kLfsm 5 https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt)"
+        clang="$(curl -kLfsm 5 https://ispip.clang.cn/all_cn.txt)"
+        cnipv6="$(curl -kLfsm 5 https://ispip.clang.cn/all_cn_ipv6.txt)"
+        iplist="$qqwry\n$ipipnet\n$clang"
+        echo -e "${clang}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNIP/g' | sed -e $'1i\\\n/ip firewall address-list' -e $'1i\\\nremove [/ip firewall address-list find list=CNIP]' -e $'1i\\\nadd address=10.0.0.0/8 list=CNIP' -e $'1i\\\nadd address=172.16.0.0/12 list=CNIP' -e $'1i\\\nadd address=192.168.0.0/16 list=CNIP'> cnip.rsc
+        echo -e "${cnipv6}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNipv6/g' | sed -e $'1i\\\n/ipv6 firewall address-list' -e $'1i\\\nremove [/ipv6 firewall address-list find list=CNipv6]'> cnipv6.rsc
+
+    - name: 发布至release
+      id: release
+      uses: ncipollo/release-action@v1
+      with:
+        name: ${{ env.FILE_NAME }}
+        allowUpdates: true
+        removeArtifacts: true
+        tag: ${{ env.FILE_NAME }}
+        commit: main
+        token: ${{ secrets.RELEASES_TOKEN }}
+        bodyFile: "${{ env.README }}"
+        artifacts: /home/runner/work/cnip/*
+
+    - name: 电报消息提醒
+      run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=RouterOS cnip脚本已更新"
+      
+    - name: 上传文件
+      run: |
+        Emoji=("🎉" "🤞" "✨" "🎁" "🎈" "🎄" "🎨" "💋" "🍓" "🍕" "🍉" "💐" "🌴" "🚀" "🛸" "🗽" "⛅" "🌈" "🔥" "⛄" "🐶" "🏅" "🦄" "🐤")
+        git add .
+        git commit -m "${Emoji[$[$RANDOM % ${#Emoji[@]}]]} Sync $(date +%Y-%m-%d" "%H:%M:%S)"
+        git push -f
