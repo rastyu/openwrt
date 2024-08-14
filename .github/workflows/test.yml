@@ -55,5 +55,5 @@ jobs:
         git commit -m "${Emoji[$[$RANDOM % ${#Emoji[@]}]]} Sync $(date +%Y-%m-%d" "%H:%M:%S)"
         git push -f
 
- - name: 电报消息提醒
+    - name: 电报消息提醒
       run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=RouterOS cnip脚本已更新"
