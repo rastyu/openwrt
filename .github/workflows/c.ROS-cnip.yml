@@ -31,9 +31,11 @@ jobs:
         clang="$(curl -kLfsm 5 https://ispip.clang.cn/all_cn.txt)"
         cnipv6="$(curl -kLfsm 5 https://ispip.clang.cn/all_cn_ipv6.txt)"
         iplist="$qqwry\n$ipipnet\n$clang"
+        echo -e "${qqwry}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNIP/g' | sed -e $'1i\\\n/ip firewall address-list' -e $'1i\\\nremove [/ip firewall address-list find list=CNIP]' -e $'1i\\\nadd address=10.0.0.0/8 list=CNIP' -e $'1i\\\nadd address=172.16.0.0/12 list=CNIP' -e $'1i\\\nadd address=192.168.0.0/16 list=CNIP'> qqwry.rsc
+        echo -e "${ipipnet}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNIP/g' | sed -e $'1i\\\n/ip firewall address-list' -e $'1i\\\nremove [/ip firewall address-list find list=CNIP]' -e $'1i\\\nadd address=10.0.0.0/8 list=CNIP' -e $'1i\\\nadd address=172.16.0.0/12 list=CNIP' -e $'1i\\\nadd address=192.168.0.0/16 list=CNIP'> ipipnet.rsc
         echo -e "${clang}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNIP/g' | sed -e $'1i\\\n/ip firewall address-list' -e $'1i\\\nremove [/ip firewall address-list find list=CNIP]' -e $'1i\\\nadd address=10.0.0.0/8 list=CNIP' -e $'1i\\\nadd address=172.16.0.0/12 list=CNIP' -e $'1i\\\nadd address=192.168.0.0/16 list=CNIP'> cnip.rsc
         echo -e "${cnipv6}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNipv6/g' | sed -e $'1i\\\n/ipv6 firewall address-list' -e $'1i\\\nremove [/ipv6 firewall address-list find list=CNipv6]'> cnipv6.rsc
-
+        echo -e "${iplist}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNIP/g' | sed -e $'1i\\\n/ip firewall address-list' -e $'1i\\\nremove [/ip firewall address-list find list=CNIP]' -e $'1i\\\nadd address=10.0.0.0/8 list=CNIP' -e $'1i\\\nadd address=172.16.0.0/12 list=CNIP' -e $'1i\\\nadd address=192.168.0.0/16 list=CNIP'> iplist.rsc
     - name: 发布至release
       id: release
       uses: ncipollo/release-action@v1
