@@ -41,6 +41,8 @@ jobs:
         echo -e "${adblock}" | sort | uniq > adblock.txt
         sed -i 's/0.0.0.0/127.0.0.1/g' adblock.txt
         echo -e "${neohost}" | sort | uniq > neohost.txt
+        sed -i 's/\r$//' neohost.txt
+
     - name: 发布至release
       id: release
       uses: ncipollo/release-action@v1
