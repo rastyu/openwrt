@@ -33,6 +33,7 @@ jobs:
         adblock="$(curl -kLfsm 5 https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblockhosts.txt)"
         neohost="$(curl -kLfsm 5 https://cdn.jsdelivr.net/gh/neoFelhz/neohosts@gh-pages/127.0.0.1/full/hosts)"
         iplist="$qqwry\n$ipipnet\n$clang"
+        adb="$adblock\n$neohost"
         echo -e "${qqwry}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNIP/g' | sed -e $'1i\\\n/ip firewall address-list' -e $'1i\\\nremove [/ip firewall address-list find list=CNIP]' -e $'1i\\\nadd address=10.0.0.0/8 list=CNIP' -e $'1i\\\nadd address=172.16.0.0/12 list=CNIP' -e $'1i\\\nadd address=192.168.0.0/16 list=CNIP'> metowolf_v4_CNIP.rsc
         echo -e "${ipipnet}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNIP/g' | sed -e $'1i\\\n/ip firewall address-list' -e $'1i\\\nremove [/ip firewall address-list find list=CNIP]' -e $'1i\\\nadd address=10.0.0.0/8 list=CNIP' -e $'1i\\\nadd address=172.16.0.0/12 list=CNIP' -e $'1i\\\nadd address=192.168.0.0/16 list=CNIP'> 17mon_v4_CNIP.rsc
         echo -e "${clang}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNIP/g' | sed -e $'1i\\\n/ip firewall address-list' -e $'1i\\\nremove [/ip firewall address-list find list=CNIP]' -e $'1i\\\nadd address=10.0.0.0/8 list=CNIP' -e $'1i\\\nadd address=172.16.0.0/12 list=CNIP' -e $'1i\\\nadd address=192.168.0.0/16 list=CNIP'> clang_v4_CNIP.rsc
@@ -42,7 +43,9 @@ jobs:
         sed -i 's/0.0.0.0/127.0.0.1/g' adblock.txt
         echo -e "${neohost}" | sort | uniq > neohost.txt
         sed -i 's/\r$//' neohost.txt
-
+        echo -e "${adb}" | sort | uniq > adb.txt
+        sed -i 's/\r$//' adb.txt
+        sed -i 's/0.0.0.0/127.0.0.1/g' adb.txt
     - name: 发布至release
       id: release
       uses: ncipollo/release-action@v1
