@@ -1,5 +1,6 @@
 #=================================================
-# Build RouterOS CNIP List with Statistics
+# https://github.com/P3TERX/Actions-OpenWrt
+# Description: Build OpenWrt using GitHub Actions
 #=================================================
 
 name: c.ROS CNIP list
@@ -11,6 +12,7 @@ on:
     - cron: '0 1 1 * *'  # UTC 每月1日 01:00 = 北京时间 09:00
 
 env:
+  UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
   README_PATH: router/readme/routeros.md
   RELEASE_TAG: cnip
@@ -30,9 +32,13 @@ jobs:
       - name: 下载中国IP列表
         run: |
           cd ${{ env.WORK_DIR }}
+          
+          # 定义下载函数（简化代码 + 自动重试）
           download() {
             curl -kLfsm 10 --retry 2 "$1" -o "$2"
           }
+
+          # 下载所有数据源
           download "https://raw.githubusercontent.com/metowolf/iplist/master/data/special/china.txt" qqwry.txt
           download "https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt" ipipnet.txt
           download "https://ispip.clang.cn/all_cn.txt" clang_cn.txt
@@ -43,8 +49,11 @@ jobs:
       - name: 生成 RouterOS 脚本
         run: |
           cd ${{ env.WORK_DIR }}
+          
+          # 通用内网IP段
           LOCAL_IP="add address=10.0.0.0/8 list=CNIP\nadd address=172.16.0.0/12 list=CNIP\nadd address=192.168.0.0/16 list=CNIP"
 
+          # 生成 IPv4 单源脚本
           gen_rsc() {
             local input=$1 output=$2 list=$3 type=$4
             {
@@ -60,12 +69,15 @@ jobs:
           gen_rsc clang_cn.txt     clang_v4_CNIP.rsc     CNIP ip
           gen_rsc clang_cn_ipv6.txt clang_v6_CNIP.rsc    CNipv6 ipv6
 
+          # 合并所有IPv4数据源 → 完整版CNIP
           cat qqwry.txt ipipnet.txt clang_cn.txt | sort -u > all_v4.txt
           gen_rsc all_v4.txt all_v4_list.rsc CNIP ip
 
-      - name: 生成广告拦截 Hosts
+      - name: 生成去重广告拦截 Hosts
         run: |
           cd ${{ env.WORK_DIR }}
+          
+          # 合并、清洗、标准化 hosts
           cat adblock.txt neohost.txt | sort -u \
             | sed 's/\r$//' \
             | sed '/0\.0\.0\.0\t0\.0\.0\.0/d' \
@@ -73,64 +85,17 @@ jobs:
             | sed '/::/d' \
             | sed 's/^0.0.0.0/127.0.0.1/g' \
             > adb.txt
-
-      - name: 生成统计摘要
-        id: stats
-        run: |
-          cd ${{ env.WORK_DIR }}
-          NOW=$(date +"%Y-%m-%d %H:%M:%S")
-
-          # 统计 IPv4 条数
-          COUNT_METOWOLF=$(cat qqwry.txt | sort -u | wc -l)
-          COUNT_17MON=$(cat ipipnet.txt | sort -u | wc -l)
-          COUNT_CLANG=$(cat clang_cn.txt | sort -u | wc -l)
-          COUNT_ALL_V4=$(cat all_v4.txt | wc -l)
-          COUNT_V6=$(cat clang_cn_ipv6.txt | sort -u | wc -l)
-          COUNT_HOSTS=$(cat adb.txt | wc -l)
-
-          # 文件大小
-          SIZE_ALL_V4=$(du -sh all_v4_list.rsc | awk '{print $1}')
-          SIZE_V6=$(du -sh clang_v6_CNIP.rsc | awk '{print $1}')
-          SIZE_HOSTS=$(du -sh adb.txt | awk '{print $1}')
-
-          # 输出统计文本
-          STAT_FILE="stats.txt"
-          cat > $STAT_FILE << EOF
-          ========== CNIP 列表统计摘要 ==========
-          生成时间：${NOW}
-          metowolf IPv4 条数：${COUNT_METOWOLF}
-          17mon IPv4 条数：${COUNT_17MON}
-          clang IPv4 条数：${COUNT_CLANG}
-          合并去重后 IPv4 条数：${COUNT_ALL_V4}
-          IPv6 条数：${COUNT_V6}
-          广告拦截规则条数：${COUNT_HOSTS}
-
-          文件大小：
-          all_v4_list.rsc：${SIZE_ALL_V4}
-          clang_v6_CNIP.rsc：${SIZE_V6}
-          adb.txt：${SIZE_HOSTS}
-          ======================================
-          EOF
-
-          # 输出给 GitHub Action 变量
-          echo "build_time=${NOW}" >> $GITHUB_OUTPUT
-          echo "count_all_v4=${COUNT_ALL_V4}" >> $GITHUB_OUTPUT
-          echo "count_v6=${COUNT_V6}" >> $GITHUB_OUTPUT
-          echo "count_hosts=${COUNT_HOSTS}" >> $GITHUB_OUTPUT
+          
+          # 保留原始分文件
+          cp adblock.txt adblock_original.txt
+          cp neohost.txt neohost_original.txt
 
       - name: 发布到 Release
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ env.RELEASE_TAG }}
-          name: "CNIP 列表 ${{ steps.stats.outputs.build_time }}"
-          body: |
-            **RouterOS CNIP 自动更新完成**
-            生成时间：${{ steps.stats.outputs.build_time }}
-            合并 IPv4 条数：${{ steps.stats.outputs.count_all_v4 }}
-            IPv6 条数：${{ steps.stats.outputs.count_v6 }}
-            广告规则条数：${{ steps.stats.outputs.count_hosts }}
-
-            自动合并去重，含内网地址，可直接导入 RouterOS。
+          name: ${{ env.RELEASE_TAG }}
+          bodyFile: ${{ env.README_PATH }}
           artifacts: ${{ env.WORK_DIR }}/*
           allowUpdates: true
           removeArtifacts: true
@@ -140,13 +105,8 @@ jobs:
       - name: Telegram 通知
         if: always()
         run: |
-          cd ${{ env.WORK_DIR }}
           curl -s "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
             -d "chat_id=${{ secrets.TELEGRAM_TO }}" \
-            -d "parse_mode=HTML" \
-            -d "text=<b>✅ RouterOS CNIP 自动更新完成</b>
-          📅 生成时间：${{ steps.stats.outputs.build_time }}
-          🌏 合并 IPv4 条数：${{ steps.stats.outputs.count_all_v4 }}
-          🌍 IPv6 条数：${{ steps.stats.outputs.count_v6 }}
-          🛡️  广告规则条数：${{ steps.stats.outputs.count_hosts }}
-          ✅ 已自动上传至 Release"
+            -d "text=✅ RouterOS CNIP 列表自动更新完成
+            📅 生成时间：$(date +'%Y-%m-%d %H:%M:%S')
+            🎯 来源：metowolf / 17mon / clang"
