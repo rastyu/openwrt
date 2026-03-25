@@ -1,6 +1,5 @@
 #=================================================
-# https://github.com/P3TERX/Actions-OpenWrt
-# Description: Build OpenWrt using GitHub Actions
+# Build RouterOS CNIP list - Clean Version (No Temp Files)
 #=================================================
 
 name: c.ROS CNIP list
@@ -29,73 +28,62 @@ jobs:
       - name: 创建工作目录
         run: mkdir -p ${{ env.WORK_DIR }}
 
-      - name: 下载中国IP列表
+      - name: 下载并生成 IP 列表（不留临时文件）
         run: |
           cd ${{ env.WORK_DIR }}
-          
-          # 定义下载函数（简化代码 + 自动重试）
+
+          # 下载函数（直接输出到变量，不落地文件）
           download() {
-            curl -kLfsm 10 --retry 2 "$1" -o "$2"
+            curl -kLfsm 10 --retry 2 "$1"
           }
 
-          # 下载所有数据源
-          download "https://raw.githubusercontent.com/metowolf/iplist/master/data/special/china.txt" qqwry.txt
-          download "https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt" ipipnet.txt
-          download "https://ispip.clang.cn/all_cn.txt" clang_cn.txt
-          download "https://ispip.clang.cn/all_cn_ipv6.txt" clang_cn_ipv6.txt
-          download "https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblockhosts.txt" adblock.txt
-          download "https://cdn.jsdelivr.net/gh/neoFelhz/neohosts@gh-pages/127.0.0.1/full/hosts" neohost.txt
+          # 下载所有数据源到变量
+          qqwry=$(download "https://raw.githubusercontent.com/metowolf/iplist/master/data/special/china.txt")
+          ipipnet=$(download "https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt")
+          clang_cn=$(download "https://ispip.clang.cn/all_cn.txt")
+          clang_cn_ipv6=$(download "https://ispip.clang.cn/all_cn_ipv6.txt")
+          adblock=$(download "https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblockhosts.txt")
+          neohost=$(download "https://cdn.jsdelivr.net/gh/neoFelhz/neohosts@gh-pages/127.0.0.1/full/hosts")
 
-      - name: 生成 RouterOS 脚本
-        run: |
-          cd ${{ env.WORK_DIR }}
-          
-          # 通用内网IP段
+          # 内网IP
           LOCAL_IP="add address=10.0.0.0/8 list=CNIP\nadd address=172.16.0.0/12 list=CNIP\nadd address=192.168.0.0/16 list=CNIP"
 
-          # 生成 IPv4 单源脚本
+          # 生成 RSC 函数
           gen_rsc() {
-            local input=$1 output=$2 list=$3 type=$4
+            local data="$1" output="$2" list="$3" type="$4"
             {
               echo -e "/$type firewall address-list"
               echo -e "remove [/$type firewall address-list find list=$list]"
               [ "$type" = "ip" ] && echo -e "$LOCAL_IP"
-              sort -u "$input" | sed -e "s/^/add address=/g" -e "s/\$/\ list=$list/g"
+              echo -e "$data" | sort -u | sed -e "s/^/add address=/g" -e "s/\$/\ list=$list/g"
             } > "$output"
           }
 
-          gen_rsc qqwry.txt        metowolf_v4_CNIP.rsc  CNIP ip
-          gen_rsc ipipnet.txt      17mon_v4_CNIP.rsc     CNIP ip
-          gen_rsc clang_cn.txt     clang_v4_CNIP.rsc     CNIP ip
-          gen_rsc clang_cn_ipv6.txt clang_v6_CNIP.rsc    CNipv6 ipv6
+          # 生成各个 IPv4/IPv6 脚本
+          gen_rsc "$qqwry" metowolf_v4_CNIP.rsc CNIP ip
+          gen_rsc "$ipipnet" 17mon_v4_CNIP.rsc CNIP ip
+          gen_rsc "$clang_cn" clang_v4_CNIP.rsc CNIP ip
+          gen_rsc "$clang_cn_ipv6" clang_v6_CNIP.rsc CNipv6 ipv6
 
-          # 合并所有IPv4数据源 → 完整版CNIP
-          cat qqwry.txt ipipnet.txt clang_cn.txt | sort -u > all_v4.txt
-          gen_rsc all_v4.txt all_v4_list.rsc CNIP ip
+          # 合并生成完整版 IPv4
+          all_v4="$qqwry"$'\n'"$ipipnet"$'\n'"$clang_cn"
+          gen_rsc "$all_v4" all_v4_list.rsc CNIP ip
 
-      - name: 生成去重广告拦截 Hosts
-        run: |
-          cd ${{ env.WORK_DIR }}
-          
-          # 合并、清洗、标准化 hosts
-          cat adblock.txt neohost.txt | sort -u \
+          # 生成广告拦截 Hosts
+          echo -e "$adblock"$'\n'"$neohost" | sort -u \
             | sed 's/\r$//' \
             | sed '/0\.0\.0\.0\t0\.0\.0\.0/d' \
             | sed '/255\.255\.255\.255/d' \
             | sed '/::/d' \
             | sed 's/^0.0.0.0/127.0.0.1/g' \
             > adb.txt
-          
-          # 保留原始分文件
-          cp adblock.txt adblock_original.txt
-          cp neohost.txt neohost_original.txt
 
       - name: 发布到 Release
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ env.RELEASE_TAG }}
           name: ${{ env.RELEASE_TAG }}
-          bodyFile: ${{ env.README_PATH }}
+          bodyFile: ${{ env README_PATH }}
           artifacts: ${{ env.WORK_DIR }}/*
           allowUpdates: true
           removeArtifacts: true
@@ -109,4 +97,5 @@ jobs:
             -d "chat_id=${{ secrets.TELEGRAM_TO }}" \
             -d "text=✅ RouterOS CNIP 列表自动更新完成
             📅 生成时间：$(date +'%Y-%m-%d %H:%M:%S')
-            🎯 来源：metowolf / 17mon / clang"
+            🎯 来源：metowolf / 17mon / clang
+            📦 已清理临时文件"
