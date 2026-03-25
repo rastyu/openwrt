@@ -83,7 +83,7 @@ jobs:
         with:
           tag: ${{ env.RELEASE_TAG }}
           name: ${{ env.RELEASE_TAG }}
-          bodyFile: ${{ env README_PATH }}
+          bodyFile: ${{ env.README_PATH }}
           artifacts: ${{ env.WORK_DIR }}/*
           allowUpdates: true
           removeArtifacts: true
