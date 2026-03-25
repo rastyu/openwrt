@@ -1,6 +1,6 @@
 #=================================================
-# https://github.com/P3TERX/Actions-OpenWrt
-# Description: Build OpenWrt using GitHub Actions
+# Build RouterOS CNIP List with Statistics
+#=================================================
 
 name: c.ROS CNIP list
 
@@ -8,61 +8,145 @@ on:
   repository_dispatch:
   workflow_dispatch:
   schedule:
-   - cron: 0 1 1 * * #北京时间每月的第一天9点开始执行
-    
+    - cron: '0 1 1 * *'  # UTC 每月1日 01:00 = 北京时间 09:00
+
 env:
-  UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  README: router/readme/routeros.md
-  FILE_NAME: cnip
+  README_PATH: router/readme/routeros.md
+  RELEASE_TAG: cnip
+  WORK_DIR: /home/runner/work/cnip
 
 jobs:
   build:
     runs-on: ubuntu-22.04
     if: ${{ github.event.repository.owner.id == github.event.sender.id || github.event.sender.id == null }}
     steps:
-    - name: 检查项目分支
-      uses: actions/checkout@main
+      - name: 检出代码
+        uses: actions/checkout@v4
 
-    - name: 更新原cnip.rsc
-      run: |
-        mkdir /home/runner/work/cnip && cd /home/runner/work/cnip
-        qqwry="$(curl -kLfsm 5 https://raw.githubusercontent.com/metowolf/iplist/master/data/special/china.txt)"
-        ipipnet="$(curl -kLfsm 5 https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt)"
-        clang="$(curl -kLfsm 5 https://ispip.clang.cn/all_cn.txt)"
-        cnipv6="$(curl -kLfsm 5 https://ispip.clang.cn/all_cn_ipv6.txt)"
-        adblock="$(curl -kLfsm 5 https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblockhosts.txt)"
-        neohost="$(curl -kLfsm 5 https://cdn.jsdelivr.net/gh/neoFelhz/neohosts@gh-pages/127.0.0.1/full/hosts)"
-        iplist="$qqwry\n$ipipnet\n$clang"
-        adb="$adblock\n$neohost"
-        echo -e "${qqwry}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNIP/g' | sed -e $'1i\\\n/ip firewall address-list' -e $'1i\\\nremove [/ip firewall address-list find list=CNIP]' -e $'1i\\\nadd address=10.0.0.0/8 list=CNIP' -e $'1i\\\nadd address=172.16.0.0/12 list=CNIP' -e $'1i\\\nadd address=192.168.0.0/16 list=CNIP'> metowolf_v4_CNIP.rsc
-        echo -e "${ipipnet}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNIP/g' | sed -e $'1i\\\n/ip firewall address-list' -e $'1i\\\nremove [/ip firewall address-list find list=CNIP]' -e $'1i\\\nadd address=10.0.0.0/8 list=CNIP' -e $'1i\\\nadd address=172.16.0.0/12 list=CNIP' -e $'1i\\\nadd address=192.168.0.0/16 list=CNIP'> 17mon_v4_CNIP.rsc
-        echo -e "${clang}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNIP/g' | sed -e $'1i\\\n/ip firewall address-list' -e $'1i\\\nremove [/ip firewall address-list find list=CNIP]' -e $'1i\\\nadd address=10.0.0.0/8 list=CNIP' -e $'1i\\\nadd address=172.16.0.0/12 list=CNIP' -e $'1i\\\nadd address=192.168.0.0/16 list=CNIP'> clang_v4_CNIP.rsc
-        echo -e "${cnipv6}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNipv6/g' | sed -e $'1i\\\n/ipv6 firewall address-list' -e $'1i\\\nremove [/ipv6 firewall address-list find list=CNipv6]'> clang_v6_CNIP.rsc
-        echo -e "${iplist}" | sort | uniq | sed -e 's/^/add address=/g' -e 's/$/ list=CNIP/g' | sed -e $'1i\\\n/ip firewall address-list' -e $'1i\\\nremove [/ip firewall address-list find list=CNIP]' -e $'1i\\\nadd address=10.0.0.0/8 list=CNIP' -e $'1i\\\nadd address=172.16.0.0/12 list=CNIP' -e $'1i\\\nadd address=192.168.0.0/16 list=CNIP'> all_v4_list.rsc
-        echo -e "${adblock}" | sort | uniq > adblock.txt
-        sed -i 's/0.0.0.0/127.0.0.1/g' adblock.txt
-        echo -e "${neohost}" | sort | uniq > neohost.txt
-        sed -i 's/\r$//' neohost.txt
-        echo -e "${adb}" | sort | uniq > adb.txt
-        sed -i 's/\r$//' adb.txt
-        sed -i '/0.0.0.0\t0.0.0.0/d' adb.txt
-        sed -i 's/0.0.0.0/127.0.0.1/g' adb.txt
-        sed -i '/255.255.255.255/d' adb.txt
-        sed -i '/::/d' adb.txt
+      - name: 创建工作目录
+        run: mkdir -p ${{ env.WORK_DIR }}
 
-    - name: 发布至release
-      id: release
-      uses: ncipollo/release-action@v1
-      with:
-        name: ${{ env.FILE_NAME }}
-        allowUpdates: true
-        removeArtifacts: true
-        tag: ${{ env.FILE_NAME }}
-        commit: main
-        token: ${{ secrets.RELEASES_TOKEN }}
-        bodyFile: "${{ env.README }}"
-        artifacts: /home/runner/work/cnip/*
+      - name: 下载中国IP列表
+        run: |
+          cd ${{ env.WORK_DIR }}
+          download() {
+            curl -kLfsm 10 --retry 2 "$1" -o "$2"
+          }
+          download "https://raw.githubusercontent.com/metowolf/iplist/master/data/special/china.txt" qqwry.txt
+          download "https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt" ipipnet.txt
+          download "https://ispip.clang.cn/all_cn.txt" clang_cn.txt
+          download "https://ispip.clang.cn/all_cn_ipv6.txt" clang_cn_ipv6.txt
+          download "https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblockhosts.txt" adblock.txt
+          download "https://cdn.jsdelivr.net/gh/neoFelhz/neohosts@gh-pages/127.0.0.1/full/hosts" neohost.txt
 
-    - name: 电报消息提醒
-      run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=RouterOS cnip脚本已更新"
+      - name: 生成 RouterOS 脚本
+        run: |
+          cd ${{ env.WORK_DIR }}
+          LOCAL_IP="add address=10.0.0.0/8 list=CNIP\nadd address=172.16.0.0/12 list=CNIP\nadd address=192.168.0.0/16 list=CNIP"
+
+          gen_rsc() {
+            local input=$1 output=$2 list=$3 type=$4
+            {
+              echo -e "/$type firewall address-list"
+              echo -e "remove [/$type firewall address-list find list=$list]"
+              [ "$type" = "ip" ] && echo -e "$LOCAL_IP"
+              sort -u "$input" | sed -e "s/^/add address=/g" -e "s/\$/\ list=$list/g"
+            } > "$output"
+          }
+
+          gen_rsc qqwry.txt        metowolf_v4_CNIP.rsc  CNIP ip
+          gen_rsc ipipnet.txt      17mon_v4_CNIP.rsc     CNIP ip
+          gen_rsc clang_cn.txt     clang_v4_CNIP.rsc     CNIP ip
+          gen_rsc clang_cn_ipv6.txt clang_v6_CNIP.rsc    CNipv6 ipv6
+
+          cat qqwry.txt ipipnet.txt clang_cn.txt | sort -u > all_v4.txt
+          gen_rsc all_v4.txt all_v4_list.rsc CNIP ip
+
+      - name: 生成广告拦截 Hosts
+        run: |
+          cd ${{ env.WORK_DIR }}
+          cat adblock.txt neohost.txt | sort -u \
+            | sed 's/\r$//' \
+            | sed '/0\.0\.0\.0\t0\.0\.0\.0/d' \
+            | sed '/255\.255\.255\.255/d' \
+            | sed '/::/d' \
+            | sed 's/^0.0.0.0/127.0.0.1/g' \
+            > adb.txt
+
+      - name: 生成统计摘要
+        id: stats
+        run: |
+          cd ${{ env.WORK_DIR }}
+          NOW=$(date +"%Y-%m-%d %H:%M:%S")
+
+          # 统计 IPv4 条数
+          COUNT_METOWOLF=$(cat qqwry.txt | sort -u | wc -l)
+          COUNT_17MON=$(cat ipipnet.txt | sort -u | wc -l)
+          COUNT_CLANG=$(cat clang_cn.txt | sort -u | wc -l)
+          COUNT_ALL_V4=$(cat all_v4.txt | wc -l)
+          COUNT_V6=$(cat clang_cn_ipv6.txt | sort -u | wc -l)
+          COUNT_HOSTS=$(cat adb.txt | wc -l)
+
+          # 文件大小
+          SIZE_ALL_V4=$(du -sh all_v4_list.rsc | awk '{print $1}')
+          SIZE_V6=$(du -sh clang_v6_CNIP.rsc | awk '{print $1}')
+          SIZE_HOSTS=$(du -sh adb.txt | awk '{print $1}')
+
+          # 输出统计文本
+          STAT_FILE="stats.txt"
+          cat > $STAT_FILE << EOF
+          ========== CNIP 列表统计摘要 ==========
+          生成时间：${NOW}
+          metowolf IPv4 条数：${COUNT_METOWOLF}
+          17mon IPv4 条数：${COUNT_17MON}
+          clang IPv4 条数：${COUNT_CLANG}
+          合并去重后 IPv4 条数：${COUNT_ALL_V4}
+          IPv6 条数：${COUNT_V6}
+          广告拦截规则条数：${COUNT_HOSTS}
+
+          文件大小：
+          all_v4_list.rsc：${SIZE_ALL_V4}
+          clang_v6_CNIP.rsc：${SIZE_V6}
+          adb.txt：${SIZE_HOSTS}
+          ======================================
+          EOF
+
+          # 输出给 GitHub Action 变量
+          echo "build_time=${NOW}" >> $GITHUB_OUTPUT
+          echo "count_all_v4=${COUNT_ALL_V4}" >> $GITHUB_OUTPUT
+          echo "count_v6=${COUNT_V6}" >> $GITHUB_OUTPUT
+          echo "count_hosts=${COUNT_HOSTS}" >> $GITHUB_OUTPUT
+
+      - name: 发布到 Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ env.RELEASE_TAG }}
+          name: "CNIP 列表 ${{ steps.stats.outputs.build_time }}"
+          body: |
+            **RouterOS CNIP 自动更新完成**
+            生成时间：${{ steps.stats.outputs.build_time }}
+            合并 IPv4 条数：${{ steps.stats.outputs.count_all_v4 }}
+            IPv6 条数：${{ steps.stats.outputs.count_v6 }}
+            广告规则条数：${{ steps.stats.outputs.count_hosts }}
+
+            自动合并去重，含内网地址，可直接导入 RouterOS。
+          artifacts: ${{ env.WORK_DIR }}/*
+          allowUpdates: true
+          removeArtifacts: true
+          replacesArtifacts: true
+          token: ${{ secrets.RELEASES_TOKEN }}
+
+      - name: Telegram 通知
+        if: always()
+        run: |
+          cd ${{ env.WORK_DIR }}
+          curl -s "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
+            -d "chat_id=${{ secrets.TELEGRAM_TO }}" \
+            -d "parse_mode=HTML" \
+            -d "text=<b>✅ RouterOS CNIP 自动更新完成</b>
+          📅 生成时间：${{ steps.stats.outputs.build_time }}
+          🌏 合并 IPv4 条数：${{ steps.stats.outputs.count_all_v4 }}
+          🌍 IPv6 条数：${{ steps.stats.outputs.count_v6 }}
+          🛡️  广告规则条数：${{ steps.stats.outputs.count_hosts }}
+          ✅ 已自动上传至 Release"
