@@ -13,8 +13,8 @@ on:
         required: false
         default: 'false'
         type: boolean
-  schedule:
-    - cron: '0 1 1 * *'  # UTC 每月1日 01:00 = 北京时间 09:00
+#  schedule:
+#    - cron: '0 1 1 * *'  # UTC 每月1日 01:00 = 北京时间 09:00
 
 env:
   UPLOAD_RELEASE: true
